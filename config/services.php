@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party services such
-    | as Mailgun, SparkPost and others. This file provides a sane default
+    | as Mailgun, Postmark, AWS and more. This file provides the de facto
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
@@ -30,8 +30,20 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
-    ],
 
+    'facebook' => [
+        'client_id'     => '574150493227672',
+        'client_secret' => '334707ace029877bca3ba9d554ef8b83',
+        'redirect'      => 'https://academic-azher.test/auth/facebook/callback',
+    ],
+    'twitter' => [
+        'client_id'     => 'q4gp3OQgzSvCFsFWpslySfYhN',
+        'client_secret' => 'O5KXu8I1gqYUiWEtiieN1ey6yEK6mqrSlo5JvH0P4OJ7L82X0i',
+        'redirect'      => 'https://academic-azher.test/auth/twitter/callback',
+    ],
+    'google' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => 'http://your-callback-url',
+    ],
 ];
