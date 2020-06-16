@@ -13,22 +13,22 @@ class Cours extends Model
 
     public function cat()
     {
-        return $this->belongsTo('Models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function user()
     {
-        return $this->belongsTo('Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function tag()
     {
-        return $this->belongsToMany('Models\Tag');
+        return $this->belongsToMany('App\Models\Tag');
     }
 
     public function comment()
     {
-        return $this->hasMany('Models\Comment');
+        return $this->hasMany('App\Models\Comment');
     }
 
 }

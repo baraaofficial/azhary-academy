@@ -1,6 +1,6 @@
 @extends('admin-panel.layouts.app')
 @section('title')
-    جميع الدورات
+    | جميع الدورات
 @endsection
 @section('content')
 
@@ -37,7 +37,18 @@
         </div>
         <!-- /page header -->
 
+        @if(session('message') ?? '' )
+            <div class="alert alert-success alert-styled-left alert-arrow-left alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+                {{session('message') ?? ''}}
+            </div>
+        @elseif(session('delete') ?? '' )
 
+            <div class="alert alert-danger alert-styled-left alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+                {{session('delete') ?? ''}}
+            </div>
+        @endif
         <!-- Content area -->
         <div class="content">
 
@@ -48,19 +59,24 @@
                 <table class="table datatable-responsive">
                     <thead>
                     <tr>
-                        <th>الدوره</th>
+                        <th>#</th>
+                        <th>اسم الدوره</th>
                         <th>السعر</th>
+                        <th>المادة</th>
+                        <th>الفصل</th>
                         <th>التاريخ</th>
-                        <th>الحاله</th>
                         <th class="text-center">أجراءات</th>
                     </tr>
                     </thead>
+                    @foreach($courses as $row)
                     <tbody>
                     <tr>
-                        <td>Marth</td>
-                        <td><a href="#">Enright</a></td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->price}}</td>
+                        <td>{{optional($row->subject)->name}}</td>
+                        <td>{{optional($row->class)->name}}</td>
                         <td>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
-                        <td><span class="badge badge-success">نشر</span></td>
                         <td class="text-center">
                             <div class="list-icons">
                                 <div class="dropdown">
@@ -69,9 +85,16 @@
                                     </a>
 
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-x"></i> حذف</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-eye"></i> شاهد</a>
+                                        <a href="{{route('courses.edit',$row->id)}}" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
+                                        {!! Form::open([
+                                        'action' => ['Admin\CoursesController@destroy',$row->id],
+
+                                        'method' => 'delete'
+
+                                           ]) !!}
+                                        <button class="dropdown-item"><i class="icon-x"></i> حذف</button>
+
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>
@@ -79,6 +102,7 @@
                     </tr>
 
                     </tbody>
+                    @endforeach
                 </table>
             </div>
             <!-- /basic responsive configuration -->

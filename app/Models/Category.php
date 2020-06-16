@@ -9,11 +9,19 @@ class Category extends Model
 
     protected $table = 'categories';
     public $timestamps = true;
-    protected $fillable = array('name', 'image');
+    protected $fillable = array('name','description','category','image','price','love','state','subject_id','class_id');
 
-    public function courss()
+    public function tags()
     {
-        return $this->hasMany('App\Models\Cours');
+        return $this->belongsToMany(Tag::class,'category_tag');
+    }
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
+    public function class()
+    {
+        return $this->belongsTo(Calss::class, 'class_id');
     }
 
 }

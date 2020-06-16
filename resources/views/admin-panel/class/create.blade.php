@@ -1,7 +1,7 @@
 @extends('admin-panel.layouts.app')
 @inject('model','App\Models\Calss')
 @section('title')
-    إنشاء صف دراسي جديد
+     إنشاء صف دراسي جديد
 @endsection
 
 @section('content')

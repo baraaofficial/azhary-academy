@@ -1,7 +1,7 @@
 @extends('admin-panel.layouts.app')
 @inject('model','App\Models\Category')
 @section('title')
-    إنشاء دورة جديده
+    | إنشاء دورة جديده
 @endsection
 @section('css')
     <script src="{{asset('admin-panel/global_assets/js/plugins/uploaders/plupload/plupload.full.min.js')}}"></script>
@@ -12,6 +12,11 @@
     <script src="{{asset('admin-panel/global_assets/js/demo_pages/form_layouts.js')}}"></script>
     <script src="{{asset('admin-panel/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
     <script src="{{asset('admin-panel/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+
+    <script src="{{asset('admin-panel/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+
+    <script src="{{asset('admin-panel/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
 
 @endsection
 

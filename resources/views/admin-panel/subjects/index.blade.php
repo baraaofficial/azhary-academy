@@ -44,10 +44,10 @@
             </div>
         @elseif(session('delete') ?? '' )
 
-                <div class="alert alert-danger alert-styled-left alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
-                    {{session('delete') ?? ''}}
-                </div>
+            <div class="alert alert-danger alert-styled-left alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+                {{session('delete') ?? ''}}
+            </div>
         @endif
 
         <!-- Content area -->

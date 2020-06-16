@@ -404,6 +404,16 @@
                     </li>
 
 
+                    <li class="nav-item nav-item-submenu">
+                        <a href="{{route('courses.index')}}" class="nav-link"><i class="icon-book-play"></i> <span>الدورات الدراسية</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                            <li class="nav-item"><a href="{{route('courses.index')}}" class="nav-link active"> جميع الدورات الدراسية</a></li>
+                            <li class="nav-item"><a href="{{route('courses.create')}}" class="nav-link">إنشاء دورة دراسية جديدة </a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
             </div>
             <!-- /main navigation -->
