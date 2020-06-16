@@ -5,9 +5,19 @@
     <main>
         <section id="hero">
             <div class="intro_title">
-                <h3 class="animated fadeInDown">Affordable Paris tours</h3>
-                <p class="animated fadeInDown">City Tours / Tour Tickets / Tour Guides</p>
-                <a href="#" class="animated fadeInUp button_intro">View Tours</a> <a href="#" class="animated fadeInUp button_intro outline">View Tickets</a>
+                <h3 class="animated fadeInDown">موقع اكادمية أزهري معنا إلى التفوق</h3>
+                <p class="animated fadeInDown">الإعدادية / الثانوية</p>
+                @guest
+
+                    @if (Route::has('register'))
+                        <a href="{{url('/register')}}" class="animated fadeInUp button_intro">التسجيل</a>
+                    @endif
+
+                        @else
+
+                @endguest
+
+                <a href="#" class="animated fadeInUp button_intro outline">العروض</a>
             </div>
 
             <div id="search_bar_container">
@@ -16,12 +26,12 @@
 					<span class="nav-facade-active" id="nav-search-in">
 								<span id="nav-search-in-content" style="">جميع المراحل</span>
 					<span class="nav-down-arrow nav-sprite"></span>
-					<select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
-									<option value="All Tours"  title="All Tours">جميع المراحل</option>
-									<option value="Museums" title="Museums">المرحله الثانوية</option>
-									<option value="Tickets" title="Tickets">المرحله الأعدادية</option>
-									<option value="Hotels" title="Hotels">المرحله الأبتدائية</option>
-								</select>
+                        <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
+                            <option value="All Tours"  title="All Tours">جميع المراحل</option>
+                            <option value="Museums" title="Museums">المرحله الثانوية</option>
+                            <option value="Tickets" title="Tickets">المرحله الأعدادية</option>
+                            <option value="Hotels" title="Hotels">المرحله الأبتدائية</option>
+                        </select>
 					</span>
                         <div class="nav-searchfield-outer">
                             <input type="text" autocomplete="off" name="field-keywords" placeholder="اكتب مصطلحات البحث ...." id="twotabsearchtextbox">

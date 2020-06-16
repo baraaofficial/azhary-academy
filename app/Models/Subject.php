@@ -13,7 +13,11 @@ class Subject extends Model
 
     public function class()
     {
-        return $this->belongsToMany('Models\Calss');
+        return $this->belongsToMany('App\Models\Calss');
+    }
+    public function category()
+    {
+        return $this->hasMany(Category::class, 'cat_id');
     }
 
 }

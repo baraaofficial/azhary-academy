@@ -11,10 +11,13 @@ class CreateCategoriesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name');
+			$table->text('description');
 			$table->string('category');
 			$table->string('image');
 			$table->integer('price');
 			$table->integer('love');
+			$table->integer('class_id');
+			$table->integer('subject_id');
             $table->enum('state', array('pending', 'accepted', 'rejected'));
         });
 	}

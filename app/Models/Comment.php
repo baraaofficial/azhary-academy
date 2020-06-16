@@ -1,10 +1,10 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model 
+class Comment extends Model
 {
 
     protected $table = 'comments';
@@ -13,12 +13,12 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo('Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function courss()
     {
-        return $this->belongsTo('Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 
 }

@@ -38,6 +38,11 @@ Route::get('/', function () {
     return view('welcome');
 
 });
+
+Route::get('single', function () {
+    return view('lesson.single');
+
+});
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/auth/{provider}','AuthSocController@redirect');
 Route::get('/auth/{provider}/callback','AuthSocController@Callback');
