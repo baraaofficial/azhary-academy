@@ -59,6 +59,7 @@
                 <table class="table datatable-responsive">
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>الوسوم الدراسية</th>
                         <th>التاريخ</th>
                         <th class="text-center">أجراءات</th>
@@ -67,6 +68,7 @@
                     @foreach($tags as $row)
                     <tbody>
                     <tr>
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$row->name}}</td>
                         <td>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
                         <td class="text-center">
