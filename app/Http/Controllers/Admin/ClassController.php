@@ -37,7 +37,7 @@ class ClassController extends Controller
         $this->validate($request, $rules,$message);
 
         $class = Calss::create($request->all());
-        return redirect()->route('class.index')->with(['message' => 'تم الأنشاء بنجاح']);
+        return redirect()->route('class.index')->with(['message' => 'تم إنشاء الصف الدراسي الجديد بنجاح']);
     }
 
 
@@ -72,7 +72,7 @@ class ClassController extends Controller
         $class = Calss::findOrFail($id);
         $class->update($request->all());
 
-        return redirect()->route('class.index')->with(['message' => 'تم تعديل الصف  بنجاح']);
+        return redirect()->route('class.index')->with(['message' => 'تم تعديل الصف الدراسي بنجاح']);
     }
 
 
@@ -81,6 +81,6 @@ class ClassController extends Controller
         $class = Calss::findOrFail($id);
         $class->delete();
 
-        return redirect(route('class.index'))->with(['delete' => 'تم حذف الصف بنجاح']);
+        return redirect(route('class.index'))->with(['delete' => 'تم حذف الصف الدراسي بنجاح']);
     }
 }

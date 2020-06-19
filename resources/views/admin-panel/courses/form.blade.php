@@ -8,26 +8,20 @@
 </div>
 
 
-<!-- Summernote editor -->
+<!-- CKEditor default -->
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">الوصف</h5>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-                <a class="list-icons-item" data-action="remove"></a>
-            </div>
+        <h5 class="card-title">وصف الدرس</h5>
+    </div>
+    <div class="card-body">
+        <div class="mb-3">
+                <textarea name="description" id="editor-full" rows="4" cols="4">
+
+                </textarea>
         </div>
     </div>
-
-    <div class="card-body">
-        <textarea class="summernote" name="description">
-
-        </textarea>
-    </div>
 </div>
-<!-- /summernote editor -->
+<!-- /CKEditor default -->
 
 <div class="form-group">
     <label>اختار القسم:</label>

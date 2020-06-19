@@ -17,26 +17,20 @@
 </div>
 
 
-<!-- Summernote editor -->
+<!-- CKEditor default -->
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">الوصف</h5>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-                <a class="list-icons-item" data-action="remove"></a>
-            </div>
-        </div>
+        <h5 class="card-title">وصف الدرس</h5>
     </div>
-
     <div class="card-body">
-        <textarea class="summernote" name="description">
+            <div class="mb-3">
+                <textarea name="description" id="editor-full" rows="4" cols="4">
 
-        </textarea>
+                </textarea>
+            </div>
     </div>
 </div>
-<!-- /summernote editor -->
+<!-- /CKEditor default -->
 
 <div class="form-group mb-6">
     <label for="simpleinput">الدروات الدراسية :</label>
@@ -51,19 +45,39 @@
 
 
 <div class="form-group mb-6">
-    <label for="simpleinput">الصوره:</label>
-    {!! Form::file('image',null,[
+    <label for="simpleinput">الأختباات الدراسية :</label>
+    @inject('class','App\Models\Test')
 
-        'class' => 'form-control'
-
-    ]) !!}
-</div>
-
-<div class="form-group mb-6">
-    <label for="simpleinput">PDF:</label>
-    {!! Form::file('pdf',null,[
-
-        'class' => 'form-control'
+    {!! Form::select('test_id',$class->pluck('answer','id'),null,[
+        'placeholder' => 'اختر',
+        'class' => 'form-control form-control-select2'
 
     ]) !!}
 </div>
+
+
+<!-- Bootstrap file input -->
+<div class="card">
+    <div class="card-body">
+            <div class="form-group row">
+                <label class="col-lg-2 col-form-label font-weight-semibold">الضورة:</label>
+                <div class="col-lg-10">
+                    <input type="file" name="image" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- /bootstrap file input -->
+
+<!-- Bootstrap file input -->
+<div class="card">
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-lg-2 col-form-label font-weight-semibold">PDF:</label>
+            <div class="col-lg-10">
+                <input type="file" name="pdf" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /bootstrap file input -->

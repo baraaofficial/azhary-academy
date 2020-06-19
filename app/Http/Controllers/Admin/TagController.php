@@ -31,15 +31,15 @@ class TagController extends Controller
             // validation Name
 
             'name.required'     => 'اسم الصف مطلوب',
-            'name.min'          => 'لابد ان يكون الاسم اكثر من 3 أحرف',
-            'name.max'          => 'لابد أن يكون الاسم اقل من 199 حرف',
+            'name.min'          => 'يجب ان يكون الاسم اكثر من 3 أحرف',
+            'name.max'          => 'يجب أن يكون الاسم اقل من 199 حرف',
 
         ];
         $this->validate($request, $rules,$message);
 
         $tags = Tag::create($request->all());
 
-        return redirect()->route('tags.index')->with(['message' => 'تم انشاء الوسم  بنجاح']);
+        return redirect()->route('tags.index')->with(['message' => 'تم إنشاء الوسم الجديد بنجاح']);
     }
 
 
@@ -67,8 +67,8 @@ class TagController extends Controller
             // validation Name
 
             'name.required'     => 'اسم الصف مطلوب',
-            'name.min'          => 'لابد ان يكون الاسم اكثر من 3 أحرف',
-            'name.max'          => 'لابد أن يكون الاسم اقل من 199 حرف',
+            'name.min'          => 'يجب ان يكون الاسم اكثر من 3 أحرف',
+            'name.max'          => 'يجب أن يكون الاسم اقل من 199 حرف',
 
         ];
         $this->validate($request, $rules,$message);
@@ -76,7 +76,7 @@ class TagController extends Controller
         $tags = Tag::findOrFail($id);
         $tags->update($request->all());
 
-        return redirect()->route('tags.index')->with(['message' => 'تم تعديل الوسم  بنجاح']);
+        return redirect()->route('tags.index')->with(['message' => 'تم تعديل الوسم بنجاح']);
     }
 
 

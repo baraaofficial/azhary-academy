@@ -32,13 +32,13 @@ class SubjectController extends Controller
             // validation Name
 
             'name.required'     => 'اسم الصف مطلوب',
-            'name.min'          => 'لابد ان يكون الاسم اكثر من 3 أحرف',
-            'name.max'          => 'لابد أن يكون الاسم اقل من 199 حرف',
+            'name.min'          => 'يجب ان يكون الاسم اكثر من 3 أحرف',
+            'name.max'          => 'يجب أن يكون الاسم اقل من 199 حرف',
         ];
         $this->validate($request, $rules,$message);
 
         $subjects = Subject::create($request->all());
-        return redirect()->route('subjects.index')->with(['message' => 'تم الأنشاء بنجاح']);
+        return redirect()->route('subjects.index')->with(['message' => 'تم إنشاء المادة الجديدة بنجاح']);
     }
 
 
@@ -70,8 +70,8 @@ class SubjectController extends Controller
             // validation Name
 
             'name.required'     => 'اسم الصف مطلوب',
-            'name.min'          => 'لابد ان يكون الاسم اكثر من 3 أحرف',
-            'name.max'          => 'لابد أن يكون الاسم اقل من 199 حرف',
+            'name.min'          => 'يجب ان يكون الاسم اكثر من 3 أحرف',
+            'name.max'          => 'يجب أن يكون الاسم اقل من 199 حرف',
 
         ];
         $this->validate($request, $rules,$message);
@@ -79,7 +79,7 @@ class SubjectController extends Controller
         $subjects = Subject::findOrFail($id);
         $subjects->update($request->all());
 
-        return redirect()->route('subjects.index')->with(['message' => 'تم تعديل المادة  بنجاح']);
+        return redirect()->route('subjects.index')->with(['message' => 'تم تعديل المادة بنجاح']);
     }
 
     /**

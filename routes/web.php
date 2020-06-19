@@ -20,6 +20,7 @@ Route::namespace('Admin')->middleware('auth','admin')->prefix('dashboard')->grou
     Route::resource('subjects','SubjectController');
     Route::resource('tags','TagController');
     Route::resource('lessons','LessonController');
+    Route::resource('tests','TestController');
 
 });
 

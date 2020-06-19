@@ -37,14 +37,14 @@ class CoursesController extends Controller
         $message = [
             // validation Name
             'name.required'         => 'اسم الدروره مطلوب',
-            'name.min'              => 'لابد ان يكون الاسم اكثر من 3 أحرف',
-            'name.max'              => 'لابد أن يكون الاسم اقل من 199 حرف',
+            'name.min'              => 'يجب ان يكون الاسم اكثر من 3 أحرف',
+            'name.max'              => 'يجب أن يكون الاسم اقل من 199 حرف',
 
 
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
-            'description.min'        => 'لابد ان يكون الصوف اكثر من 20 حرف',
-            'description.max'        => 'لابد ان يكون الوصف اقل من 500 حرف',
+            'description.min'        => 'يجب ان يكون الصوف اكثر من 20 حرف',
+            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
 
 
             // validation images
@@ -75,7 +75,7 @@ class CoursesController extends Controller
         $courses->tags()->sync($request->tag_id);
 
 
-        return redirect()->route('courses.index')->with(['message' => 'تم إنشاء الدورة بنجاح']);
+        return redirect()->route('courses.index')->with(['message' => 'تم إنشاء الدورة الجديد بنجاح']);
 
 
     }
@@ -112,14 +112,14 @@ class CoursesController extends Controller
         $message = [
             // validation Name
             'name.required'         => 'اسم الدروره مطلوب',
-            'name.min'              => 'لابد ان يكون الاسم اكثر من 3 أحرف',
-            'name.max'              => 'لابد أن يكون الاسم اقل من 199 حرف',
+            'name.min'              => 'يجب ان يكون الاسم اكثر من 3 أحرف',
+            'name.max'              => 'يجب أن يكون الاسم اقل من 199 حرف',
 
 
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
-            'description.min'        => 'لابد ان يكون الصوف اكثر من 20 حرف',
-            'description.max'        => 'لابد ان يكون الوصف اقل من 500 حرف',
+            'description.min'        => 'يجب ان يكون الصوف اكثر من 20 حرف',
+            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
 
 
             // validation images

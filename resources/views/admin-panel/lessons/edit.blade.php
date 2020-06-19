@@ -1,4 +1,24 @@
 @extends('admin-panel.layouts.app')
+
+@section('css')
+    {{--start Uploade Files --}}
+    <script src="{{asset('admin-panel/global_assets/js/demo_pages/uploader_bootstrap.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js')}}"></script>
+    {{--end Uploade Files --}}
+
+    <script src="{{asset('admin-panel/global_assets/js/demo_pages/form_layouts.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+
+
+    <script src="{{asset('admin-panel/global_assets/js/plugins/editors/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+    <script src="{{asset('admin-panel/global_assets/js/demo_pages/editor_ckeditor_default.js')}}"></script>
+
+@endsection
+
 @section('title')
     تعديل الدرس {{$model->name}}
 @endsection
@@ -23,7 +43,7 @@
                 <div class="d-flex">
                     <div class="breadcrumb">
                         <a href="{{url('/dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
-                        <a href="{{url('/dashboard/tags')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الوسوم الدراسية</a>
+                        <a href="{{url('/dashboard/tags')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الدروس الدراسية</a>
                         <span class="breadcrumb-item active">تعديل الدرس {{$model->name}}</span>
                     </div>
 

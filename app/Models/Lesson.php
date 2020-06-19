@@ -9,7 +9,7 @@ class Lesson extends Model
 
     protected $table = 'lessons';
     public $timestamps = true;
-    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','courses_id');
+    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','courses_id','test_id');
 
     public function courses()
     {
@@ -27,6 +27,11 @@ class Lesson extends Model
     public function comment()
     {
         return $this->hasMany('App\Models\Comment');
+    }
+
+    public function test()
+    {
+        return $this->belongsTo(Test::class, 'test_id');
     }
 
 

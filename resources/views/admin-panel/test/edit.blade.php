@@ -1,8 +1,4 @@
 @extends('admin-panel.layouts.app')
-@section('title')
-    | تعديل دورة {{$model->name}}
-@endsection
-
 
 @section('css')
     {{--start Uploade Files --}}
@@ -22,6 +18,9 @@
     <script src="{{asset('admin-panel/global_assets/js/demo_pages/editor_ckeditor_default.js')}}"></script>
 
 @endsection
+@section('title')
+    تعديل الأختبار {{$model->name}}
+@endsection
 
 @section('content')
 
@@ -32,7 +31,7 @@
         <div class="page-header page-header-light">
             <div class="page-header-content header-elements-md-inline">
                 <div class="page-title d-flex">
-                    <h4><i class="icon-arrow-right6 mr-2"></i> <span class="font-weight-semibold">لوحة التحكم</span> - تعديل دورة{{$model->name}}</h4>
+                    <h4><i class="icon-arrow-right6 mr-2"></i> <span class="font-weight-semibold">لوحة التحكم</span> -  تعديل الأختبار {{$model->name}}</h4>
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
                 </div>
 
@@ -43,8 +42,8 @@
                 <div class="d-flex">
                     <div class="breadcrumb">
                         <a href="{{url('/dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
-                        <a href="{{url('/dashboard/courses')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الدورات</a>
-                        <span class="breadcrumb-item active">تعديل دورة {{$model->name}}</span>
+                        <a href="{{url('/dashboard/tests')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الأختبارات الدراسية</a>
+                        <span class="breadcrumb-item active">تعديل الأختبار {{$model->name}}</span>
                     </div>
 
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -60,25 +59,22 @@
         <div class="content">
 
             @include('admin-panel.partials.validation-errors')
+
             {!! Form::model($model,[
-                'action'  => ['Admin\CoursesController@update',$model->id],
+                'action'  => ['Admin\TestController@update',$model->id],
                 'method'  =>'put',
-                'files'   =>   true,
-                'enctype' =>'multipart/form-data'
+
 
             ]) !!}
 
-            @include('admin-panel.courses.form')
+            @include('admin-panel.test.form')
 
-            <button type="submit" class="btn btn-primary ml-3"> الدورة{{$model->name}} <i class="icon-paperplane ml-2"></i></button>
+            <button type="submit" class="btn btn-primary ml-3">تعديل الأختبار {{$model->name}} <i class="icon-paperplane ml-2"></i></button>
 
             {!! Form::close() !!}
 
         </div>
         <!-- /content area -->
-
-
-
 
 
 @endsection

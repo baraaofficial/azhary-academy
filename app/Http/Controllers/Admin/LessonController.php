@@ -25,9 +25,6 @@ class LessonController extends Controller
 
     public function store(Request $request)
     {
-
-       // dd($request->all());
-
         $rules = [
             'title'          => 'required|min:3|max:199',
             'description'    => 'required|min:20|max:500',
@@ -40,13 +37,13 @@ class LessonController extends Controller
             // validation Name
 
             'title.required'     => 'عنوان الدرس مطلوب',
-            'title.min'          => 'لابد ان يكون العنوان اكثر من 3 أحرف',
-            'title.max'          => 'لابد أن يكون العنوان اقل من 199 حرف',
+            'title.min'          => 'يجب ان يكون العنوان اكثر من 3 أحرف',
+            'title.max'          => 'يجب أن يكون العنوان اقل من 199 حرف',
 
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
-            'description.min'        => 'لابد ان يكون الصوف اكثر من 20 حرف',
-            'description.max'        => 'لابد ان يكون الوصف اقل من 500 حرف',
+            'description.min'        => 'يجب ان يكون الوصف اكثر من 20 حرف',
+            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
 
             // validation images
             'image.required'         => 'صورة الدوره مطلوبه',
@@ -71,7 +68,7 @@ class LessonController extends Controller
             $path = $request->file('pdf')->store('public/lessons/pdf');
             $lessons->image = $path;
         }
-        return redirect()->route('lessons.index')->with(['message' => 'تم الأنشاء بنجاح']);
+        return redirect()->route('lessons.index')->with(['message' => 'تم إنشاء الدرس الجديد بنجاح']);
     }
 
 
