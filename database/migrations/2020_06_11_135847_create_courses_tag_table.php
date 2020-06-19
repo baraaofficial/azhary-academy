@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryTagTable extends Migration
+class CreateCoursesTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCategoryTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_tag', function (Blueprint $table) {
+        Schema::create('courses_tag', function (Blueprint $table) {
             $table->id();
-            $table->string('category_id')->nullable();
+            $table->string('course_id')->nullable();
             $table->string('tag_id')->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateCategoryTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_category_tag');
+        Schema::dropIfExists('courses_tag');
     }
 }

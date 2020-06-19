@@ -14,7 +14,7 @@ class Category extends Model
 
     public function courses()
     {
-        return $this->belongsTo(Cours::class, 'cat_id');
+        return $this->belongsTo(Lesson::class, 'cat_id');
     }
     public function tags()
     {
