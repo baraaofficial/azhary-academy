@@ -16,8 +16,8 @@ class Calss extends Model
         return $this->belongsToMany('App\Models\Subject');
     }
 
-    public function category()
+    public function course()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Models\Course');
     }
 }

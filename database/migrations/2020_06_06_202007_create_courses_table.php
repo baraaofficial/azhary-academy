@@ -3,11 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCategoriesTable extends Migration {
+class CreateCoursesTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('categories', function(Blueprint $table) {
+		Schema::create('courses', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name');
@@ -15,16 +15,16 @@ class CreateCategoriesTable extends Migration {
 			$table->string('category');
 			$table->string('image');
 			$table->integer('price');
-			$table->integer('love');
-			$table->integer('class_id');
-			$table->integer('subject_id');
-			$table->integer('cat_id');
-            $table->enum('state', array('pending', 'accepted', 'rejected'));
+			$table->integer('love')->nullable();
+			$table->integer('class_id')->nullable();
+			$table->integer('subject_id')->nullable();
+			$table->integer('cat_id')->nullable();
+            $table->enum('state', array('pending', 'accepted', 'rejected'))->nullable();
         });
 	}
 
 	public function down()
 	{
-		Schema::drop('categories');
+		Schema::drop('courses');
 	}
 }

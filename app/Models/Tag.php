@@ -11,9 +11,9 @@ class Tag extends Model
     public $timestamps = true;
     protected $fillable = array('name');
 
-    public function category()
+    public function course()
     {
-        return $this->belongsToMany(Category::class,'category_tag');
+        return $this->belongsToMany(Course::class,'courses_tag');
     }
 
 }

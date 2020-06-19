@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cours extends Model
+class Lesson extends Model
 {
 
-    protected $table = 'courss';
+    protected $table = 'lessons';
     public $timestamps = true;
-    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','cat_id');
+    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','courses_id');
 
-    public function cat()
+    public function courses()
     {
-        return $this->hasMany(Category::class, 'cat_id');
+        return $this->belongsTo(Course::class, 'courses_id');
     }
 
     public function user()

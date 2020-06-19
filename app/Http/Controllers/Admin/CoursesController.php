@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Cours;
+use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +13,7 @@ class CoursesController extends Controller
 
     public function index()
     {
-        $courses = Category::all();
+        $courses = Course::all();
         return view('admin-panel.courses.index',compact('courses'));
     }
 
@@ -64,7 +64,7 @@ class CoursesController extends Controller
         ];
         $this->validate($request, $rules,$message);
 
-        $courses = Category::create($request->all());
+        $courses = Course::create($request->all());
 
         if ($request->file('image') != '') {
             Storage::delete($request->image);
@@ -95,7 +95,7 @@ class CoursesController extends Controller
 
     public function edit($id)
     {
-        $model = Category::findOrFail($id);
+        $model = Course::findOrFail($id);
         return view('admin-panel.courses.edit', compact('model'));
     }
 
@@ -139,7 +139,7 @@ class CoursesController extends Controller
         ];
         $this->validate($request, $rules,$message);
 
-        $courses = Category::findOrFail($id);
+        $courses = Course::findOrFail($id);
         $courses->update($request->all());
 
         if ($request->file('image') != '') {
@@ -159,7 +159,7 @@ class CoursesController extends Controller
 
     public function destroy($id)
     {
-        $courses = Category::findOrFail($id);
+        $courses = Course::findOrFail($id);
         $courses->delete();
 
         return redirect(route('courses.index'))->with(['delete' => 'تم حذف الدورة بنجاح']);

@@ -24,7 +24,7 @@
 
                 <div class="header-elements d-none">
                     <div class="d-flex justify-content-center">
-                        <a href="{{route('tags.create')}}" class="btn btn-link btn-float text-default"><i class="icon-import text-primary"></i><span>انشاء درس جديد</span></a>
+                        <a href="{{route('lessons.create')}}" class="btn btn-link btn-float text-default"><i class="icon-import text-primary"></i><span>انشاء درس جديد</span></a>
                     </div>
                 </div>
             </div>
@@ -56,62 +56,66 @@
                 </div>
         @endif
 
-
     <!-- Content area -->
         <div class="content">
-            <!-- Card image placement -->
-            <div class="mb-3">
-                <h6 class="mb-0 font-weight-semibold">
-                    جميع الدورات
-                </h6>
-                <span class="text-muted d-block">لكل دورة داخلها درسوها الخاصها بها </span>
+
+            <!-- Basic responsive configuration -->
+            <div class="card">
+
+
+                <table class="table datatable-responsive">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اسم الدرس</th>
+                        <th>الوصف</th>
+                        <th>الدوره</th>
+                        <th>التاريخ</th>
+                        <th class="text-center">أجراءات</th>
+                    </tr>
+                    </thead>
+                    @foreach($lessons as $row)
+                        <tbody>
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$row->title}}</td>
+                            <td>{!!  \Illuminate\Support\Str::limit($row->description, $limit = 40, $end = '...' ) !!}</td>
+                            <td>{{optional($row->courses)->name}}</td>
+                            <td>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
+                            <td class="text-center">
+                                <div class="list-icons">
+                                    <div class="dropdown">
+                                        <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
+
+                                        <div class="dropdown-menu">
+                                            <a href="{{route('lessons.edit',$row->id)}}" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
+                                            {!! Form::open([
+                                            'action' => ['Admin\LessonController@destroy',$row->id],
+
+                                            'method' => 'delete'
+
+                                               ]) !!}
+                                            <button class="dropdown-item"><i class="icon-x"></i> حذف</button>
+
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    @endforeach
+                </table>
             </div>
-
-            <div class="row">
-                @foreach($corses as $course)
-
-                <div class="col-md-4">
-
-                    <!-- Top placement -->
-                    <div class="card">
-                        <div class="card-img-actions">
-                            <img class="card-img-top img-fluid" src="{{ Storage::URL($course->image)  }}" alt="">
-                            <div class="card-img-actions-overlay card-img-top">
-                                <a href="{{ Storage::URL($course->image)  }}" class="btn btn-outline bg-white text-white border-white border-2" data-popup="lightbox">
-                                    عرض
-
-                                <a href="{{route('lessons.show',$course->id)}}" class="btn btn-outline bg-white text-white border-white border-2 ml-2">
-                                    تفاصيل
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <h5 class="card-title">{{$course->name}}</h5>
-                            <p class="card-text">{!! \Illuminate\Support\Str::limit($course->description , $limit = 60, $end = '...' )!!}</p>
-                        </div>
-
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <span class="text-muted">آخر تحديث {{$course->updated_at->format('m-d')}}</span>
-                            <span>
-									<i class="icon-star-full2 font-size-base text-warning-300"></i>
-									<i class="icon-star-full2 font-size-base text-warning-300"></i>
-									<i class="icon-star-full2 font-size-base text-warning-300"></i>
-									<i class="icon-star-full2 font-size-base text-warning-300"></i>
-									<i class="icon-star-half font-size-base text-warning-300"></i>
-									<span class="text-muted ml-2">(12)</span>
-								</span>
-                        </div>
-                    </div>
-                    <!-- /top placement -->
-
-                </div>
-                @endforeach
+            <!-- /basic responsive configuration -->
 
 
 
 
-            </div>
-            <!-- /card image placement -->
+        </div>
+        <!-- /content area -->
 
 @endsection

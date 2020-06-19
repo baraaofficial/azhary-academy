@@ -41,12 +41,7 @@ class SubjectController extends Controller
         return redirect()->route('subjects.index')->with(['message' => 'تم الأنشاء بنجاح']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //

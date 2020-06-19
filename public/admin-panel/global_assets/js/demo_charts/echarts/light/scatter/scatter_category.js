@@ -17,7 +17,7 @@ var EchartsScatterCategoryLight = function() {
     // Setup module components
     //
 
-    // Category scatter chart
+    // Course scatter chart
     var _scatterCategoryLightExample = function() {
         if (typeof echarts == 'undefined') {
             console.warn('Warning - echarts.min.js is not loaded.');
@@ -181,9 +181,9 @@ var EchartsScatterCategoryLight = function() {
                         tooltip: {
                             trigger: 'item',
                             formatter: function (params) {
-                                return params.seriesName + ' （'  + 'Category' + params.value[0] + '）<br/>'
-                                + params.value[1] + ', ' 
-                                + params.value[2]; 
+                                return params.seriesName + ' （'  + 'Course' + params.value[0] + '）<br/>'
+                                + params.value[1] + ', '
+                                + params.value[2];
                             },
                             axisPointer: {
                                 show: true
@@ -213,9 +213,9 @@ var EchartsScatterCategoryLight = function() {
                         tooltip: {
                             trigger: 'item',
                             formatter: function (params) {
-                                return params.seriesName + ' （'  + 'Category' + params.value[0] + '）<br/>'
-                                + params.value[1] + ', ' 
-                                + params.value[2]; 
+                                return params.seriesName + ' （'  + 'Course' + params.value[0] + '）<br/>'
+                                + params.value[1] + ', '
+                                + params.value[2];
                             },
                             axisPointer:{
                                 show: true

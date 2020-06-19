@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
+use App\Models\Course;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-/*        view()->share('corses',Category::orderBy('id','desc')->paginate(30));*/
+/*        view()->share('corses',Course::orderBy('id','desc')->paginate(30));*/
     }
 }

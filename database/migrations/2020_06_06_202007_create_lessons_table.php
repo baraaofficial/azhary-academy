@@ -3,11 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCourssTable extends Migration {
+class CreatelessonsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('courss', function(Blueprint $table) {
+		Schema::create('lessons', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('title');
@@ -24,6 +24,6 @@ class CreateCourssTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('courss');
+		Schema::drop('lessons');
 	}
 }

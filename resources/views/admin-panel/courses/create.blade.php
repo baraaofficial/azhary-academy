@@ -1,5 +1,5 @@
 @extends('admin-panel.layouts.app')
-@inject('model','App\Models\Category')
+@inject('model','App\Models\Course')
 @section('title')
     | إنشاء دورة جديده
 @endsection

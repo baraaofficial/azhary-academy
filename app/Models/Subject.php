@@ -15,9 +15,10 @@ class Subject extends Model
     {
         return $this->belongsToMany('App\Models\Calss');
     }
-    public function category()
+    public function course()
     {
-        return $this->hasMany(Category::class, 'cat_id');
+        return $this->hasMany(Course::class, 'cat_id');
     }
+
 
 }

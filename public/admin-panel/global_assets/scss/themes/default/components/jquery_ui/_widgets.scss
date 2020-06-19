@@ -95,7 +95,7 @@
 	// -------------------------
 
 	// Base
-	.ui-autocomplete { 
+	.ui-autocomplete {
 		position: absolute;
 		display: none;
 		padding: $dropdown-padding-y 0;
@@ -103,7 +103,7 @@
 		max-height: $ui-autocomplete-height;
 		overflow: auto;
 
-		// Category title
+		// Course title
 		.ui-autocomplete-category {
 			padding: $dropdown-item-padding-y $dropdown-item-padding-x;
 			font-size: $font-size-sm;
@@ -121,7 +121,7 @@
 	}
 
 	// Animated processing icon
-	.ui-autocomplete-processing:after { 
+	.ui-autocomplete-processing:after {
 	    content: $icon-loading-spinner;
 	    font-family: $icon-font-family;
 	    display: inline-block;
@@ -650,7 +650,7 @@
 		position: fixed;
 		top: 0;
 		/*rtl:ignore*/
-		left: 0;	
+		left: 0;
 		background-color: $modal-content-bg;
 		background-clip: padding-box;
 		border: $modal-content-border-width solid $modal-content-border-color;
@@ -1405,7 +1405,7 @@
 		// Button icons base
 		&:after {
 	        font-family: $icon-font-family;
-	        position: absolute;	
+	        position: absolute;
 	        left: 50%;
 	        top: 50%;
 	        width: $icon-font-size;

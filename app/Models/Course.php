@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Course extends Model
 {
 
-    protected $table = 'categories';
+    protected $table = 'courses';
     public $timestamps = true;
-    protected $fillable = array('name','description','category','image','price','love','state','subject_id','class_id');
+    protected $fillable = array('name','description','category','image','price','love','state','subject_id','class_id','courses_id');
 
 
-    public function courses()
+    public function lesson()
     {
-        return $this->belongsTo(Lesson::class, 'cat_id');
+        return $this->hasMany(Lesson::class, 'courses_id');
     }
     public function tags()
     {
-        return $this->belongsToMany(Tag::class,'category_tag');
+        return $this->belongsToMany(Tag::class,'courses_tag');
     }
     public function subject()
     {
