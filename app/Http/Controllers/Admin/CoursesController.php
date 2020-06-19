@@ -88,7 +88,7 @@ class CoursesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
 
@@ -144,7 +144,7 @@ class CoursesController extends Controller
 
         if ($request->file('image') != '') {
             Storage::delete($request->image);
-            $path = $request->file('image')->store('courses');
+            $path = $request->file('image')->store('public/courses');
             $courses->image = $path;
         }
 

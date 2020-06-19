@@ -11,6 +11,11 @@ class Category extends Model
     public $timestamps = true;
     protected $fillable = array('name','description','category','image','price','love','state','subject_id','class_id');
 
+
+    public function courses()
+    {
+        return $this->belongsTo(Cours::class, 'cat_id');
+    }
     public function tags()
     {
         return $this->belongsToMany(Tag::class,'category_tag');

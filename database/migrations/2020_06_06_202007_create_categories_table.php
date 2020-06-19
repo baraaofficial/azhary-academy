@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration {
 			$table->integer('love');
 			$table->integer('class_id');
 			$table->integer('subject_id');
+			$table->integer('cat_id');
             $table->enum('state', array('pending', 'accepted', 'rejected'));
         });
 	}

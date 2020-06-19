@@ -59,7 +59,6 @@
 
     <!-- Content area -->
         <div class="content">
-
             <!-- Card image placement -->
             <div class="mb-3">
                 <h6 class="mb-0 font-weight-semibold">
@@ -69,30 +68,31 @@
             </div>
 
             <div class="row">
+                @foreach($corses as $course)
 
                 <div class="col-md-4">
 
                     <!-- Top placement -->
                     <div class="card">
                         <div class="card-img-actions">
-                            <img class="card-img-top img-fluid" src="{{asset('admin-panel/global_assets/images/placeholders/placeholder.jpg')}}" alt="">
+                            <img class="card-img-top img-fluid" src="{{ Storage::URL($course->image)  }}" alt="">
                             <div class="card-img-actions-overlay card-img-top">
-                                <a href="{{asset('admin-panel/global_assets/images/placeholders/placeholder.jpg')}}" class="btn btn-outline bg-white text-white border-white border-2" data-popup="lightbox">
-                                    Preview
-                                </a>
-                                <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2">
-                                    Details
+                                <a href="{{ Storage::URL($course->image)  }}" class="btn btn-outline bg-white text-white border-white border-2" data-popup="lightbox">
+                                    عرض
+
+                                <a href="{{route('lessons.show',$course->id)}}" class="btn btn-outline bg-white text-white border-white border-2 ml-2">
+                                    تفاصيل
                                 </a>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Top placement</h5>
-                            <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                            <h5 class="card-title">{{$course->name}}</h5>
+                            <p class="card-text">{!! \Illuminate\Support\Str::limit($course->description , $limit = 60, $end = '...' )!!}</p>
                         </div>
 
                         <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <span class="text-muted">Last updated 3 mins ago</span>
+                            <span class="text-muted">آخر تحديث {{$course->updated_at->format('m-d')}}</span>
                             <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
@@ -106,7 +106,7 @@
                     <!-- /top placement -->
 
                 </div>
-
+                @endforeach
 
 
 

@@ -15,6 +15,8 @@ class CreateCategoryCourseTable extends Migration
     {
         Schema::create('category_course', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('category_id')->nullable();
+            $table->integer('course_id')->nullable();
             $table->timestamps();
         });
     }
