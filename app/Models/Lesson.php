@@ -9,7 +9,7 @@ class Lesson extends Model
 
     protected $table = 'lessons';
     public $timestamps = true;
-    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','courses_id','test_id');
+    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','mb3','courses_id','test_id');
 
     public function courses()
     {

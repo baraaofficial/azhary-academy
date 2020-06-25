@@ -18,6 +18,7 @@ class CreatelessonsTable extends Migration {
 			$table->string('love')->nullable();
 			$table->string('dislove')->nullable();
 			$table->integer('review')->nullable();
+			$table->string('mb3')->nullable();
 			$table->string('cat_id')->nullable();
 		});
 	}

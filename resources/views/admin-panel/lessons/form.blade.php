@@ -1,5 +1,5 @@
 <div class="form-group mb-6">
-    <label for="simpleinput">عنوان الوسم :</label>
+    <label for="simpleinput">عنوان الدرس :</label>
     {!! Form::text('title',null,[
 
         'class' => 'form-control'
@@ -76,6 +76,19 @@
             <label class="col-lg-2 col-form-label font-weight-semibold">PDF:</label>
             <div class="col-lg-10">
                 <input type="file" name="pdf" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /bootstrap file input -->
+
+<!-- Bootstrap file input -->
+<div class="card">
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-lg-2 col-form-label font-weight-semibold">MB3:</label>
+            <div class="col-lg-10">
+                <input type="file" name="mb3" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
             </div>
         </div>
     </div>

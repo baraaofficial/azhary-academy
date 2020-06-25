@@ -30,6 +30,7 @@ class LessonController extends Controller
             'description'    => 'required|min:20|max:500',
             'video'          => 'required|min:5|max:500',
             'image'          => 'required|image|mimes:jpeg,bmp,png',
+            'mb3'            => 'required',
 
 
         ];
@@ -51,6 +52,10 @@ class LessonController extends Controller
             'image.mimes'            => 'يجب أن تكون jpeg,bmp,png',
 
 
+            'mb3.required'         => 'التسجيل الدوره مطلوبه',
+
+
+
         ];
 
         $this->validate($request, $rules,$message);
@@ -66,8 +71,15 @@ class LessonController extends Controller
         if ($request->file('pdf') != '') {
             Storage::delete($request->image);
             $path = $request->file('pdf')->store('public/lessons/pdf');
-            $lessons->image = $path;
+            $lessons->pdf = $path;
         }
+
+        if ($request->hasFile('mp3') != '') {
+            Storage::delete($request->image);
+            $path = $request->file('mp3')->store('public/lessons/mp3');
+            $lessons->mp3 = $path;
+        }
+
         return redirect()->route('lessons.index')->with(['message' => 'تم إنشاء الدرس الجديد بنجاح']);
     }
 
@@ -82,18 +94,78 @@ class LessonController extends Controller
 
     public function edit($id)
     {
-        //
+        $model = Lesson::findOrFail($id);
+        return view('admin-panel.lessons.edit', compact('model'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'title'          => 'required|min:3|max:199',
+            'description'    => 'required|min:20|max:500',
+            'video'          => 'required|min:5|max:500',
+            'image'          => 'required|image|mimes:jpeg,bmp,png',
+            'mb3'            => 'required',
+
+
+        ];
+        $message = [
+            // validation Name
+
+            'title.required'     => 'عنوان الدرس مطلوب',
+            'title.min'          => 'يجب ان يكون العنوان اكثر من 3 أحرف',
+            'title.max'          => 'يجب أن يكون العنوان اقل من 199 حرف',
+
+            // validation description
+            'description.required'   => 'وصف الدوره مطلوب',
+            'description.min'        => 'يجب ان يكون الوصف اكثر من 20 حرف',
+            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
+
+            // validation images
+            'image.required'         => 'صورة الدوره مطلوبه',
+            'image.image'            => 'يجب ان تكون صوره',
+            'image.mimes'            => 'يجب أن تكون jpeg,bmp,png',
+
+
+            'mb3.required'         => 'التسجيل الدوره مطلوبه',
+
+
+
+        ];
+
+        $this->validate($request, $rules,$message);
+
+        $lessons = Lesson::findOrFail($id);
+        $lessons->update($request->all());
+
+        if ($request->file('image') != '') {
+            Storage::delete($request->image);
+            $path = $request->file('image')->store('public/lessons');
+            $lessons->image = $path;
+        }
+
+        if ($request->file('pdf') != '') {
+            Storage::delete($request->image);
+            $path = $request->file('pdf')->store('public/lessons/pdf');
+            $lessons->pdf = $path;
+        }
+
+        if ($request->file('mp3') != '') {
+            Storage::delete($request->image);
+            $path = $request->file('mp3')->store('public/lessons/mp3');
+            $lessons->mp3 = $path;
+        }
+
+        return redirect()->route('lessons.index')->with(['message' => 'تم تعديل الدرس من جديد بنجاح']);
     }
 
 
     public function destroy($id)
     {
-        //
+        $lessons = Lesson::findOrFail($id);
+        $lessons->delete();
+
+        return redirect(route('lessons.index'))->with(['delete' => 'تم حذف الدرس بنجاح']);
     }
 }

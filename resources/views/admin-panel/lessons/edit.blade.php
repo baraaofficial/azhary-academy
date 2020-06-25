@@ -69,7 +69,7 @@
 
             ]) !!}
 
-            @include('admin-panel.tags.form')
+            @include('admin-panel.lessons.form')
 
             <button type="submit" class="btn btn-primary ml-3">تعديل الدرس {{$model->name}} <i class="icon-paperplane ml-2"></i></button>
 

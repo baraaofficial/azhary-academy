@@ -369,7 +369,7 @@
                     <!-- Main -->
                     <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">قائمة التنقل لأكادمية أزهري</div> <i class="icon-menu" title="Main"></i></li>
                     <li class="nav-item">
-                        <a href="{{url('/dashboard')}}" class="nav-link active">
+                        <a href="{{url('/dashboard')}}" class="nav-link disabled">
                             <i class="icon-home4"></i>
                             <span>
 									لوحة التحكم
