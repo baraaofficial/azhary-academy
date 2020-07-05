@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateContactUsTable extends Migration {
 
@@ -9,12 +10,15 @@ class CreateContactUsTable extends Migration {
 	{
 		Schema::create('contact_us', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('name');
 			$table->string('email');
 			$table->integer('phone')->nullable();
 			$table->text('message');
 			$table->string('subject');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
 		});
 	}
 

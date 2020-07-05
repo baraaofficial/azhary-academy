@@ -47,46 +47,6 @@
         </section>
         <!-- End hero -->
 
-        <div class="white_bg">
-            <div class="container margin_60">
-                <div class="row small-gutters categories_grid">
-                    <div class="col-sm-12 col-md-6">
-                        <a href="all-list">
-                            <img src="{{asset('website/img/img_cat_home_1.jpg')}}" alt="" class="img-fluid">
-                            <div class="wrapper">
-                                <h2>الصف الثالث الثانوي</h2>
-                                <p>1150 Locations</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <div class="row small-gutters mt-md-0 mt-sm-2">
-                            <div class="col-sm-12 mt-sm-2">
-                                <a href="all-list">
-                                    <img src="{{asset('website/img/img_cat_home_4.jpg')}}" alt="" class="img-fluid">
-                                    <div class="wrapper">
-                                        <h2>الصف الثاني الثانوي</h2>
-                                        <p>1132 Locations</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-12 mt-sm-2">
-                                <a href="all-list">
-                                    <img src="{{asset('website/img/img_cat_home_4.jpg')}}" alt="" class="img-fluid">
-                                    <div class="wrapper">
-                                        <h2>الصف الأول الثانوي</h2>
-                                        <p>1132 Locations</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/categories_grid-->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /white_bg -->
 
         <div class="container margin_60">
 

@@ -22,6 +22,15 @@ Route::namespace('Admin')->middleware('auth','admin')->prefix('dashboard')->grou
     Route::resource('lessons','LessonController');
     Route::resource('tests','TestController');
 
+    Route::resource('questions', 'QuestionsController');
+    Route::post('questions_mass_destroy', ['uses' => 'QuestionsController@massDestroy', 'as' => 'questions.mass_destroy']);
+
+    Route::resource('questions_options', 'QuestionsOptionsController');
+    Route::post('questions_options_mass_destroy', ['uses' => 'QuestionsOptionsController@massDestroy', 'as' => 'questions_options.mass_destroy']);
+
+    Route::resource('teachers','TeachersController');
+    Route::post('teachers_mass_destroy', ['uses' => 'TeachersController@massDestroy', 'as' => 'teachers.mass_destroy']);
+
 });
 
 /*
@@ -41,10 +50,21 @@ Route::get('/', function () {
 
 });
 
+
 Route::get('single', function () {
     return view('lesson.single');
 
 });
+Route::group(['prefix' => 'courses'],function (){
+    Route::get('/','GetCoursesController@index')->name('course.index');
+    Route::get('/{name}','GetCoursesController@list')->name('course.list');
+    Route::get('/lessons/{title}','LessonController@index')->name('lesson.single');
+
+});
+Route::get('get-checkout-id','PaymentProviderController@getCheckOutId')->name('course.check');
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/notifications', 'NotificationController@index')->name('notification');
+
 Route::get('/auth/{provider}','AuthSocController@redirect');
 Route::get('/auth/{provider}/callback','AuthSocController@Callback');

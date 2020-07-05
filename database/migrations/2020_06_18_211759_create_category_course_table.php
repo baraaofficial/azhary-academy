@@ -18,6 +18,10 @@ class CreateCategoryCourseTable extends Migration
             $table->integer('category_id')->nullable();
             $table->integer('course_id')->nullable();
             $table->timestamps();
+
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
         });
     }
 

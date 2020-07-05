@@ -1,7 +1,9 @@
 @extends('admin-panel.layouts.app')
+
 @section('title')
 جميع الأختبارات الدراسية
 @endsection
+
 @section('content')
 
     <!-- Main content -->
@@ -51,7 +53,7 @@
 
         <!-- Content area -->
         <div class="content">
-
+            @if(count($tests))
             <!-- Basic responsive configuration -->
             <div class="card">
 
@@ -102,7 +104,11 @@
                 </table>
             </div>
             <!-- /basic responsive configuration -->
-
+                @else
+                    <div class="alert alert-danger alert-styled-left alert-dismissible">
+                        هذا النموذج فارغ عليك بإنشاء العلامات الدراسية أولاً
+                    </div>
+                @endif
         </div>
         <!-- /content area -->
 @endsection

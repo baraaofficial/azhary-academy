@@ -125,7 +125,16 @@
 <script src="{{asset('website/js/jquery-2.2.4.min.js')}}"></script>
 <script src="{{asset('website/js/common_scripts_min_rtl.js')}}"></script>
 <script src="{{asset('website/js/functions_rtl.js')}}"></script>
+<script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+<script>
 
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('b06ec302ee92f4d37ffe', {
+        cluster: 'eu'
+    });
+</script>
 @yield('script')
 <!-- Check box and radio style iCheck -->
 <script>
@@ -134,6 +143,7 @@
         radioClass: 'iradio_square-grey'
     });
 </script>
+
 </body>
 
 </html>

@@ -53,6 +53,7 @@
         <!-- Content area -->
         <div class="content">
 
+            @if(count($subjects))
             <!-- Basic responsive configuration -->
             <div class="card">
 
@@ -103,7 +104,11 @@
             </div>
             <!-- /basic responsive configuration -->
 
-
+                @else
+                    <div class="alert alert-danger alert-styled-left alert-dismissible">
+                        هذا النموذج فارغ عليك بإنشاء المواد الدراسية أولاً
+                    </div>
+                @endif
 
 
         </div>

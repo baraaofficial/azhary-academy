@@ -3,16 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Test extends Model
 {
-    protected $table = 'test';
-    public $timestamps = true;
-    protected $fillable = array('question', 'answer');
+    use SoftDeletes;
 
+    protected $fillable = ['user_id', 'result'];
 
-    public function lesson()
+    public function user()
     {
-        return $this->belongsTo(Lesson::class, 'test_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

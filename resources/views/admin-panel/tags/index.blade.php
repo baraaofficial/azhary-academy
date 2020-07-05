@@ -52,6 +52,7 @@
         <!-- Content area -->
         <div class="content">
 
+            @if(count($tags))
             <!-- Basic responsive configuration -->
             <div class="card">
 
@@ -100,7 +101,11 @@
                 </table>
             </div>
             <!-- /basic responsive configuration -->
-
+            @else
+                <div class="alert alert-danger alert-styled-left alert-dismissible">
+                    هذا النموذج فارغ عليك بإنشاء الوسوم الدراسية أولاً
+                </div>
+            @endif
         </div>
         <!-- /content area -->
 @endsection

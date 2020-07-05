@@ -11,6 +11,8 @@ class Calss extends Model
     public $timestamps = true;
     protected $fillable = array('name');
 
+
+
     public function subject()
     {
         return $this->belongsToMany('App\Models\Subject');

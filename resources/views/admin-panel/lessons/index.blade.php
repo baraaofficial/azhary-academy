@@ -58,6 +58,7 @@
 
     <!-- Content area -->
         <div class="content">
+        @if(count($lessons))
 
             <!-- Basic responsive configuration -->
             <div class="card">
@@ -111,8 +112,11 @@
                 </table>
             </div>
             <!-- /basic responsive configuration -->
-
-
+            @else
+                <div class="alert alert-danger alert-styled-left alert-dismissible">
+                    هذا النموذج فارغ عليك بإنشاء الدروس الدراسية أولاً
+                </div>
+            @endif
 
 
         </div>

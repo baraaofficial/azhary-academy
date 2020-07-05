@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-lg-3 col-md-6 text-center">
 					<p>
-						<a href="#"><img src="img/bus.jpg" alt="Pic" class="img-fluid">
+						<a href="#"><img src="{{asset('img/bus.jpg')}}" alt="Pic" class="img-fluid">
 						</a>
 					</p>
 					<h4><span>Sightseen tour</span> booking</h4>

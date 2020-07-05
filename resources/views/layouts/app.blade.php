@@ -80,6 +80,7 @@
                             </ul>
                         </li>
 
+
                         <li class="submenu">
                             <a href="javascript:void(0);" class="show-submenu">المرحلة الثانوية<i class="icon-down-open-mini"></i></a>
                             <ul >
@@ -109,6 +110,14 @@
                             </ul>
                         </li>
 
+                        <li class="submenu">
+                            <a href="{{url('/courses')}}" class="show-submenu">الدورات الدراسية<i class="icon-down-open-mini"></i></a>
+                            <ul>
+                                @foreach($cour as $course)
+                                <li><a href="">{{$course->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
 
                         <li class="submenu">
                             <a href="about">من نحن </a>
@@ -157,6 +166,7 @@
                         @endif
 
                         @else
+
                         <li>
                             <div class="dropdown dropdown-cart">
                                 <a href="#" data-toggle="dropdown" class="cart_bt"><i class="icon_bag_alt"></i><strong>3</strong></a>
@@ -182,7 +192,24 @@
                                         <a href="payment.html" class="button_drop outline">Check out</a>
                                     </li>
                                 </ul>
-                            </div><!-- End dropdown-cart-->
+                            </div>
+                            <!-- End dropdown-cart-->
+                        </li>
+                        <li>
+                            <div class="dropdown dropdown-cart">
+                                <a href="#" data-toggle="dropdown" class="cart_bt"><i class="icon-bell-2"></i><strong>0</strong></a>
+                                <ul class="dropdown-menu" id="cart_items">
+                                    <li>
+                                        <div class="image"><img src="{{asset('website/img/thumb_cart_1.jpg')}}" alt="image"></div>
+                                        <strong><a href="#">Louvre museum</a>1x $36.00 </strong>
+                                        <a href="#" class="action"><i class="icon-trash"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="button_drop outline">مشاهدة الكل </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End dropdown-cart-->
                         </li>
                     @endguest
                 </ul>
@@ -195,4 +222,8 @@
 
 @yield('content')
 
+{{--@section('script')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+@endsection--}}
 @include('layouts.footer')

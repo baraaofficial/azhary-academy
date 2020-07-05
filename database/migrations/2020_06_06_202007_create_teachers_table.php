@@ -9,13 +9,17 @@ class CreateTeachersTable extends Migration {
 	{
 		Schema::create('teachers', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('name');
 			$table->text('description')->nullable();
 			$table->string('email');
 			$table->string('image');
 			$table->integer('phone');
 			$table->string('school');
+			$table->string('type');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
 		});
 	}
 

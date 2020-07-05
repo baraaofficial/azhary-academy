@@ -1,5 +1,5 @@
 @include('admin-panel.layouts.header')
-
+@inject('request', 'Illuminate\Http\Request')
 <body>
 
 <!-- Main navbar -->
@@ -377,27 +377,27 @@
                         </a>
                     </li>
                     <li class="nav-item nav-item-submenu">
-                        <a href="{{route('subjects.index')}}" class="nav-link"><i class="icon-books"></i> <span>المواد الدراسية</span></a>
+                        <a href="{{route('subjects.index')}}" class="nav-link active"><i class="icon-books"></i> <span>المواد الدراسية</span></a>
 
-                        <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                            <li class="nav-item"><a href="{{route('subjects.index')}}" class="nav-link active">المواد الدراسية</a></li>
-                            <li class="nav-item"><a href="{{route('subjects.create')}}" class="nav-link">إنشاء مادة دراسية جديدة</a></li>
+                        <ul class="nav nav-group-sub" data-submenu-title="المواد">
+                            <li class="nav-item"><a href="{{route('subjects.index')}}" class="nav-link">المواد الدراسية</a></li>
+                            <li class="nav-item"><a href="{{route('subjects.create')}}" class="nav-link ">إنشاء مادة دراسية جديدة</a></li>
                        </ul>
                     </li>
 
                     <li class="nav-item nav-item-submenu">
-                        <a href="{{route('class.index')}}" class="nav-link"><i class="icon-graduation"></i> <span>الصفوف الدراسية</span></a>
+                        <a href="{{route('class.index')}}" class="nav-link "><i class="icon-graduation"></i> <span>الصفوف الدراسية</span></a>
 
-                        <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                            <li class="nav-item"><a href="{{route('class.index')}}" class="nav-link active">الصفوف الدراسية</a></li>
-                            <li class="nav-item"><a href="{{route('class.create')}}" class="nav-link">إنشاء الصف الدراسية </a></li>
+                        <ul class="nav nav-group-sub" data-submenu-title="الصفوف">
+                            <li class="nav-item"><a href="{{route('class.index')}}" class="nav-link {{ $request->segment(1) == 'class.index' ? 'active active-sub' : '' }}">الصفوف الدراسية</a></li>
+                            <li class="nav-item"><a href="{{route('class.create')}}" class="nav-link {{ $request->segment(1) == 'class.create' ? 'active active-sub' : '' }}">إنشاء الصف الدراسية </a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('tags.index')}}" class="nav-link"><i class="icon-price-tags"></i> <span>العلامات الدراسية</span></a>
 
-                        <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <ul class="nav nav-group-sub" data-submenu-title="الوسوم">
                             <li class="nav-item"><a href="{{route('tags.index')}}" class="nav-link active">العلامات الدراسية</a></li>
                             <li class="nav-item"><a href="{{route('tags.create')}}" class="nav-link">إنشاء العلامات الدراسية </a></li>
                         </ul>
@@ -407,7 +407,7 @@
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('courses.index')}}" class="nav-link"><i class="icon-book-play"></i> <span>الدورات الدراسية</span></a>
 
-                        <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <ul class="nav nav-group-sub" data-submenu-title="الدورات">
                             <li class="nav-item"><a href="{{route('courses.index')}}" class="nav-link active"> جميع الدورات الدراسية</a></li>
                             <li class="nav-item"><a href="{{route('courses.create')}}" class="nav-link">إنشاء دورة دراسية جديدة </a></li>
                         </ul>
@@ -415,11 +415,49 @@
 
 
                     <li class="nav-item nav-item-submenu">
+                        <a href="{{route('lessons.index')}}" class="nav-link"><i class="icon-presentation"></i> <span>الدروس الدراسية</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="الدروس">
+                            <li class="nav-item"><a href="{{route('lessons.index')}}" class="nav-link active"> جميع الدروس الدراسية</a></li>
+                            <li class="nav-item"><a href="{{route('lessons.create')}}" class="nav-link">إنشاء درس  جديد </a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item nav-item-submenu">
                         <a href="{{route('courses.index')}}" class="nav-link"><i class="icon-pencil4"></i> <span>الأختبارات الدراسية</span></a>
 
-                        <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <ul class="nav nav-group-sub" data-submenu-title="الاختبار">
                             <li class="nav-item"><a href="{{route('tests.index')}}" class="nav-link active"> جميع الأختبارات </a></li>
                             <li class="nav-item"><a href="{{route('tests.create')}}" class="nav-link">إنشاء اختبار جديد </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-item-submenu">
+                        <a href="{{route('questions.index')}}" class="nav-link"><i class="icon-question7"></i> <span>الأسئلة الدراسية</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="الاسئلة">
+                            <li class="nav-item"><a href="{{route('questions.index')}}" class="nav-link active"> جميع الأسئلة </a></li>
+                            <li class="nav-item"><a href="{{route('questions.create')}}" class="nav-link">إنشاء سؤال جديد </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-item-submenu">
+                        <a href="{{route('questions_options.index')}}" class="nav-link"><i class="icon-add-to-list"></i> <span>خيارات الأسئلة</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="الاختيارات">
+                            <li class="nav-item"><a href="{{route('questions_options.index')}}" class="nav-link active "> جميع خيارات الأسئلة</a></li>
+                            <li class="nav-item"><a href="{{route('questions_options.create')}}" class="nav-link">إنشاء اختيار جديد </a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item nav-item-submenu">
+                        <a href="{{route('questions_options.index')}}" class="nav-link"><i class="icon-user"></i> <span> حميع هيئة التدريس</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="الاختيارات">
+                            <li class="nav-item"><a href="{{route('questions_options.index')}}" class="nav-link active "> حميع هيئة التدريس</a></li>
+                            <li class="nav-item"><a href="{{route('questions_options.create')}}" class="nav-link">إضافة مدرس جديد </a></li>
                         </ul>
                     </li>
 

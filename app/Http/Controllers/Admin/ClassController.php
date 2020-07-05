@@ -83,4 +83,15 @@ class ClassController extends Controller
 
         return redirect(route('class.index'))->with(['delete' => 'تم حذف الصف الدراسي بنجاح']);
     }
+
+    public function massDestroy(Request $request)
+    {
+        if ($request->input('ids')) {
+            $entries = Calss::whereIn('id', $request->input('ids'))->get();
+
+            foreach ($entries as $entry) {
+                $entry->delete();
+            }
+        }
+    }
 }

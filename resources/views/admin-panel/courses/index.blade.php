@@ -51,6 +51,8 @@
         @endif
         <!-- Content area -->
         <div class="content">
+            @if(count($courses))
+
 
             <!-- Basic responsive configuration -->
             <div class="card">
@@ -86,12 +88,14 @@
 
                                     <div class="dropdown-menu">
                                         <a href="{{route('courses.edit',$row->id)}}" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
-                                        {!! Form::open([
-                                        'action' => ['Admin\CoursesController@destroy',$row->id],
+                                        {!! Form::open(array(
 
-                                        'method' => 'delete'
+                                             'style' => 'display: inline-block;',
+                                             'method' => 'DELETE',
+                                             'onsubmit' => "return confirm('".trans("هل أنت متأكد من حذف الدورة ؟")."');",
+                                             'route' => ['courses.destroy', $row->id]))
 
-                                           ]) !!}
+                                        !!}
                                         <button class="dropdown-item"><i class="icon-x"></i> حذف</button>
 
                                         {!! Form::close() !!}
@@ -106,7 +110,11 @@
                 </table>
             </div>
             <!-- /basic responsive configuration -->
-
+                @else
+                    <div class="alert alert-danger alert-styled-left alert-dismissible">
+                        هذا النموذج فارغ عليك بإنشاء الدورات الدراسية أولاً
+                    </div>
+                @endif
 
 
 

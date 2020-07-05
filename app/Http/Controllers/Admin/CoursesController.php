@@ -29,7 +29,7 @@ class CoursesController extends Controller
     {
         $rules = [
             'name'           => 'required|min:3|max:199',
-            'description'     => 'required|min:20|max:500',
+            'description'     => 'required|min:20|max:10000',
             'image'           => 'required|image|mimes:jpeg,bmp,png',
             'category'        => 'required',
             'price'           => 'required',
@@ -44,7 +44,7 @@ class CoursesController extends Controller
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
             'description.min'        => 'يجب ان يكون الصوف اكثر من 20 حرف',
-            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
+            'description.max'        => 'يجب ان يكون الوصف اقل من 10000 حرف',
 
 
             // validation images
@@ -104,7 +104,7 @@ class CoursesController extends Controller
     {
         $rules = [
             'name'           => 'required|min:3|max:199',
-            'description'     => 'required|min:20|max:500',
+            'description'     => 'required|min:20|max:10000',
             'image'           => 'required|image|mimes:jpeg,bmp,png',
             'category'        => 'required',
             'price'           => 'required',
@@ -119,7 +119,7 @@ class CoursesController extends Controller
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
             'description.min'        => 'يجب ان يكون الصوف اكثر من 20 حرف',
-            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
+            'description.max'        => 'يجب ان يكون الوصف اقل من 10000 حرف',
 
 
             // validation images
@@ -163,5 +163,16 @@ class CoursesController extends Controller
         $courses->delete();
 
         return redirect(route('courses.index'))->with(['delete' => 'تم حذف الدورة بنجاح']);
+    }
+
+    public function massDestroy(Request $request)
+    {
+        if ($request->input('ids')) {
+            $entries = Course::whereIn('id', $request->input('ids'))->get();
+
+            foreach ($entries as $entry) {
+                $entry->delete();
+            }
+        }
     }
 }

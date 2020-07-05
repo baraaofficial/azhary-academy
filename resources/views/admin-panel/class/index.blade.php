@@ -54,6 +54,8 @@
         <div class="content">
 
             <!-- Basic responsive configuration -->
+            @if(count($class))
+
             <div class="card">
 
 
@@ -104,6 +106,11 @@
             </div>
             <!-- /basic responsive configuration -->
 
+            @else
+                <div class="alert alert-danger alert-styled-left alert-dismissible">
+                    هذا النموذج فارغ عليك بإنشاء الصفوف الدراسية أولاً
+                </div>
+            @endif
 
 
 

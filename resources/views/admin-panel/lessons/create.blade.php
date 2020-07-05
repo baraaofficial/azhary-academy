@@ -45,7 +45,7 @@
                     <div class="breadcrumb">
                         <a href="{{url('/dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
                         <a href="{{url('/dashboard/lessons')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الدروس الدراسية</a>
-                        <span class="breadcrumb-item active">انشاء درس جديد</span>
+                        <span class="breadcrumb-item active">إضافة درس جديد</span>
                     </div>
 
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>

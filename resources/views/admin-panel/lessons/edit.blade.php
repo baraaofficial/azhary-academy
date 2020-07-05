@@ -43,7 +43,7 @@
                 <div class="d-flex">
                     <div class="breadcrumb">
                         <a href="{{url('/dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
-                        <a href="{{url('/dashboard/tags')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الدروس الدراسية</a>
+                        <a href="{{url('/dashboard/lessons')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الدروس الدراسية</a>
                         <span class="breadcrumb-item active">تعديل الدرس {{$model->name}}</span>
                     </div>
 

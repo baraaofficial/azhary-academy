@@ -9,8 +9,11 @@ class CreateClassTable extends Migration {
 	{
 		Schema::create('class', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('name');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
 		});
 	}
 

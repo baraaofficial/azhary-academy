@@ -3,19 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lesson extends Model
 {
+    use SoftDeletes;
 
     protected $table = 'lessons';
     public $timestamps = true;
-    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove', 'review','mb3','courses_id','test_id');
+    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove',
+        'review','mb3','course_id','test_id','experimental','answer','experimental2','answer2','experimental3','answer3','experimental4','answer4','experimental5','answer5','experimental6','answer6','experimental7','answer7','experimental8','answer8','experimental9','answer9','experimental10','answer10');
 
-    public function courses()
+    public function questions()
     {
-        return $this->belongsTo(Course::class, 'courses_id');
+        return $this->hasMany(Question::class, 'lesson_id')->withTrashed();
     }
-
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
     public function user()
     {
         return $this->belongsTo('App\Models\User');
@@ -29,10 +35,7 @@ class Lesson extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function test()
-    {
-        return $this->belongsTo(Test::class, 'test_id');
-    }
+
 
 
 

@@ -18,6 +18,10 @@ class CreateCoursesTagTable extends Migration
             $table->string('course_id')->nullable();
             $table->string('tag_id')->nullable();
             $table->timestamps();
+
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
         });
     }
 

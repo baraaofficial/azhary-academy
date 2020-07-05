@@ -9,9 +9,12 @@ class CreateClassSubjectTable extends Migration {
 	{
 		Schema::create('class_subject', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('class_id')->nullable();
 			$table->string('subject_id')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
 		});
 	}
 
