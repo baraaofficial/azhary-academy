@@ -57,11 +57,12 @@ Route::get('single', function () {
 });
 Route::group(['prefix' => 'courses'],function (){
     Route::get('/','GetCoursesController@index')->name('course.index');
-    Route::get('/{name}','GetCoursesController@list')->name('course.list');
+    Route::get('/{id}','GetCoursesController@list')->name('course.list');
     Route::get('/lessons/{title}','LessonController@index')->name('lesson.single');
 
 });
-Route::get('get-checkout-id','PaymentProviderController@getCheckOutId')->name('course.check');
+Route::get('get-checkout/{id}','GetCoursesController@GetCheckOut')->name('course.get-checkout');
+Route::get('checkout','PaymentProviderController@getCheckOutId')->name('course.check');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/notifications', 'NotificationController@index')->name('notification');

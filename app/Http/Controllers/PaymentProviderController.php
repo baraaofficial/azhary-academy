@@ -10,7 +10,7 @@ class PaymentProviderController extends Controller
 
         $url = "https://test.oppwa.com/v1/checkouts";
         $data = "entityId=8a8294174b7ecb28014b9699220015ca" .
-            "&amount=". $request->price .
+            "&amount=". $request -> price .
             "&currency=EUR" .
             "&paymentType=DB";
 
@@ -27,14 +27,13 @@ class PaymentProviderController extends Controller
             return curl_error($ch);
         }
         curl_close($ch);
-
         $res = json_decode($responseData, true);
-      /*  {{route('course.check',$course->price)}}*/
 
-        $view = view('ajax.form')->with(['responseData' => $res, 'id' => $request->course_id ])->renderSections();
+        $view = view('ajax.form')->with(['responseData' => $res , 'id' => $request -> course_id])->renderSections();
+
         return response()->json([
             'status' => true,
-            'content' => $view['content']
+            'content' => $view['main']
         ]);
     }
 }

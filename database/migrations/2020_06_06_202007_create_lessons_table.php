@@ -39,6 +39,7 @@ class CreatelessonsTable extends Migration {
             $table->text('answer9')->nullable();
             $table->text('experimental10')->nullable();
             $table->text('answer10')->nullable();
+            $table->smallInteger('isFree')->default(0);
             $table->timestamps();
             $table->softDeletes();
             $table->index(['deleted_at']);

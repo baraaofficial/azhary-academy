@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration {
 			$table->integer('subject_id')->nullable();
 			$table->integer('cat_id')->nullable();
 			$table->integer('user_id')->nullable();
+			$table->integer('teacher_id')->nullable();
             $table->enum('state', array('pending', 'accepted', 'rejected'))->nullable();
             $table->timestamps();
             $table->softDeletes();

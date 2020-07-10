@@ -44,7 +44,17 @@
 </div>
 
 
+<div class="form-group">
+    <label>اختار الدفع:</label>
+    <select name="isFree" data-placeholder="اختار الدفع" class="form-control form-control-select2" data-fouc>
+        <option value="0">مدفوع</option>
+        <optgroup>
+            <option value="0">مدفوع</option>
+            <option value="1">مجاني</option>
+        </optgroup>
 
+    </select>
+</div>
 
 
 <!-- Bootstrap file input -->

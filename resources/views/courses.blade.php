@@ -203,8 +203,9 @@
                             <div class="col-lg-2 col-md-2">
                                 <div class="price_list">
                                     <div id="price"><sup></sup>{{$course->price}}<br><br><br><span class="normal_price_list"></span><small></small>
-                                        <p><a id="checkout" href="{{route('course.check',$course->price)}}" class="btn_1">شاهد الدوره</a>
+                                        <p><a href="{{route('course.get-checkout',$course->id)}}" class="btn_1">شاهد الدوره</a>
                                         </p>
+
                                     </div>
 
                                 </div>
@@ -246,36 +247,29 @@
         <!-- End container -->
     </main>
     <!-- End main -->
-   <div id="#showPayForm"></div>
+   <div id="showPayForm"></div>
+
 @endsection
 
 @section('script')
-   <script>
-       $(document).on('click', '#checkout', function(e){
-           e.preventDefault();
-           $.ajax({
-               type: 'get',
-               url: "{{route('course.check')}}",
-               data: {
-                   price: $('#price').text(),
-                   course_id:'{{$course->id}}',
-               },
-               success: function (data) {
-                   if (data.status == true){
-
-                       $('#showPayForm').empty().html(data.content);
-
-                       // $('#payfirstStep').hidden();
-
-                   } else {
-
-                       // $('#failModel').model('toggle')
-
-                   }
-               }, error: function (reject) {
-
-               }
-           });
-       });
-   </script>
-    @endsection
+    <script>
+        $(document).on('click', '#checkout', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'get',
+                url: "{{route('course.check')}}",
+                data: {
+                    price: $('#price').text(),
+                    course_id: '{{$course -> id}}',
+                },
+                success: function (data) {
+                    if (data.status == true) {
+                        $('#showPayForm').empty().html(data.content);
+                    } else {
+                    }
+                }, error: function (reject) {
+                }
+            });
+        });
+    </script>
+@endsection

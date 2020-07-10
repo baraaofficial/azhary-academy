@@ -11,12 +11,12 @@ class Course extends Model
 
     protected $table = 'courses';
     public $timestamps = true;
-    protected $fillable = array('name','description','category','image','price','love','state','subject_id','class_id','course_id','user_id');
+    protected $fillable = array('name','description','category','image','price','love','state','subject_id','class_id','course_id','user_id','payment_status','teacher_id');
 
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class, 'course_id');
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
     public function tags()
     {
@@ -34,6 +34,11 @@ class Course extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id','id');
+    }
+
+    public function teacher()
+    {
+        return $this->hasMany(Teacher::class);
     }
 
 

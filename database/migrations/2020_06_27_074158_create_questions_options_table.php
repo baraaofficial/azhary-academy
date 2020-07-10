@@ -16,7 +16,7 @@ class CreateQuestionsOptionsTable extends Migration
         Schema::create('questions_options', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('question_id')->unsigned()->nullable();
-            $table->foreign('question_id', 'fk_257_question_question_id_questions_option')->references('id')->on('questions');
+            $table->foreign('question_id')->references('id')->on('questions');
             $table->string('option')->nullable();
             $table->tinyInteger('correct')->nullable()->default(0);
 

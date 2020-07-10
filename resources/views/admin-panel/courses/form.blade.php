@@ -28,8 +28,8 @@
     <select name="category" data-placeholder="اختار القسم" class="form-control form-control-select2" data-fouc>
         <option></option>
         <optgroup>
-            <option value="ادبي">ادبي</option>
-            <option value="علمي">علمي</option>
+            <option value="1">ادبي</option>
+            <option value="2">علمي</option>
         </optgroup>
 
     </select>
@@ -62,6 +62,18 @@
     @inject('class','App\Models\calss')
 
     {!! Form::select('class_id',$class->pluck('name','id'),null,[
+        'placeholder' => 'اختر',
+        'class' => 'form-control form-control-select2'
+
+    ]) !!}
+</div>
+
+
+<div class="form-group mb-6">
+    <label for="simpleinput">المدرس الملقي بالدورة :</label>
+    @inject('teacher','App\Models\Teacher')
+
+    {!! Form::select('teacher_id',$teacher->pluck('name','id'),null,[
         'placeholder' => 'اختر',
         'class' => 'form-control form-control-select2'
 

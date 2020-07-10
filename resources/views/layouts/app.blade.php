@@ -55,8 +55,8 @@
         <div class="row">
             <div class="col-3">
                 <div id="logo">
-                    <a href="index.html"><img src="{{asset('website/img/logo.png')}}" width="160" height="34" alt="City tours" data-retina="true" class="logo_normal"></a>
-                    <a href="index.html"><img src="{{asset('website/img/logo_sticky.png')}}" width="160" height="34" alt="City tours" data-retina="true" class="logo_sticky"></a>
+                    <a href="{{url('/')}}"><img src="{{asset('website/img/logo.png')}}" width="160" height="34" alt="City tours" data-retina="true" class="logo_normal"></a>
+                    <a href="{{url('/')}}"><img src="{{asset('website/img/logo_sticky.png')}}" width="160" height="34" alt="City tours" data-retina="true" class="logo_sticky"></a>
                 </div>
             </div>
             <nav class="col-9">

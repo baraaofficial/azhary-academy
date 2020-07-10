@@ -122,7 +122,10 @@
 
 
 <!-- Common scripts -->
+
+
 <script src="{{asset('website/js/jquery-2.2.4.min.js')}}"></script>
+
 <script src="{{asset('website/js/common_scripts_min_rtl.js')}}"></script>
 <script src="{{asset('website/js/functions_rtl.js')}}"></script>
 <script src="https://js.pusher.com/6.0/pusher.min.js"></script>

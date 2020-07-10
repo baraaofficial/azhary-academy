@@ -6,8 +6,8 @@
     <section class="parallax-window" data-parallax="scroll" data-image-src="{{asset('website/img/restaurant_top.jpg')}}" data-natural-width="1400" data-natural-height="470">
         <div class="parallax-content-1">
             <div class="animated fadeInDown">
-                <h1>دورة {{$cours->name}}</h1>
-                <p>{!!  $cours->description !!}</p>
+                <h1>دورة {{$course->name}}</h1>
+                <p>{!! $course->description !!}</p>
             </div>
         </div>
     </section>
@@ -58,8 +58,8 @@
 
 
 
-                    @foreach($course->lessons as $lesson)
-                        <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
+                    @foreach($lessons as $lesson)
+                        <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s" >
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                     <div class="img_list">

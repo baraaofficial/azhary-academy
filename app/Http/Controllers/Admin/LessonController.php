@@ -27,7 +27,7 @@ class LessonController extends Controller
     {
         $rules = [
             'title'          => 'required|min:3|max:199',
-            'description'    => 'required|min:20|max:500',
+            'description'    => 'required|min:20',
             'video'          => 'required|min:5|max:500',
             'image'          => 'required|image|mimes:jpeg,bmp,png',
             'mb3'            => 'required',
@@ -44,7 +44,6 @@ class LessonController extends Controller
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
             'description.min'        => 'يجب ان يكون الوصف اكثر من 20 حرف',
-            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
 
             // validation images
             'image.required'         => 'صورة الدوره مطلوبه',
@@ -103,7 +102,7 @@ class LessonController extends Controller
     {
         $rules = [
             'title'          => 'required|min:3|max:199',
-            'description'    => 'required|min:20|max:500',
+            'description'    => 'required|min:20',
             'video'          => 'required|min:5|max:500',
             'image'          => 'required|image|mimes:jpeg,bmp,png',
             'mb3'            => 'required',
@@ -120,7 +119,6 @@ class LessonController extends Controller
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
             'description.min'        => 'يجب ان يكون الوصف اكثر من 20 حرف',
-            'description.max'        => 'يجب ان يكون الوصف اقل من 500 حرف',
 
             // validation images
             'image.required'         => 'صورة الدوره مطلوبه',
