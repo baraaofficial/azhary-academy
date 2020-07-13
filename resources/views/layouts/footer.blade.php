@@ -1,133 +1,251 @@
-<footer class="revealed">
+<!-- Go To Top
+	============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+<!-- Footer
+		============================================= -->
+<footer id="footer" class="dark">
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h3> تحتاج مساعدة ؟</h3>
-                <a href="tel://004542344599" id="phone">+45 423 445 99</a>
-                <a href="mailto:help@citytours.com" id="email_footer">help@citytours.com</a>
-            </div>
-            <div class="col-md-3">
-                <h3>حولنا</h3>
-                <ul>
-                    <li><a href="#">معلومات عنا </a></li>
-                    <li><a href="#">التعليمات</a></li>
-                    <li><a href="#">تسجيل الدخول</a></li>
-                    <li><a href="">تسجيل حساب جديد</a></li>
-                    <li><a href="#">أحكام وشروط</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h3>المراحل</h3>
-                <ul>
-                    <li><a href="#">المرحلة الأعدادية</a></li>
-                    <li><a href="#">المرحلة الأبتدائية</a></li>
 
-                </ul>
-            </div>
-            <div class="col-md-2">
-                <h3>الصفوف</h3>
-                <ul>
-                    <li><a href="#">الصف الأول الثانوي</a></li>
-                    <li><a href="#">الصف الثاني الثانوي</a></li>
-                    <li><a href="#">الصف الثالث الثانوي</a></li>
+        <!-- Footer Widgets
+        ============================================= -->
+        <div class="footer-widgets-wrap clearfix">
 
-                </ul>
-            </div>
-        </div><!-- End row -->
-        <div class="row">
-            <div class="col-md-12">
-                <div id="social_footer">
-                    <ul>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-google"></i></a></li>
-                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                        <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                        <li><a href="#"><i class="icon-vimeo"></i></a></li>
-                        <li><a href="#"><i class="icon-youtube-play"></i></a></li>
-                    </ul>
-                    <p>© Citytours 2018</p>
+            <div class="col_two_third">
+
+                <div class="col_one_third">
+
+                    <div class="widget clearfix">
+
+                        <img src="{{asset('website/images/footer-widget-logo.png')}}" alt="" class="footer-logo">
+
+                        <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
+
+                        <div style="background: url('website/images/world-map.png') no-repeat center center; background-size: 100%;">
+                            <address>
+                                <strong>Headquarters:</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                            </address>
+                            <abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
+                            <abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
+                            <abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
+                        </div>
+
+                    </div>
+
                 </div>
+
+                <div class="col_one_third">
+
+                    <div class="widget widget_links clearfix">
+
+                        <h4>Blogroll</h4>
+
+                        <ul>
+                            <li><a href="https://codex.wordpress.org/">Documentation</a></li>
+                            <li><a href="https://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
+                            <li><a href="https://wordpress.org/extend/plugins/">Plugins</a></li>
+                            <li><a href="https://wordpress.org/support/">Support Forums</a></li>
+                            <li><a href="https://wordpress.org/extend/themes/">Themes</a></li>
+                            <li><a href="https://wordpress.org/news/">WordPress Blog</a></li>
+                            <li><a href="https://planet.wordpress.org/">WordPress Planet</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col_one_third col_last">
+
+                    <div class="widget clearfix">
+                        <h4>Flickr Photostream</h4>
+                        <div id="post-list-footer">
+                            <div class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+                                    </div>
+                                    <ul class="entry-meta">
+                                        <li>10th July 2014</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title">
+                                        <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
+                                    </div>
+                                    <ul class="entry-meta">
+                                        <li>10th July 2014</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title">
+                                        <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
+                                    </div>
+                                    <ul class="entry-meta">
+                                        <li>10th July 2014</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-        </div><!-- End row -->
-    </div><!-- End container -->
-</footer><!-- End footer -->
 
-<div id="toTop"></div><!-- Back to top button -->
+            <div class="col_one_third col_last">
 
-<!-- Search Menu -->
-<div class="search-overlay-menu">
-    <span class="search-overlay-close"><i class="icon_set_1_icon-77"></i></span>
-    <form role="search" id="searchform" method="get">
-        <input value="" name="q" type="search" placeholder="Search..." />
-        <button type="submit"><i class="icon_set_1_icon-78"></i>
-        </button>
-    </form>
-</div><!-- End Search Menu -->
+                <div class="widget clearfix" style="margin-bottom: -20px;">
 
-<!-- Sign In Popup -->
-<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-    <div class="small-dialog-header">
-        <h3>تسجيل الدخول</h3>
+                    <div class="row">
+
+                        <div class="col-lg-6 bottommargin-sm">
+                            <div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+                            <h5 class="nobottommargin">Total Downloads</h5>
+                        </div>
+
+                        <div class="col-lg-6 bottommargin-sm">
+                            <div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
+                            <h5 class="nobottommargin">Clients</h5>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="widget subscribe-widget clearfix">
+                    <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+                    <div class="widget-subscribe-form-result"></div>
+                    <form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="nobottommargin">
+                        <div class="input-group divcenter">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-email2"></i></div>
+                            </div>
+                            <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="widget clearfix" style="margin-bottom: -20px;">
+
+                    <div class="row">
+
+                        <div class="col-lg-6 clearfix bottommargin-sm">
+                            <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                        </div>
+                        <div class="col-lg-6 clearfix">
+                            <a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-rss"></i>
+                                <i class="icon-rss"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!-- .footer-widgets-wrap end -->
+
     </div>
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
 
-        <div class="sign-in-wrapper">
+    <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights">
 
-            <div class="form-group">
-                <label>البريد الألكتروني</label>
-                <input type="email" class="form-control" name="email" id="email">
-                <i class="icon_mail_alt"></i>
+        <div class="container clearfix">
+
+            <div class="col_half">
+                Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
+                <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
             </div>
-            <div class="form-group">
-                <label>كلمة السر</label>
-                <input type="password" class="form-control" name="password" id="password" value="">
-                <i class="icon_lock_alt"></i>
-            </div>
-            <div class="clearfix add_bottom_15">
-                <div class="checkboxes float-left">
-                    <input id="remember" type="checkbox" name="remember"  {{ old('remember') ? 'checked' : '' }}>
-                    <label for="remember-me">تذكرني</label>
+
+            <div class="col_half col_last tright">
+                <div class="fright clearfix">
+                    <a href="#" class="social-icon si-small si-borderless si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-twitter">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-gplus">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                        <i class="icon-pinterest"></i>
+                        <i class="icon-pinterest"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-vimeo">
+                        <i class="icon-vimeo"></i>
+                        <i class="icon-vimeo"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-github">
+                        <i class="icon-github"></i>
+                        <i class="icon-github"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-yahoo">
+                        <i class="icon-yahoo"></i>
+                        <i class="icon-yahoo"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-linkedin">
+                        <i class="icon-linkedin"></i>
+                        <i class="icon-linkedin"></i>
+                    </a>
                 </div>
 
-                <div class="float-right">
-                    @if (Route::has('password.request'))
-                    <a id="forgot" href="{{ route('password.request') }}">أنسيت كلمة السر ؟</a>
-                    @endif
+                <div class="clear"></div>
 
-                </div>
+                <i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
             </div>
-            <div class="text-center"><input type="submit" value="تسجيل الدخول" class="btn_login"></div>
-            <div class="text-center">
-               ليس لديك حساب ؟ <a href="{{url('/register')}}">سجل الآن</a>
-            </div>
-            <div class="divider"><span>أو </span></div>
-            <a href="#0" class="social_bt facebook">تسجيل الدخول باستخدام الفيسبوك</a>
-            <a href="#0" class="social_bt google">تسجيل الدخول باستخدام جوجل</a>
-            <div id="forgot_pw">
-                <div class="form-group">
-                    <label>يرجي تأكيد البريد الإلكتروني لتسجيل أدناه</label>
-                    <input type="email" class="form-control" name="email_forgot" id="email_forgot">
-                    <i class="icon_mail_alt"></i>
-                </div>
-                <p>سوف تتلقى رسالة بريد إلكتروني تحتوي على رابط يسمح لك بإعادة تعيين كلمة المرور الخاصة بك إلى واحدة مفضلة جديدة.</p>
-                <div class="text-center"><input type="submit" value="إعادة تعيين كلمة المرور" class="btn_1"></div>
-            </div>
+
         </div>
-    </form>
-    <!--form -->
-</div>
-<!-- /Sign In Popup -->
 
+    </div><!-- #copyrights end -->
 
-<!-- Common scripts -->
+</footer><!-- #footer end -->
 
+</div><!-- #wrapper end -->
 
-<script src="{{asset('website/js/jquery-2.2.4.min.js')}}"></script>
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
 
-<script src="{{asset('website/js/common_scripts_min_rtl.js')}}"></script>
-<script src="{{asset('website/js/functions_rtl.js')}}"></script>
+<!-- External JavaScripts
+============================================= -->
+<script src="{{asset('website/js/jquery.js')}}"></script>
+<script src="{{asset('website/js/plugins.js')}}"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="{{asset('website/js/functions.js')}}"></script>
+@yield('script')
+
 <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
 <script>
 
@@ -138,15 +256,6 @@
         cluster: 'eu'
     });
 </script>
-@yield('script')
-<!-- Check box and radio style iCheck -->
-<script>
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_square-grey',
-        radioClass: 'iradio_square-grey'
-    });
-</script>
-
 </body>
-
 </html>
+

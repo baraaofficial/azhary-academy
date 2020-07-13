@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       view()->share('cour',Course::orderBy('id','desc')->paginate(3));
+       view()->share('courses',Course::orderBy('id','desc')->paginate(10));
     }
 }

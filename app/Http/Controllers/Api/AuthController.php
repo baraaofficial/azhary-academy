@@ -91,22 +91,28 @@ class AuthController extends Controller
     public function resetPassword(Request $request)
     {
         $validator = validator()->make($request->all(), [
-            'email' => 'required'
+            'phone'    => 'min:11|max:11',
         ]);
         if ($validator->fails()) {
             return responseJson(0, $validator->errors()->first(), $validator->errors());
         }
-        $user = Client::where('email', $request->email)->first();
+        $user = Client::where('phone', $request->phone)->first();
         //dd($user);
         if ($user) {
             $code = rand(1111, 9999);
-            $user->update(['pin_code' => $code]);
-            Mail::to($user->email)->send(new ResetPassword($code));
-            return responseJson(1, 'برجاء فحص الايميل الخاص بك', $code);
-        } else {
-            return responseJson(0, 'الايميل غير موجود');
+            $update = $user->update(['pin_code' => $code]);
+            if ($update)
+            {
+                smsMisr($request->phone, "your reset code is : " . $code);
+
+            } else {
+                return responseJson(1, 'برجاء فحص الايميل الخاص بك', $code);
+            }
+       } else {
+            return responseJson(0, 'رقم الهاتف الذي أدخلته غير موجود');
         }
     }
+
 
     public function newPassword(Request $request)
     {

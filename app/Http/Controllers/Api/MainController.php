@@ -16,22 +16,21 @@ class MainController extends Controller
 
         $courses = Course::limit(10)->get();
 
-        return responseJson(1, 'نجح ي علاء ومتقاوحش',  $courses);
+        return responseJson(1, 'success',  $courses);
     }
 
     public function lessons(Request $request) {
 
 
         $lessons = Lesson::where(function ($query) use ($request) {
-            if ($request->has('course_id','isFree')) {
+            if ($request->has('course_id')) {
                 $query->where('course_id', $request->course_id);
-                $query->where('1', $request->isFree);
             }
 
         })->get();
 
 
-        return responseJson(1, 'نجح ي علاء ومتقاوحش',  $lessons);
+        return responseJson(1, 'success',  $lessons);
 
     }
 
@@ -43,7 +42,7 @@ class MainController extends Controller
             }
         })->get();
 
-        return responseJson(1, 'نجح ي علاء ومتقاوحش',  $course);
+        return responseJson(1, 'success',  $course);
     }
 
     public function subjects(Request $request) {
@@ -55,7 +54,7 @@ class MainController extends Controller
             }
         })->get();
 
-        return responseJson(1, 'نجح ي علاء ومتقاوحش',  $course);
+        return responseJson(1, 'success',  $course);
 
     }
     public function teacher(Request $request) {
@@ -66,7 +65,7 @@ class MainController extends Controller
             }
         })->get();
 
-        return responseJson(1, 'نجح ي علاء ومتقاوحش',  $course);
+        return responseJson(1, 'success',  $course);
 
     }
     public function category(Request $request) {
@@ -77,7 +76,7 @@ class MainController extends Controller
             }
         })->get();
 
-        return responseJson(1, 'نجح ي علاء ومتقاوحش',  $course);
+        return responseJson(1, 'success',  $course);
 
     }
 

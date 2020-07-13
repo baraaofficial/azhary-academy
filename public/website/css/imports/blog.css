@@ -460,7 +460,7 @@ body:not(.device-touch) .entry-link {
 }
 
 
-/* Individual Post
+/* Individual post
 -----------------------------------------------------------------*/
 
 .ipost .entry-image img { border-radius: 0; }
@@ -526,7 +526,7 @@ body:not(.device-touch) .entry-link {
 }
 
 
-/* Small Post
+/* Small post
 -----------------------------------------------------------------*/
 
 .spost,
@@ -593,7 +593,7 @@ body:not(.device-touch) .entry-link {
 }
 
 
-/* Medium Post
+/* Medium post
 -----------------------------------------------------------------*/
 
 .mpost .entry-image { margin-right: 20px; }
@@ -840,7 +840,7 @@ body:not(.device-touch) .entry-link {
 }
 
 
-/* Post Elements
+/* post Elements
 -----------------------------------------------------------------*/
 
 img.alignleft,

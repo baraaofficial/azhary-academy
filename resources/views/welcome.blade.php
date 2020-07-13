@@ -1,1041 +1,509 @@
 @extends('layouts.app')
 
+@section('title')
+    أكاديمية أزهري
+@stop
+
+@section('css')
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+@stop
+
 
 @section('content')
-    <main>
-        <section id="hero">
-            <div class="intro_title">
-                <h3 class="animated fadeInDown">موقع اكادمية أزهري معنا إلى التفوق</h3>
-                <p class="animated fadeInDown">الإعدادية / الثانوية</p>
-                @guest
+    <!-- Content ============================================= -->
 
-                    @if (Route::has('register'))
-                        <a href="{{url('/register')}}" class="animated fadeInUp button_intro">التسجيل</a>
-                    @endif
+    <section id="slider" class="slider-element slider-parallax" style="background-color: #222;">
 
-                        @else
+        <div id="oc-slider" class="owl-carousel carousel-widget" data-margin="0" data-items="1" data-pagi="false" data-loop="true" data-animate-in="rollIn" data-speed="450" data-animate-out="rollOut" data-autoplay="5000">
 
-                @endguest
-
-                <a href="#" class="animated fadeInUp button_intro outline">العروض</a>
-            </div>
-
-            <div id="search_bar_container">
-                <div class="container">
-                    <div class="search_bar">
-					<span class="nav-facade-active" id="nav-search-in">
-								<span id="nav-search-in-content" style="">جميع المراحل</span>
-					<span class="nav-down-arrow nav-sprite"></span>
-                        <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
-                            <option value="All Tours"  title="All Tours">جميع المراحل</option>
-                            <option value="Museums" title="Museums">المرحله الثانوية</option>
-                            <option value="Tickets" title="Tickets">المرحله الأعدادية</option>
-                            <option value="Hotels" title="Hotels">المرحله الأبتدائية</option>
-                        </select>
-					</span>
-                        <div class="nav-searchfield-outer">
-                            <input type="text" autocomplete="off" name="field-keywords" placeholder="اكتب مصطلحات البحث ...." id="twotabsearchtextbox">
-                        </div>
-                        <div class="nav-submit-button">
-                            <input type="submit" title="Cerca" class="nav-submit-input" value="Search">
-                        </div>
-                    </div>
-                    <!-- End search bar-->
-                </div>
-            </div>
-            <!-- /search_bar-->
-        </section>
-        <!-- End hero -->
-
-
-        <div class="container margin_60">
-
-            <div class="main_title">
-                <h2>الصف <span>الثالث</span> الثانوي</h2>
-                <p> اليكم مجموعه من دورات الصف الثالث الثانوي المواد الشرعيه ادبي</p>
-            </div>
-
-            <div class="owl-carousel owl-theme list_carousel add_bottom_30">
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_1.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد الشرعيه<span class="price"><sup>$</sup>39</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>الفقه</strong> الشافعي</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_2.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-43"></i>المواد الثقافيه<span class="price"><sup>$</sup>45</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الجغرافيا</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_3.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد العربية<span class="price"><sup>$</sup>48</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> النحو</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضاف الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_4.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-30"></i>المواد العربيه<span class="price"><sup>$</sup>36</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الصرف</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_14.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-28"></i>المواد الثقافيه<span class="price"><sup>$</sup>42</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> التاريخ</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-            </div>
-            <!-- /carousel -->
-
-            <p class="text-center add_bottom_30">
-                <a href="all-list" class="btn_1">مشاهدة كل الدورات</a>
-            </p>
-
-            <hr class="mt-5 mb-5">
-
-            <div class="main_title">
-                <h2>الصف <span>الثالث</span> الثانوي</h2>
-                <p> اليكم مجموعه من دورات الصف الثالث الثانوي المواد الشرعيه علمي</p>
-            </div>
-
-            <div class="owl-carousel owl-theme list_carousel add_bottom_30">
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_1.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد الشرعيه<span class="price"><sup>$</sup>39</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>الفقه</strong> الشافعي</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_2.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-43"></i>المواد الثقافيه<span class="price"><sup>$</sup>45</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الرياضيات</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_3.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد العربية<span class="price"><sup>$</sup>48</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> النحو</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضاف الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_4.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-30"></i>Walking tour<span class="price"><sup>$</sup>36</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>Pompidue</strong> tour</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3"><span>Top rated</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_14.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-28"></i>Skyline tours<span class="price"><sup>$</sup>42</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>Tour Eiffel</strong> tour</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-            </div>
-            <!-- /carousel -->
-
-            <p class="text-center add_bottom_30">
-                <a href="all-list" class="btn_1">مشاهدة كل الدورات</a>
-            </p>
+            <a href="#"><img src="{{asset('website/images/slider/full/1.jpg')}}" alt="Slider"></a>
+            <a href="#"><img src="{{asset('website/images/slider/full/2.jpg')}}" alt="Slider"></a>
+            <a href="#"><img src="{{asset('website/images/slider/full/3.jpg')}}" alt="Slider"></a>
+            <a href="#"><img src="{{asset('website/images/slider/full/4.jpg')}}" alt="Slider"></a>
 
         </div>
 
+    </section>
 
-        <div class="container margin_60">
+    <section id="content">
 
-            <div class="main_title">
-                <h2>الصف <span>الثالث</span> الثانوي</h2>
-                <p> اليكم مجموعه من دورات الصف الثالث الثانوي المواد الشرعيه ادبي</p>
+        <div class="content-wrap">
+
+            <div class="section header-stick bottommargin-lg clearfix" style="padding: 20px 0;">
+                <div>
+                    <div class="container clearfix">
+                        <span class="badge badge-danger bnews-title">Breaking News:</span>
+
+                        <div class="fslider bnews-slider nobottommargin" data-speed="800" data-pause="6000" data-arrows="false" data-pagi="false">
+                            <div class="flexslider">
+                                <div class="slider-wrap">
+                                    <div class="slide"><a href="#"><strong>Russia hits back, says US acts like a 'bad surgeon'..</strong></a></div>
+                                    <div class="slide"><a href="#"><strong>'Sulking' Narayan Rane needs consolation: Uddhav reacts to Cong leader's attack..</strong></a></div>
+                                    <div class="slide"><a href="#"><strong>Rane needs consolation. I pray to God that he gets mental peace in a political party..</strong></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="owl-carousel owl-theme list_carousel add_bottom_30">
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_1.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد الشرعيه<span class="price"><sup>$</sup>39</span>
-                                </div>
-                            </a>
+            <div class="container clearfix">
+
+                <div class="postcontent nobottommargin">
+
+
+
+                    <div class="clear"></div>
+
+                    <div class="col_full bottommargin-lg clearfix">
+
+                        <div class="fancy-title title-border">
+                            <h3>Technology</h3>
                         </div>
-                        <div class="tour_title">
-                            <h3><strong>الفقه</strong> الشافعي</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
+
+                        <div class="col_one_third">
+                            <div class="ipost clearfix">
+                                <div class="entry-image">
+                                    <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/11.jpg')}}" alt="Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h3><a href="blog-single.html">Yum, McDonald's apologize as new China food scandal brews</a></h3>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> 9th Sep 2014</li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 23</a></li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>Neque nesciunt molestias soluta esse debitis. Magni impedit quae consectetur consequuntur.</p>
+                                </div>
                             </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
+                        </div>
+
+                        <div class="col_one_third">
+                            <div class="ipost clearfix">
+                                <div class="entry-image">
+                                    <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/16.jpg')}}" alt="Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h3><a href="blog-single.html">Halliburton gets boost from rebound in North America drilling</a></h3>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> 23rd Aug 2014</li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 33</a></li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>Eaque iusto quod assumenda beatae, nesciunt aliquid. Vel, eos eligendi?</p>
+                                </div>
                             </div>
-                            <!-- End wish list-->
+                        </div>
+
+                        <div class="col_one_third col_last">
+                            <div class="ipost clearfix">
+                                <div class="entry-image">
+                                    <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/13.jpg')}}" alt="Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h3><a href="blog-single.html">China sends spy ship off Hawaii during U.S.-led drills brews</a></h3>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> 11th Feb 2014</li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>Magni impedit quae consectetur consequuntur adipisci veritatis modi a, officia cum.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                    <div class="bottommargin-lg">
+                        <img src="{{asset('website/images/magazine/ad.jpg')}}" alt="Ad" class="aligncenter notopmargin nobottommargin">
+                    </div>
+
+                    <div class="col_full bottommargin-lg clearfix">
+
+                        <div class="fancy-title title-border">
+                            <h3>Entertainment</h3>
+                        </div>
+
+                        <div class="col_one_third nobottommargin">
+                            <div class="ipost clearfix">
+                                <div class="entry-image">
+                                    <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/10.jpg')}}" alt="Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h3><a href="blog-single.html">Wobbly stocks underpin yen and Swiss franc; dollar subdued</a></h3>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> 17th Jan 2014</li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 50</a></li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>Neque nesciunt molestias soluta esse debitis. Magni impedit quae consectetur consequuntur.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col_one_third nobottommargin">
+                            <div class="ipost clearfix">
+                                <div class="entry-image">
+                                    <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/15.jpg')}}" alt="Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h3><a href="blog-single.html">BlackBerry names ex-Sybase executive as chief operating officer</a></h3>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> 20th Nov 2014</li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>Eaque iusto quod assumenda beatae, nesciunt aliquid. Vel, eos eligendi?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col_one_third nobottommargin col_last">
+                            <div class="ipost clearfix">
+                                <div class="entry-image">
+                                    <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/6.jpg')}}" alt="Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h3><a href="blog-single.html">Georgian prime minister fires seven ministers in first reshuffle</a></h3>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> 10th Dec 2013</li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>Magni impedit quae consectetur consequuntur adipisci veritatis modi a, officia cum.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="sidebar nobottommargin col_last">
+
+                    <div class="sidebar-widgets-wrap">
+
+
+
+                        </div>
+
+                        <div class="widget widget_links clearfix">
+
+                            <h4>الدورات حسب المواد</h4>
+                            @foreach($courses as $course)
+                            <div class="col_half nobottommargin @if($loop->first) col_last @endif ">
+                                <ul>
+                                    <li><a href="#">{{$course->name}}</a></li>
+
+                                </ul>
+                            </div>
+                            @endforeach
+
+
+                        </div>
+
+
+                        <div class="widget clearfix">
+
+                            <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
+
+                                <ul class="tab-nav clearfix">
+                                    <li><a href="#tabs-1">Popular</a></li>
+                                    <li><a href="#tabs-2">Recent</a></li>
+                                    <li><a href="#tabs-3"><i class="icon-comments-alt norightmargin"></i></a></li>
+                                </ul>
+
+                                <div class="tab-container">
+
+                                    <div class="tab-content clearfix" id="tabs-1">
+                                        <div id="popular-post-list-sidebar">
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/magazine/small/3.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li><i class="icon-comments-alt"></i> 35 Comments</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/magazine/small/2.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li><i class="icon-comments-alt"></i> 24 Comments</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/magazine/small/1.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li><i class="icon-comments-alt"></i> 19 Comments</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-content clearfix" id="tabs-2">
+                                        <div id="recent-post-list-sidebar">
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/magazine/small/1.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li>10th July 2014</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/magazine/small/2.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li>10th July 2014</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/magazine/small/3.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li>10th July 2014</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-content clearfix" id="tabs-3">
+                                        <div id="recent-post-list-sidebar">
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/icons/avatar.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <strong>John Doe:</strong> Veritatis recusandae sunt repellat distinctio...
+                                                </div>
+                                            </div>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/icons/avatar.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <strong>Mary Jane:</strong> Possimus libero, earum officia architecto maiores....
+                                                </div>
+                                            </div>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="#" class="nobg"><img class="rounded-circle" src="{{asset('website/images/icons/avatar.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <strong>Site Admin:</strong> Deleniti magni labore laboriosam odio...
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="widget clearfix">
+
+                            <img class="aligncenter" src="{{asset('website/images/magazine/ad.png')}}" alt="">
+
+                        </div>
+
+                        <div class="widget clearfix">
+                            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FEnvato&amp;width=240&amp;height=240&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=499481203443583" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:240px;" allowTransparency="true"></iframe>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="fancy-title title-border topmargin">
+                    <h3>Other News</h3>
+                </div>
+
+                <div id="oc-images" class="owl-carousel image-carousel carousel-widget" data-margin="30" data-nav="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-xl="4">
+
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/1.jpg')}}" alt="Image"></a>
+                            </div>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">A Baseball Team Blew Up A Bunch Of Justin Bieber And Miley Cyrus Merch</a></h4>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 13th Jun 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 53</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_2.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-43"></i>المواد الثقافيه<span class="price"><sup>$</sup>45</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الجغرافيا</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/2.jpg')}}" alt="Image"></a>
                             </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">UK government weighs Tesla's Model S for its ??5 million electric vehicle fleet</a></h4>
                             </div>
-                            <!-- End wish list-->
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 24th Feb 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 17</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_3.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد العربية<span class="price"><sup>$</sup>48</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> النحو</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/3.jpg')}}" alt="Image"></a>
                             </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضاف الى قائمة الرغبات</span></span></a>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">MIT's new robot glove can give you extra fingers</a></h4>
                             </div>
-                            <!-- End wish list-->
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 30th Dec 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_4.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-30"></i>المواد العربيه<span class="price"><sup>$</sup>36</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الصرف</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/4.jpg')}}" alt="Image"></a>
                             </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">Yen dips on modest reduction in risk aversion, markets still wary</a></h4>
                             </div>
-                            <!-- End wish list-->
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 15th Jan 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 54</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_14.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-28"></i>المواد الثقافيه<span class="price"><sup>$</sup>42</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> التاريخ</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/5.jpg')}}" alt="Image"></a>
                             </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">Beyonce Dropped A '50 Shades Of Grey', Teaser On Instagram Last Night</a></h4>
                             </div>
-                            <!-- End wish list-->
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 27th Jul 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 61</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- End box tour -->
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/6.jpg')}}" alt="Image"></a>
+                            </div>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">Want To Know The New 'Star Wars' Plot? Then This Is The Post For You</a></h4>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 34</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/7.jpg')}}" alt="Image"></a>
+                            </div>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">Toyotas next minivan will let you shout at your kids without turning around</a></h4>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 21st Oct 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 11</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="oc-item">
+                        <div class="ipost clearfix">
+                            <div class="entry-image">
+                                <a href="#"><img class="image_fade" src="{{asset('website/images/magazine/thumb/8.jpg')}}" alt="Image"></a>
+                            </div>
+                            <div class="entry-title">
+                                <h4><a href="blog-single.html">You can now listen to headphones through your hoodie</a></h4>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> 20th Nov 2014</li>
+                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 07</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
-                <!-- /item -->
+
+
+                <img src="{{asset('website/images/magazine/ad.jpg')}}" alt="Ad" class="aligncenter topmargin-lg nobottommargin">
+
             </div>
-            <!-- /carousel -->
-
-            <p class="text-center add_bottom_30">
-                <a href="all-list" class="btn_1">مشاهدة كل الدورات</a>
-            </p>
-
-            <hr class="mt-5 mb-5">
-
-            <div class="main_title">
-                <h2>الصف <span>الثاني</span> الثانوي</h2>
-                <p> اليكم مجموعه من دورات الصف الثاني الثانوي المواد الشرعيه علمي</p>
-            </div>
-
-            <div class="owl-carousel owl-theme list_carousel add_bottom_30">
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_1.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد الشرعيه<span class="price"><sup>$</sup>39</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>الفقه</strong> الشافعي</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_2.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-43"></i>المواد الثقافيه<span class="price"><sup>$</sup>45</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الرياضيات</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_3.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد العربية<span class="price"><sup>$</sup>48</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> النحو</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضاف الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_4.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-30"></i>Walking tour<span class="price"><sup>$</sup>36</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>Pompidue</strong> tour</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3"><span>Top rated</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_14.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-28"></i>Skyline tours<span class="price"><sup>$</sup>42</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>Tour Eiffel</strong> tour</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-            </div>
-            <!-- /carousel -->
-
-            <p class="text-center add_bottom_30">
-                <a href="all-list" class="btn_1">مشاهدة كل الدورات</a>
-            </p>
 
         </div>
 
+    </section><!-- #content end -->
+    @stop
 
-        <div class="container margin_60">
-
-            <div class="main_title">
-                <h2>الصف <span>الأول</span> الثانوي</h2>
-                <p> اليكم مجموعه من دورات الصف الأول الثانوي المواد الشرعيه ادبي</p>
-            </div>
-
-            <div class="owl-carousel owl-theme list_carousel add_bottom_30">
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_1.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد الشرعيه<span class="price"><sup>$</sup>39</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>الفقه</strong> الشافعي</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_2.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-43"></i>المواد الثقافيه<span class="price"><sup>$</sup>45</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الجغرافيا</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_3.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد العربية<span class="price"><sup>$</sup>48</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> النحو</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضاف الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_4.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-30"></i>المواد العربيه<span class="price"><sup>$</sup>36</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الصرف</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>ادبي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_14.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-28"></i>المواد الثقافيه<span class="price"><sup>$</sup>42</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> التاريخ</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-            </div>
-            <!-- /carousel -->
-
-            <p class="text-center add_bottom_30">
-                <a href="all-list" class="btn_1">مشاهدة كل الدورات</a>
-            </p>
-
-            <hr class="mt-5 mb-5">
-
-            <div class="main_title">
-                <h2>الصف <span>الأول</span> الثانوي</h2>
-                <p> اليكم مجموعه من دورات الصف الأول الثانوي المواد الشرعيه علمي</p>
-            </div>
-
-            <div class="owl-carousel owl-theme list_carousel add_bottom_30">
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_1.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد الشرعيه<span class="price"><sup>$</sup>39</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>الفقه</strong> الشافعي</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_2.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-43"></i>المواد الثقافيه<span class="price"><sup>$</sup>45</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> الرياضيات</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضافة الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3 popular"><span>علمي</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_3.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-44"></i>المواد العربية<span class="price"><sup>$</sup>48</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>مادة</strong> النحو</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">اضاف الى قائمة الرغبات</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_4.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-30"></i>Walking tour<span class="price"><sup>$</sup>36</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>Pompidue</strong> tour</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-                <div class="item">
-                    <div class="tour_container">
-                        <div class="ribbon_3"><span>Top rated</span></div>
-                        <div class="img_container">
-                            <a href="all-list">
-                                <img src="{{asset('website/img/tour_box_14.jpg')}}" width="800" height="533" class="img-fluid" alt="image">
-                                <div class="short_info">
-                                    <i class="icon_set_1_icon-28"></i>Skyline tours<span class="price"><sup>$</sup>42</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tour_title">
-                            <h3><strong>Tour Eiffel</strong> tour</h3>
-                            <div class="rating">
-                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-                            </div>
-                            <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
-                            <!-- End wish list-->
-                        </div>
-                    </div>
-                    <!-- End box tour -->
-                </div>
-                <!-- /item -->
-            </div>
-            <!-- /carousel -->
-
-            <p class="text-center add_bottom_30">
-                <a href="all-list" class="btn_1">مشاهدة كل الدورات</a>
-            </p>
-
-        </div>
-
-        <!-- End container -->
-
-        <div class="white_bg">
-            <div class="container margin_60">
-                <div class="main_title">
-                    <h2>Plan <span>Your Tour</span> Easly</h2>
-                    <p>
-                        Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.
-                    </p>
-                </div>
-                <div class="row feature_home_2">
-                    <div class="col-md-4 text-center">
-                        <img src="{{asset('website/img/adventure_icon_1.svg')}}" alt="" width="75" height="75">
-                        <h3>Itineraries studied in detail</h3>
-                        <p>Suscipit invenire petentium per in. Ne magna assueverit vel. Vix movet perfecto facilisis in, ius ad maiorum corrumpit, his esse docendi in.</p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="{{asset('website/img/adventure_icon_2.svg')}}" alt="" width="75" height="75">
-                        <h3>Room and food included</h3>
-                        <p> Cum accusam voluptatibus at, et eum fuisset sententiae. Postulant tractatos ius an, in vis fabulas percipitur, est audiam phaedrum electram ex.</p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="{{asset('website/img/adventure_icon_3.svg')}}" alt="" width="75" height="75">
-                        <h3>Everything organized</h3>
-                        <p>Integre vivendo percipitur eam in, graece suavitate cu vel. Per inani persius accumsan no. An case duis option est, pro ad fastidii contentiones.</p>
-                    </div>
-                </div>
-
-                <div class="banner_2">
-                    <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)" style="background-color: rgba(0, 0, 0, 0.3);">
-                        <div>
-                            <h3>Your Perfect<br>Tour Experience</h3>
-                            <p>Activities and accommodations</p>
-                            <a href="all_tours_list.html" class="btn_1">Read more</a>
-                        </div>
-                    </div>
-                    <!-- /wrapper -->
-                </div>
-                <!-- /banner_2 -->
-
-            </div>
-            <!-- End container -->
-        </div>
-        <!-- End white_bg -->
-
-        <div class="container margin_60">
-            <div class="main_title">
-                <h2>Lates <span>Blog</span> News</h2>
-                <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
-                        <figure><img src="{{asset('website/img/news_home_1.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Mark Twain</li>
-                            <li>20.11.2017</li>
-                        </ul>
-                        <h4>Pri oportere scribentur eu</h4>
-                        <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-                <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
-                        <figure><img src="{{asset('website/img/news_home_2.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Jhon Doe</li>
-                            <li>20.11.2017</li>
-                        </ul>
-                        <h4>Duo eius postea suscipit ad</h4>
-                        <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-                <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
-                        <figure><img src="{{asset('website/img/news_home_3.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Luca Robinson</li>
-                            <li>20.11.2017</li>
-                        </ul>
-                        <h4>Elitr mandamus cu has</h4>
-                        <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-                <div class="col-lg-6">
-                    <a class="box_news" href="blog.html">
-                        <figure><img src="{{asset('website/img/news_home_4.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Paula Rodrigez</li>
-                            <li>20.11.2017</li>
-                        </ul>
-                        <h4>Id est adhuc ignota delenit</h4>
-                        <p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-            </div>
-            <!-- /row -->
-            <p class="btn_home_align"><a href="blog.html" class="btn_1 rounded">View all news</a></p>
-        </div>
-        <!-- End container -->
-    </main>
-    <!-- End main -->
-    @endsection
