@@ -37,6 +37,6 @@ class AppServiceProvider extends ServiceProvider
        view()->share('contact',Contact::orderBy('id','asc')->limit(1)->get());
        view()->share('get_users',User::orderBy('id','desc')->limit(8)->get());
        view()->share('get_message',Contact_us::orderBy('id','desc')->limit(8)->get());
-       view()->share('comments',Comment::with('user' )->orderBy('id','Asc')->limit(30)->get());
+//       view()->share('comments',Comment::with('user' )->orderBy('id','Asc')->limit(30)->get());
     }
 }

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "admin" middleware group. Now create something great!
 |
 */
+
+Route::post('/download','admin\LessonController@getDownload');
+
 Route::namespace('Admin')->middleware('auth','admin')->prefix('dashboard')->group(function (){
 
     Route::get('/','HomeController@index');

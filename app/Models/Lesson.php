@@ -31,7 +31,10 @@ class Lesson extends Model
         return $this->belongsToMany('App\Models\Tag');
     }
 
-    
+    public function users(){
+        return $this->belongsToMany(Lesson::class);
+    }
+
     public function comments(){
         return $this->hasMany(Comment::class);
     }

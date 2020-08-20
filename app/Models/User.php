@@ -32,6 +32,10 @@ class User extends Authenticatable
     public function course(){
         return $this->hasMany(Course::class,'user_id','id');
     }
+
+    public function lessons(){
+        return $this->belongsToMany(Lesson::class);
+    }
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id')->withTrashed();

@@ -220,8 +220,19 @@
 
                     <!-- Portfolio Single - Meta
                     ============================================= -->
+                    <script type="">
+                        function submitForm(){
+                            document.getElementById('submitForm').submit();
+                        }
+                    </script>
                     <ul class="portfolio-meta bottommargin">
-                        <li><span><i class="icon-file"></i>PDF :</span><a  href="{{\Illuminate\Support\Facades\Storage::url($lessons->pdf)}}"> تحميل الملف </a></li>
+                        {!! Form::open(['method' => 'post', 'url' => url('download'),'id'=>'submitForm']) !!}
+                        {!! Form::hidden('path',$lessons->pdf) !!}
+                        {!! Form::hidden('file_name',$lessons->title .'.'. explode('.',$lessons->pdf)[count( explode('.',$lessons->pdf)) - 1]) !!}
+                        {!! Form::close() !!}
+
+                        <li><span><i class="icon-file"></i>PDF :</span><a
+                                href="#" onclick="submitForm()"> تحميل الملف </a></li>
                     </ul>
                     <!-- Portfolio Single - Meta End -->
 
