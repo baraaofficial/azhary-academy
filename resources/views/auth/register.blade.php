@@ -54,6 +54,13 @@
                                 </span>
                                 @enderror
                             </div>
+                            <div class="col_full">
+                                <input class="login-form-check" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                <label class="form-check-label" for="remember">
+                                    {{ __('تذكرني') }}
+                                </label>
+                            </div>
 
                             <div class="col_full nobottommargin">
                                 <button class="button button-3d button-black nomargin" id="submit" name="submit" value="login">تسجيل الدخول</button>

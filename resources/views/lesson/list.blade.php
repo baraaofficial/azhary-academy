@@ -12,7 +12,7 @@
 
         <div class="container clearfix">
             <h1>{{$course->name}}</h1>
-            <span>{!! Illuminate\Support\Str::limit($course->description, $limit = 100, $end = '...' )!!}</span>
+            <span>{!!$course->description!!}</span>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
                 <li class="breadcrumb-item active" aria-current="page"> {{$course->name}} </li>

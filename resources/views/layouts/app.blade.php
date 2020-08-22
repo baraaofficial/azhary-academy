@@ -21,24 +21,24 @@
                         <a class="nav-link" href="#">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">المواد الدراسية</a>
+                        <a href="{{url('subjects')}}" class="nav-link">المواد الدراسية</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">الدورات الدراسية</a>
+                        <a href="{{url('courses')}}" class="nav-link">الدورات الدراسية</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">أعضاء هيئة التدريس</a>
+                        <a href="{{url('teachers')}}" class="nav-link">أعضاء هيئة التدريس</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">الأقسام الدراسية</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">إتصل بنا</a>
+                        <a href="{{url('categories')}}" class="nav-link">الأقسام الدراسية</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">من نحن</a>
+                        <a href="{{url('about-us')}}" class="nav-link">إتصل بنا</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{url('contact-us')}}" class="nav-link">من نحن</a>
                     </li>
                 </ul>
             </div>
@@ -76,141 +76,13 @@
                 <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
                 <ul>
-                    <li><a href="#" class="pl-0"><div><i class="icon-line-grid rtl"></i>جميع الدورات </div></a>
+                    <li><a href="{{url('courses')}}" class="pl-0"><div><i class="icon-line-grid rtl"></i>جميع الدورات </div></a>
                         <ul>
-                            <li><a href="#"><div><i class="icon-line2-user"></i>Teacher Training</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Teacher Training</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Educational Training</div></a></li>
-                                    <li><a href="#"><div>Teaching Tools</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
+                            @foreach($get_courses as $courses)
+                            <li><a href="{{route('course.list',$courses->id)}}"><div><i class="icon-chalkboard-teacher"></i>{{$courses->name}}</div></a>
                             </li>
-                            <li><a href="#"><div><i class="icon-chart-bar1"></i>Business</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Business Classes</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Finance</div></a></li>
-                                    <li><a href="#"><div>Sales</div></a></li>
-                                    <li><a href="#"><div>Marketing</div></a></li>
-                                    <li><a href="#"><div>Industry</div></a></li>
-                                    <li><a href="#"><div>Real Estates</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-code1"></i>Development</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Development Training</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Software Training</div></a></li>
-                                    <li><a href="#"><div>Graphics Tools</div></a></li>
-                                    <li><a href="#"><div>Development Skills</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-line2-screen-smartphone"></i>IT & Software</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All IT & Software Training</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Software Training</div></a></li>
-                                    <li><a href="#"><div>Application Tools</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-music1"></i>Music</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Music Classes</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Instrumental</div></a></li>
-                                    <li><a href="#"><div>Vocals</div></a></li>
-                                    <li><a href="#"><div>Lyrics</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-line2-game-controller"></i>Lifestyle</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Lifestyle Training</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Art &amp; Crafts</div></a></li>
-                                    <li><a href="#"><div>Foods & Beverages</div></a></li>
-                                    <li><a href="#"><div>Gaming</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-line2-globe"></i>Language</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Languages</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>English</div></a></li>
-                                    <li><a href="#"><div>Spanish</div></a></li>
-                                    <li><a href="#"><div>Germans</div></a></li>
-                                    <li><a href="#"><div>Hindi</div></a></li>
-                                    <li><a href="#"><div>Russian</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-health"></i>Health &amp; Fitness</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Health &amp; Fitness</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Yoga</div></a></li>
-                                    <li><a href="#"><div>Gym</div></a></li>
-                                    <li><a href="#"><div>Sports</div></a></li>
-                                    <li><a href="#"><div>Nutrition</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div><i class="icon-line2-crop"></i>Design</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Designs</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Game Design</div></a></li>
-                                    <li><a href="#"><div>Graphic Design</div></a></li>
-                                    <li><a href="#"><div>Web Design</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
+                            @endforeach
 
-                            <li><a href="#"><div><i class="icon-food"></i>Food</div></a>
-                                <ul>
-                                    <li><a href="#"><div>All Food Recipes</div></a>
-                                        <ul>
-                                            <li><a href="#"><div>Level 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><div>Heathy Foods</div></a></li>
-                                    <li><a href="#"><div>Fast Foods</div></a></li>
-                                    <li><a href="#"><div>Others</div></a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
                 </ul>

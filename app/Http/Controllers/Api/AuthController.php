@@ -70,8 +70,7 @@ class AuthController extends Controller
         $user = $request->user();
         $validator = validator()->make($request->all(), [
             'email'    => Rule::unique('users', 'email')->ignore($user->id),
-            'name'     => Rule::unique('users', 'name')->ignore($user->id),
-            'phone'    => 'min:11|max:11',
+            'phone'    => 'integer|numeric|min:11|max:11',Rule::unique('users', 'phone')->ignore($user->id),
             'password' => 'confirmed',
             'bio'      => 'min:11|max:500'
         ]);

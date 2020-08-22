@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::post('reset-password', 'AuthController@resetPassword');
     Route::post('new-password', 'AuthController@newPassword');
 
-    Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'auth:api','verified'], function () {
 
         //  Api main controller
         Route::get('courses', 'MainController@courses');

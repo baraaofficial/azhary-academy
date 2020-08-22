@@ -45,7 +45,8 @@
 
                         <div class="col-md-9">
 
-                            <img src="{{asset('/uploads/users/'.$user->image)}}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+                            <img
+                                src="{{asset('/uploads/users/'. ($user->image != null ?$user->image: 'avatar.jpg'))}}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 
                             <div class="heading-block noborder">
                                 <h3>{{Auth()->user()->name}}</h3>

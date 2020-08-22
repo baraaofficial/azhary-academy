@@ -62,7 +62,7 @@
                                 {{ csrf_field() }}
 
                                 <h3>تسجيل الدخول إلى حسابك</h3>
-
+                                <p>لا يوجد لديك حساب ؟<a href="{{route('register')}}"> سجل معنا الآن </a></p>
                                 <div class="col_full">
                                     <label for="login-form-username">البريد الألكتروني:</label>
                                     <input type="email" id="email" name="email" value="" class="form-control not-dark  @error('email') is-invalid @enderror"  required autocomplete="email" autofocus />
@@ -82,13 +82,22 @@
                                     </span>
                                     @enderror
                                 </div>
+                                <div class="col_full">
+                                    <input class="login-form-check" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('تذكرني') }}
+                                    </label>
+                                </div>
                                 <div class="col_full nobottommargin">
+
+
                                     <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">تسجيل الدخول </button>
                                     @if (Route::has('password.request'))
                                         <a href="{{ route('password.request') }}" class="button button-3d button-sacndary nomargin">نسيت كلمة المرور ؟</a>
                                     @endif
                                 </div>
+
                             </form>
 
 

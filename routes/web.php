@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/download','admin\LessonController@getDownload');
 
-Route::namespace('Admin')->middleware('auth','admin')->prefix('dashboard')->group(function (){
+Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashboard')->group(function (){
 
     Route::get('/','HomeController@index');
     Route::resource('courses','CoursesController');
@@ -54,7 +54,7 @@ Route::namespace('Admin')->middleware('auth','admin')->prefix('dashboard')->grou
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['verify'=> true]);
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,33 +71,38 @@ Route::get('profile', function () {
     return view('admin');
 
 });
-Route::group(['prefix' => 'courses'],function (){
-    Route::get('/','GetCoursesController@index')->name('course.index');
-    Route::get('/{id}','GetCoursesController@list')->name('course.list');
-    Route::get('/lessons/{id}','LessonController@index')->name('lesson.single');
 
+Route::middleware('verified')->group(function () {
+    Route::get('/classroom','ClassroomController@index')->name('classroom.index');
+    Route::get('/teachers','TeachersController@index')->name('teacher.index');
+    Route::get('/subjects','SubjectController@index')->name('subject.index');
+    Route::get('/categories','CategoryController@index')->name('category.index');
+
+    Route::group(['prefix' => 'courses'],function (){
+        Route::get('/','GetCoursesController@index')->name('course.index');
+        Route::get('/{id}','GetCoursesController@list')->name('course.list');
+        Route::get('/lessons/{id}','LessonController@index')->name('lesson.single');
+
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::post('comments/{id}', 'HomeController@commentUpdate')->name('comments.commentUpdate');
+        Route::post('comments/{id}/create', 'HomeController@commentStore')->name('comments.commentStore');
+        Route::get('comments/{id}', 'HomeController@commentDelete')->name('comment.delete');
+        Route::get('profile/{id}/{slug?}', 'HomeController@profile')->name('profile.index');
+        Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
+
+    });
 });
 
-Route::get('/classroom','ClassroomController@index')->name('classroom.index');
-Route::get('/teachers','TeachersController@index')->name('teacher.index');
-Route::get('/subjects','SubjectController@index')->name('subject.index');
-Route::get('/categories','CategoryController@index')->name('category.index');
-
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/notifications', 'NotificationController@index')->name('notification');
 
 Route::get('/auth/{provider}','AuthSocController@redirect');
 Route::get('/auth/{provider}/callback','AuthSocController@Callback');
 
 
-Route::middleware('auth')->group(function () {
-    Route::post('comments/{id}', 'HomeController@commentUpdate')->name('comments.commentUpdate');
-    Route::post('comments/{id}/create', 'HomeController@commentStore')->name('comments.commentStore');
-    Route::get('comments/{id}', 'HomeController@commentDelete')->name('comment.delete');
-    Route::get('profile/{id}/{slug?}', 'HomeController@profile')->name('profile.index');
-    Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
 
-});
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search/{search}', 'SearchController@index')->name('search.index');
