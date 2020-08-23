@@ -83,16 +83,7 @@
 <script src="{{asset('website/js/functions.js')}}"></script>
 @yield('script')
 
-<script src="https://js.pusher.com/6.0/pusher.min.js"></script>
-<script>
 
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('b06ec302ee92f4d37ffe', {
-        cluster: 'eu'
-    });
-</script>
 
 <script>
     jQuery( "#tabs-profile" ).on( "tabsactivate", function( event, ui ) {

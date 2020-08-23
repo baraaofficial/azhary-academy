@@ -1,13 +1,23 @@
 @include('layouts.header')
 <div class="container">
-    <div class="row justify-content-center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row justify-content-center" data-animate="wobble">
+
         <div class="col-md-8">
+
             <div class="card">
+
                 <div class="card-header">{{ __('تحقق من عنوان بريدك الإلكتروني') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success" role="alert" data-animate="tada">
                             {{ __('تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.') }}
                         </div>
                     @endif

@@ -35,10 +35,8 @@
                         </div>
                         <div class="clear"></div>
                         <div class="input-group input-group-lg mt-1">
-                            <form action="{{route('search')}}" method="get" class="divcenter nobottommargin">
 
                             <input name="keyword" class="form-control rounded noborder" type="search" placeholder="ابحث عن دورات " aria-label="Search">
-                            </form>
 
                             <div class="input-group-append">
                                 <button class="btn" type="submit"><i class="icon-line-search t700"></i></button>
