@@ -37,7 +37,7 @@
                 <!-- Portfolio Single Video
                 ============================================= -->
                 <div class="col_two_third portfolio-single-image nobottommargin">
-                    <iframe src="{{$lessons->video}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/{{$lessons->video}}" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
                    <br>
                    <br>
                     <div id="faqs" class="faqs">
