@@ -368,9 +368,9 @@
 
             <div class="promo promo-light promo-full footer-stick" style="padding: 60px 0 !important;">
                 <div class="container clearfix">
-                    <h3 class="ls-1">Call us today at <span>+91.22.57412541</span> or Email us at <span>support@canvas.com</span></h3>
-                    <span class="text-black-50">We strive to provide Our Customers with Top Notch Support to make their Theme Experience Wonderful.</span>
-                    <a href="#" class="button button-xlarge button-rounded nott ls0 t400">Start Now</a>
+                    <h3 class="ls-1"> اتصل بنا اليوم على <span> +91.22.57412541 </span> أو راسلنا عبر البريد الإلكتروني <span> support@canvas.com </span></h3>
+                    <span class="text-black-50">نحن نسعى جاهدين لتزويد عملائنا بدعم من الدرجة الأولى لجعل تجربة موضوعهم رائعة.</span>
+                    <a href="{{route('subject.index')}}" class="button button-xlarge button-rounded nott ls0 t400">أبدأ الآن</a>
                 </div>
             </div>
 

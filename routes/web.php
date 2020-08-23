@@ -73,6 +73,9 @@ Route::get('profile', function () {
 });
 
 Route::middleware('verified')->group(function () {
+
+    Route::get('/', 'HomeController@index')->name('home');
+
     Route::get('/classroom','ClassroomController@index')->name('classroom.index');
     Route::get('/teachers','TeachersController@index')->name('teacher.index');
     Route::get('/subjects','SubjectController@index')->name('subject.index');
@@ -95,7 +98,6 @@ Route::middleware('verified')->group(function () {
     });
 });
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/notifications', 'NotificationController@index')->name('notification');
 
 Route::get('/auth/{provider}','AuthSocController@redirect');
