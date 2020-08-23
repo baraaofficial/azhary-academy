@@ -1,7 +1,7 @@
 
 <!-- Footer
 ============================================= -->
-<footer  id="footer" class="dark" style="background: url('website/images/footer-bg.jpg') repeat fixed; background-size: 100% 100%;">
+<footer  id="footer" class="dark" style="background: asset('website/images/footer-bg.jpg') repeat fixed; background-size: 100% 100%;">
 
 
     <!-- Copyrights

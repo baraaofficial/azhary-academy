@@ -90,7 +90,7 @@
                                             <h4><a href="{{route('course.index',$row->id)}}">{{$row->name}}</a></h4>
                                         </div>
                                         <ul class="entry-meta">
-                                            <li>{{$teacher->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</li>
+                                            <li>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</li>
                                         </ul>
                                     </div>
                                 </div>
