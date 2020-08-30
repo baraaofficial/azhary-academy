@@ -110,7 +110,7 @@
 
                     <div class="row mt-2">
 
-                        <!-- Course 6
+                        <!-- Course
                         ============================================= -->
                         @foreach($courses_home as $course)
                         <div class="col-md-4 mb-5">
@@ -125,63 +125,6 @@
                                 <div class="card-footer py-3 d-flex justify-content-between align-items-center bg-white text-muted">
                                     <div class="badge alert-primary">{{$course->price}} جنيهاً </div>
                                     <a href="#" class="text-dark position-relative"><i class="icon-line2-user"></i> <span class="author-number">1</span></a>
-                                </div>
-                                <div>
-                                    <script type="text/javascript" >
-                                        let successPageUrl = "https://success.page.com";
-                                        let failerPageUrl = "https://failure.page.com";
-                                        // Get your user first name
-                                        let first_name = document.getElementById('name').value;
-                                        // Get your user last name
-                                        let last_name = document.getElementById('last_name').value;
-                                        // Get your user email
-                                        let email = document.getElementById('email').value;
-                                        // Get your user mobile
-                                        let mobile = document.getElementById('mobile').value;
-                                        let name;
-                                        // Check validity of your data
-                                        if(first_name === '' || last_name === '' || email === '' || mobile === "")
-                                        {
-                                            alert("Please Check You Data!!")
-                                        }
-                                        else
-                                        {
-                                            name =  first_name + " " + last_name;
-                                        }
-                                        let chargeRequest =
-                                            {
-                                                language: "ar-eg",
-                                                merchantCode: "1tSa6uxz2nRbgY+b+cZGyA==",
-                                                merchantRefNumber: "2312465464",
-                                                customer: {
-                                                    name : name,
-                                                    mobile: mobile,
-                                                    email : email,
-                                                    customerProfileId: "8723871236"
-                                                },
-                                                order: {
-                                                    description:"test bill inq",
-                                                    expiry: 2,
-                                                    orderItems: [ {
-                                                        productSKU: 12222,
-                                                        description:"Test Product",
-                                                        price: 75,
-                                                        quantity: 2,
-                                                        width: 10,
-                                                        height: 5,
-                                                        length: 100,
-                                                        weight: 1
-                                                    } ]
-                                                } ,
-                                                signature: "2ca4c078ab0d4c50ba90e31b3b0339d4d4ae5b32f97092dd9e9c07888c7eef36",
-                                                description: "example description"
-                                            };
-                                        // Call FawryPay checkout function
-                                        FawryPay.checkout(chargeRequest,successPageUrl, failerPageUrl);
-
-                                    </script>
-                                    <!-- FawryPay Checkout Button -->
-                                    <input type="image" onclick="FawryPay.checkout(chargeRequest,successPageUrl, failerPageUrl);" src="https://www.atfawry.com/assets/img/FawryPayLogo.jpg"/>
                                 </div>
                             </div>
                         </div>
