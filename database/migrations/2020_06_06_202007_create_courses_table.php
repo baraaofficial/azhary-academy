@@ -13,7 +13,8 @@ class CreateCoursesTable extends Migration {
 			$table->text('description');
 			$table->string('image');
 			$table->integer('price');
-			$table->integer('visitor')->nullable();
+            $table->string('pdf')->nullable();
+            $table->integer('visitor')->nullable();
 			$table->integer('class_id')->nullable();
 			$table->integer('subject_id')->nullable();
 			$table->integer('category_id')->nullable();

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -64,12 +65,12 @@ class CoursesController extends Controller
 
         $courses = Course::create($request->all());
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(720, 400)->save( public_path('/uploads/courses/' . $filename ) );
-            $courses->image = $filename;
-            $courses->save();
+        if ($request->hasFile('image')) {
+            $this->addFile($request->file('image'), $courses, 'courses', 'image');
+        }
+
+        if ($request->hasFile('pdf')) {
+            $this->addFile($request->file('pdf'), $courses, 'pdf-courses', 'pdf', false);
         }
 
         $courses->tags()->sync($request->tag_id);
@@ -137,12 +138,12 @@ class CoursesController extends Controller
         $courses = Course::findOrFail($id);
         $courses->update($request->all());
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(720, 400)->save( public_path('/uploads/courses/' . $filename ) );
-            $courses->image = $filename;
-            $courses->save();
+        if ($request->hasFile('image')) {
+            $this->addFile($request->file('image'), $courses, 'courses', 'image');
+        }
+
+        if ($request->hasFile('pdf')) {
+            $this->addFile($request->file('pdf'), $courses, 'pdf-courses', 'pdf', false);
         }
 
         $courses->tags()->sync($request->tag_id);
@@ -171,6 +172,50 @@ class CoursesController extends Controller
                 $entry->delete();
             }
         }
+    }
+
+    /**
+     * @param $file
+     * @param $model
+     * @param $folderName
+     * @param $colName
+     * @param $image
+     */
+    public function addFile($file, $model, $folderName, $colName, $image = true): void
+    {
+        $destinationPath = public_path() . '/uploads/' . $folderName . '/';
+        $extension = $file->getClientOriginalExtension();
+        $name = 'original' . time() . '.' . rand(1111, 9999) . '.' . $extension;
+        $file->move($destinationPath, $name);
+
+        if ($image) {
+
+            $image_400 = '400-' . time() . '' . rand(11111, 99999) . '.' . $extension;
+            $resize_image = Image::make($destinationPath . $name);
+            $resize_image->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath . $image_400, 100);
+
+            $path = '/uploads/' . $folderName . '/' . $image_400;
+            File::delete($destinationPath.$name);
+
+        } else {
+
+            $path = '/uploads/' . $folderName . '/' . $name;
+        }
+
+        $model->$colName = $path;
+        $model->save();
+    }
+
+    public function getDownload(Request $request)
+    {
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return response()->download(public_path(). '/' .$request->path , $request->file_name  , $headers);
     }
 
 

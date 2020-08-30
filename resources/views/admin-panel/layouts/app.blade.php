@@ -317,6 +317,33 @@
                             <li class="nav-item"><a href="{{route('users.create')}}" class="nav-link">انشاء عضو جديد</a></li>
                         </ul>
                     </li>
+
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-users"></i> <span>  رسائل الفرحة والتوبيخية  </span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="رسائل الفرحة والتوبيخية">
+
+                            <li class="nav-item"><a href="#" class="nav-link active"><span>رسائل الفرحة</span></a>
+
+                               <ul class="nav nav-group-sub" data-submenu-title="رسائل الفرحة والتوبيخية">
+
+                                   <li  class="nav-item"><a href="#" class="nav-link active">جميع رسائل الفرحة</a></li>
+                                   <li  class="nav-item"><a href="#" class="nav-link active">إنشاء رسالة فرحة</a></li>
+
+                               </ul>
+
+                            </li>
+
+
+
+
+
+
+
+
+                            <li class="nav-item"><a href="{{route('users.create')}}" class="nav-link">انشاء عضو جديد</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /main navigation -->

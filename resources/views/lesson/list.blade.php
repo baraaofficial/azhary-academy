@@ -3,6 +3,10 @@
 @section('title')
    | {{$course->name}}
     @endsection
+@section('css')
+    <link rel="stylesheet" href="{{asset('website/css/custom.css')}}" type="text/css" />
+
+@endsection
 @section('content')
 
 
@@ -39,11 +43,11 @@
                         @foreach($lessons as $lesson)
                         <div class="entry clearfix">
                             <div class="entry-image">
-                                <a href="{{asset('uploads/lessons/'.$lesson->image)}}" data-lightbox="image"><img class="image_fade" src="{{asset('uploads/lessons/'.$lesson->image)}}" alt="Standard Post with Image"></a>
+                                <a href="{{asset($lesson->image)}}" data-lightbox="image"><img class="image_fade" src="{{asset($lesson->image)}}" alt="Standard Post with Image"></a>
                             </div>
                             <div class="entry-c">
                                 <div class="entry-title">
-                                    <h2><a href="{{route('lesson.single',$lesson->title)}}">{{$lesson->title}}</a></h2>
+                                    <h2><a href="{{route('lesson.single',$lesson->id)}}">{{$lesson->title}}</a></h2>
                                 </div>
                                 <ul class="entry-meta clearfix">
                                     <li><i class="icon-calendar3"></i> {{$lesson->created_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</li>
@@ -81,14 +85,21 @@
                     <div class="sidebar-widgets-wrap">
 
                         <div class="widget widget-twitter-feed clearfix">
-
+                            <script type="">
+                                function submitForm(){
+                                    document.getElementById('submitForm').submit();
+                                }
+                            </script>
                             <h4>تحميل ملف الدورة</h4>
                             <ul class="iconlist twitter-feed" data-username="envato" data-count="2">
                                 <li></li>
                             </ul>
+                            {!! Form::open(['method' => 'post', 'url' => url('download-course'),'id'=>'submitForm']) !!}
+                            {!! Form::hidden('path',$course->pdf) !!}
+                            {!! Form::hidden('file_name',$course->name .'.'. explode('.',$course->pdf)[count( explode('.',$course->pdf)) - 1]) !!}
+                            {!! Form::close() !!}
 
-                            <a href="#" class="btn btn-secondary btn-sm fright">تحميل الآن</a>
-
+                           <a href="#" onclick="submitForm()" class="btn btn-secondary btn-sm fright">تحميل الآن</a>
                         </div>
 
                         <div class="widget clearfix">

@@ -9,13 +9,12 @@ class Categories extends Model
 {
     use SoftDeletes;
 
-
     protected $table = 'category';
     public $timestamps = true;
     protected $fillable = array('name');
 
     public function courses()
     {
-        return $this->hasMany(Categories::class);
+        return $this->hasMany(Course::class);
     }
 }

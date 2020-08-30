@@ -77,7 +77,11 @@
 ============================================= -->
 <script src="{{asset('website/js/jquery.js')}}"></script>
 <script src="{{asset('website/js/plugins.js')}}"></script>
+<!-- Import FawryPay Production JavaScript Library -->
+<script type="text/javascript" src="https://www.atfawry.com/ECommercePlugin/scripts/FawryPay.js"></script>
 
+<!-- Import FawryPay Staging JavaScript Library-->
+<script type="text/javascript" src="https://atfawry.fawrystaging.com/ECommercePlugin/scripts/FawryPay.js"></script>
 <!-- Footer Scripts
 ============================================= -->
 <script src="{{asset('website/js/functions.js')}}"></script>

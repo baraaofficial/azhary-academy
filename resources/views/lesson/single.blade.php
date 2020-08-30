@@ -231,8 +231,7 @@
                         {!! Form::hidden('file_name',$lessons->title .'.'. explode('.',$lessons->pdf)[count( explode('.',$lessons->pdf)) - 1]) !!}
                         {!! Form::close() !!}
 
-                        <li><span><i class="icon-file"></i>PDF :</span><a
-                                href="#" onclick="submitForm()"> تحميل الملف </a></li>
+                        <li> <span><i class="icon-file"></i>PDF :</span> <a href="#" onclick="submitForm()" class="btn btn-secondary btn-sm fright">تحميل الآن</a></li>
                     </ul>
                     <!-- Portfolio Single - Meta End -->
 

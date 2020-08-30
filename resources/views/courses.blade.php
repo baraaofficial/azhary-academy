@@ -56,16 +56,21 @@
                         <article class="portfolio-item class{{optional($course->class)->id}} @if($loop->first) wide @endif">
                             <div class="portfolio-image">
                                 <a href="{{route('course.list',$course->id)}}">
-                                    <img src="{{asset('uploads/courses/'.$course->image)}}  " alt="Open Imagination">
+                                    <img src="{{asset($course->image)}}  " alt="Open Imagination">
                                 </a>
                                 <div class="portfolio-overlay">
-                                    <a href="{{asset('uploads/courses/'.$course->image)}}" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+                                    <a href="{{asset($course->image)}}" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
                                     <a href="{{route('course.list',$course->id)}}" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                                 </div>
                             </div>
                             <div class="portfolio-desc">
                                 <h3><a href="{{route('course.list',$course->id)}}">{{$course->name}}</a></h3>
+                                <p class="card-text text-black-50 mb-1">{!!  \Illuminate\Support\Str::limit($course->description, $limit = 150, $end = '....' ) !!}</p>
                                 <span><a href="{{route('category.index',$course->id)}}">{{optional($course->categories)->name}}</a>, <a href="{{route('course.index',$course->id)}}">{{optional($course->class)->name}}</a></span>
+                            </div>
+                            <div class="card-footer py-3 d-flex justify-content-between align-items-center bg-white text-muted">
+                                <div class="badge alert-primary">{{$course->price}} جنيهاً </div>
+                                <a href="#" class="text-dark position-relative"><i class="icon-line2-user"></i> <span class="author-number">1</span></a>
                             </div>
                         </article>
                         @endforeach

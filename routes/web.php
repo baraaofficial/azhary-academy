@@ -29,6 +29,8 @@ Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashbo
     Route::resource('contact','ContactController');
     Route::resource('contactus','ContactUsController');
     Route::resource('users','UserController');
+    Route::resource('joyful-message','JoyfulMessageController');
+    Route::resource('reprimand-message','ReprimandMessageController');
 
     Route::resource('questions', 'QuestionsController');
     Route::post('questions_mass_destroy', ['uses' => 'QuestionsController@massDestroy', 'as' => 'questions.mass_destroy']);
@@ -94,14 +96,15 @@ Route::middleware('verified')->group(function () {
         Route::get('profile/{id}/{slug?}', 'HomeController@profile')->name('profile.index');
         Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
         Route::post('/download','admin\LessonController@getDownload');
-        Route::get('/search', 'SearchController@index')->name('search');
-        Route::get('/search/{search}', 'SearchController@index')->name('search.index');
+        Route::post('/download-course','admin\CoursesController@getDownload');
+
 
     });
 });
 
 Route::get('/notifications', 'NotificationController@index')->name('notification');
-
+Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search/{search}', 'SearchController@index')->name('search.index');
 Route::get('/auth/{provider}','AuthSocController@redirect');
 Route::get('/auth/{provider}/callback','AuthSocController@Callback');
 

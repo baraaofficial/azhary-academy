@@ -65,6 +65,10 @@
                                     <h3><a href="{{route('course.list',$course->id)}}">{{$course->name}}</a></h3>
                                     <span><a href="#">{{$course->category}}</a>, <a href="#">{{optional($course->class)->name}}</a></span>
                                 </div>
+                                <div class="card-footer py-3 d-flex justify-content-between align-items-center bg-white text-muted">
+                                    <div class="badge alert-primary">{{$course->price}} جنيهاً </div>
+                                    <a href="#" class="text-dark position-relative"><i class="icon-line2-user"></i> <span class="author-number">1</span></a>
+                                </div>
                             </article>
                         @endforeach
 
