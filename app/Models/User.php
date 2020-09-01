@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     protected $fillable = [
-        'name', 'email', 'password','is_admin','image','location','mobile','bio','phone','gender','role_id'
+        'name', 'email', 'password','is_admin','image','location','mobile','bio','phone','gender','role_id','class_id'
     ];
 
 
@@ -54,11 +54,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Course::class);
     }
+    public function class()
+    {
+        return $this->belongsTo(Calss::class);
+    }
 
     public function notifications()
     {
-        return $this->belongsToMany('App\Models\Notification')->withPivot('is_read');
+        return $this->morphToMany('App\Models\Notification', 'notifiable')->withPivot('is_read');
     }
+
     public function tokens()
     {
         return $this->hasMany('App\Models\Token');

@@ -47,4 +47,9 @@ class Course extends Model
     }
 
 
+    public function notifications()
+    {
+        return $this->morphMany('App\Models\Notification', 'notifiable');
+    }
+
 }

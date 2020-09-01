@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Course;
 use App\Models\Lesson;
+use App\NotificationHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -67,6 +68,13 @@ class LessonController extends Controller
 
         if ($request->hasFile('pdf')) {
             $this->addFile($request->file('pdf'), $lessons, 'pdf-lessons', 'pdf', false);
+        }
+
+        $usersIDs = $lessons->course->class->users();
+
+        if($usersIDs->count())
+        {
+            NotificationHelper::sendNotification($lessons, $usersIDs->pluck('id')->toArray(), 'users', optional($lessons->course)->name .'تم اضافة درس جديد لكورس', $lessons->title .' بعنوان '.optional($lessons->course)->name .' تم اضافة درس جديد لكورس  ', 'course', $lessons);
         }
 
         return redirect()->route('lessons.index')->with(['message' => 'تم انشاء درس' . ' ' . $lessons->title . ' ' . 'الجديد بنجاح']);

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NotificationOrder;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\User;
+use App\NotificationHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -74,7 +77,14 @@ class CoursesController extends Controller
 
         $courses->tags()->sync($request->tag_id);
 
+        $courses->refresh();
 
+        $usersIDs = $courses->class->users();
+
+        if($usersIDs->count())
+        {
+            NotificationHelper::sendNotification($courses, $usersIDs->pluck('id')->toArray(), 'users', 'تم اضافة كورس جديد لصفك', ' تم اضافة كورس جديد لصفك', 'course', $courses);
+        }
 
         return redirect()->route('courses.index')->with(['message' => 'تم إنشاء دورة'  .' '. $courses->name .' ' . ' بنجاح ']);
 
