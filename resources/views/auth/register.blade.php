@@ -150,6 +150,15 @@
                     <div class="line line-sm"></div>
 
 
+                    <div class="center">
+                        <h3 style="margin-bottom: 20px;">أو التسجيل من خلال</h3>
+                        <a href="{{url('/auth/facebook/')}}" class="button button-rounded si-facebook si-colored">Facebook</a>
+                        <h4 style="margin-bottom: 15px;">أو</h4>
+                        <a href="{{url('/auth/twitter/')}}" class="button button-rounded si-twitter si-colored">Twitter</a>
+                        <h4 style="margin-bottom: 15px;">أو</h4>
+                        <a href="{{url('/auth/google/')}}" class="button button-rounded si-google si-colored">Google</a>
+
+                    </div>
                 </div>
 
             </div>

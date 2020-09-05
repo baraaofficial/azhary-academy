@@ -126,13 +126,20 @@ class LessonController extends Controller
 
         $lessons = Lesson::findOrFail($id);
         $lessons->update($request->all());
-
+        /**
+         * @param $file
+         * @param $oldFiles
+         * @param $model
+         * @param $folderName
+         * @param $relation
+         * @param $image
+         */
         if ($request->hasFile('image')) {
-            $this->addFile($request->file('image'), $lessons, 'lessons', 'image');
+            $this->updatePhoto($request->file('image'), $lessons, $model, 'lessons','','','');
         }
 
         if ($request->hasFile('pdf')) {
-            $this->addFile($request->file('pdf'), $lessons, 'pdf-lessons', 'pdf', false);
+            $this->updatePhoto($request->file('pdf'), $lessons, 'pdf-lessons', 'pdf-lessons', false);
         }
 
         return redirect()->route('lessons.index')->with(['message' => 'تم تعديل درس' . ' ' . $lessons->title . ' ' . ' بنجاح']);
@@ -180,6 +187,71 @@ class LessonController extends Controller
 
         $model->$colName = $path;
         $model->save();
+    }
+
+
+    /**
+     * @param $file
+     * @param $oldFiles
+     * @param $model
+     * @param $folderName
+     * @param $relation
+     * @param $image
+     */
+    public function updatePhoto($file, $oldFiles, $model, $folder_name, $relation = 'image', $usage = null, $type = true)
+    {
+        info("start");
+        if ($oldFiles) {
+            File::delete(public_path() . '/' . $oldFiles->path);
+        }
+
+        $image = $file;
+        $destinationPath = public_path() . '/uploads/' . $folder_name . '/';
+        $extension = $image->getClientOriginalExtension(); // getting image extension
+        $name = 'original' . time() . '' . rand(11111, 99999) . '.' . $extension; // renaming image
+        $image->move($destinationPath, $name); // uploading file to given
+
+        if ($extension == 'svg') {
+            $input =
+                [
+                    'name' => 'uploads/' . $folder_name . '/' . $name,
+                    'type' => $type,
+                    'usage' => $usage
+                ];
+
+            if ($oldFiles) {
+                $model->$relation()->where(['type' => $type])->update($input);
+            } else {
+
+                $model->$relation()->create($input);
+            }
+            return true;
+        }
+
+        $image_400 = '400-' . time() . '' . rand(11111, 99999) . '.' . $extension;
+
+        $resize_image = Image::make($destinationPath . $name);
+
+        $resize_image->resize(400, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath . $image_400, 100);
+
+        $input =
+            [
+                'path' => 'uploads/' . $folder_name . '/' . $name,
+                'type' => $type,
+                'usage' => $usage,
+            ];
+
+        if ($oldFiles) {
+
+            $oldFiles->update($input);
+
+        } else {
+
+            $model->$relation()->create($input);
+        }
+
     }
 
     public function getDownload(Request $request)

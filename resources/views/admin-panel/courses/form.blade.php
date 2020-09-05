@@ -1,7 +1,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">اسم الدورة:</label>
     {!! Form::text('name',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -83,7 +83,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">السعر:</label>
     {!! Form::number('price',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}

@@ -175,6 +175,7 @@
 
                     <!-- Main -->
                     <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">قائمة التنقل لأكادمية أزهري</div> <i class="icon-menu" title="Main"></i></li>
+
                     <li class="nav-item">
                         <a href="{{url('/dashboard')}}" class="nav-link disabled">
                             <i class="icon-home4"></i>
@@ -183,6 +184,7 @@
                             </span>
                         </a>
                     </li>
+
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('subjects.index')}}" class="nav-link active"><i class="icon-books"></i> <span>المواد الدراسية</span></a>
 
@@ -209,6 +211,7 @@
                             <li class="nav-item"><a href="{{route('tags.create')}}" class="nav-link">إنشاء العلامات الدراسية </a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('teachers.index')}}" class="nav-link"><i class="icon-user"></i> <span> جميع أعضاء هيئة التدريس</span></a>
 
@@ -236,7 +239,6 @@
                         </ul>
                     </li>
 
-
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('lessons.index')}}" class="nav-link"><i class="icon-presentation"></i> <span>الدروس الدراسية</span></a>
 
@@ -246,16 +248,8 @@
                         </ul>
                     </li>
 
-
-{{--
-                    <li class="nav-item nav-item-submenu">
-                        <a href="{{route('courses.index')}}" class="nav-link"><i class="icon-pencil4"></i> <span>الأختبارات الدراسية</span></a>
-
-                        <ul class="nav nav-group-sub" data-submenu-title="الاختبار">
-                            <li class="nav-item"><a href="{{route('tests.index')}}" class="nav-link active"> جميع الأختبارات </a></li>
-                            <li class="nav-item"><a href="{{route('tests.create')}}" class="nav-link">إنشاء اختبار جديد </a></li>
-                        </ul>
-                    </li>
+                    <!-- Main -->
+                    <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">قائمة الأسئلة</div> <i class="icon-menu" title="Main"></i></li>
 
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('questions.index')}}" class="nav-link"><i class="icon-question7"></i> <span>الأسئلة الدراسية</span></a>
@@ -267,6 +261,15 @@
                     </li>
 
                     <li class="nav-item nav-item-submenu">
+                        <a href="{{route('tests.index')}}" class="nav-link"><i class="icon-pencil4"></i> <span>الأختبارات الدراسية</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="الاختبار">
+                            <li class="nav-item"><a href="{{route('tests.index')}}" class="nav-link active"> جميع الأختبارات </a></li>
+                            <li class="nav-item"><a href="{{route('tests.create')}}" class="nav-link">إنشاء اختبار جديد </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-item-submenu">
                         <a href="{{route('questions_options.index')}}" class="nav-link"><i class="icon-add-to-list"></i> <span>خيارات الأسئلة</span></a>
 
                         <ul class="nav nav-group-sub" data-submenu-title="الاختيارات">
@@ -274,10 +277,8 @@
                             <li class="nav-item"><a href="{{route('questions_options.create')}}" class="nav-link">إنشاء اختيار جديد </a></li>
                         </ul>
                     </li>
---}}
 
-
-
+                    <!-- Main -->
                     <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">قائمة الأعدادات لأكادمية أزهري</div> <i class="icon-menu" title="Main"></i></li>
 
                     <li class="nav-item nav-item-submenu">
@@ -298,7 +299,6 @@
                         </ul>
                     </li>
 
-
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('contactus.index')}}" class="nav-link"><i class="icon-paperplane"></i> <span> الرسائل  </span></a>
 
@@ -307,7 +307,6 @@
                             <li class="nav-item"><a href="{{route('contactus.create')}}" class="nav-link">انشاء رسالة جديدة</a></li>
                         </ul>
                     </li>
-
 
                     <li class="nav-item nav-item-submenu">
                         <a href="{{route('users.index')}}" class="nav-link"><i class="icon-users"></i> <span>  جميع الأعضاء  </span></a>
@@ -333,14 +332,6 @@
                                </ul>
 
                             </li>
-
-
-
-
-
-
-
-
                             <li class="nav-item"><a href="{{route('users.create')}}" class="nav-link">انشاء عضو جديد</a></li>
                         </ul>
                     </li>

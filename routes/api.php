@@ -32,6 +32,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
         //  Api main controller
         Route::get('courses', 'MainController@courses');
         Route::get('lessons', 'MainController@lessons');
+        Route::get('questions', 'MainController@questions');
         Route::get('class', 'MainController@class');
         Route::get('get-class', 'MainController@getclass');
         Route::get('subjects', 'MainController@subjects');

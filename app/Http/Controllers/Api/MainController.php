@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\Calss;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Question;
+use App\Models\QuestionsOption;
 use App\Models\RequestLog;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -119,6 +121,19 @@ class MainController extends Controller
     {
         $courses = $request->user()->favourites()->latest()->paginate(20);// oldest()
         return responseJson(1, 'Loaded...', $courses);
+    }
+
+    public function questions($id, Request $request)
+    {
+        $lessons = Lesson::findOrFail($id);
+        $questions = Question::inRandomOrder()->where('lesson_id', $lessons->id)->paginate(10)->get();
+        foreach ($questions as &$question)
+        {
+            $question->options = QuestionsOption::where('question_id', $question->id)->inRandomOrder()->get();
+        }
+
+        return responseJson(1, 'success',  $questions);
+
     }
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthSocController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,9 @@ Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashbo
 */
 Auth::routes(['verify'=> true]);
 
+Route::get('login/{provider}', [AuthSocController::class, 'redirectToProvider']);
+Route::get('login/{provider}/callback', [AuthSocController::class, 'handleProviderCallback']);
+
 Route::get('/', function () {
     return view('welcome');
 
@@ -86,7 +90,8 @@ Route::middleware('verified')->group(function () {
         Route::get('/','GetCoursesController@index')->name('course.index');
         Route::get('/{id}','GetCoursesController@list')->name('course.list');
         Route::get('/lessons/{id}','LessonController@index')->name('lesson.single');
-
+        Route::post('/lessons/','LessonController@store')->name('lesson.store');
+        Route::get('/result/{id}/','LessonController@show')->name('result.show');
     });
 
     Route::middleware('auth')->group(function () {

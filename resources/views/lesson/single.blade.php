@@ -5,6 +5,43 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('website/css/custom.css')}}" type="text/css" />
+    <style>
+        .stylish{
+            padding: 80px 0;
+        }
+        .stylish .stylish-btn{
+            margin: 30px auto;
+            display: block;
+            padding: 8px 20px;
+            border: 2px solid #fff;
+            border-radius: 7px;
+            background: transparent;
+            outline: none;
+
+        }
+        .testimonials .testimonials-desc{
+            margin-bottom: 30px;
+        }
+        .uppercase{
+            text-transform:uppercase;
+        }
+        .head-border::after{
+            content: '';
+            display: block;
+            width: 75px;
+            height: 4px;
+            background-color: rgba(248, 133, 33, 0.692);
+            margin: 20px 0;
+        }
+        .head-border-center:after{
+            content: '';
+            display: block;
+            width: 75px;
+            height: 4px;
+            background-color: rgba(248, 133, 33, 0.692);
+            margin: 25px auto;
+        }
+    </style>
 
 @endsection
 
@@ -37,9 +74,33 @@
                 <!-- Portfolio Single Video
                 ============================================= -->
                 <div class="col_two_third portfolio-single-image nobottommargin">
-                    <iframe src="https://player.vimeo.com/video/{{$lessons->video}}" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/{{$lessons->video}}" width="1000" height="563" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe
                    <br>
                    <br>
+
+                    <div class="stylish">
+                        <div class="container">
+                            <h2 class="stylish-head  head-border-center uppercase text-center">معلومات عن الدرس :</h2>
+                            <p class="testimonials-desc text-center">{!! $lessons->description !!}</p>
+                            <script type="">
+                                function submitForm(){
+                                    document.getElementById('submitForm').submit();
+                                }
+                            </script>
+                            <ul class="portfolio-meta bottommargin">
+                                {!! Form::open(['method' => 'post', 'url' => url('download'),'id'=>'submitForm']) !!}
+                                {!! Form::hidden('path',$lessons->pdf) !!}
+                                {!! Form::hidden('file_name',$lessons->title .'.'. explode('.',$lessons->pdf)[count( explode('.',$lessons->pdf)) - 1]) !!}
+                                {!! Form::close() !!}
+
+                                <li><h4> حمل ملف درس {{$lessons->title}} :</h4>
+                                    <a href="#" onclick="submitForm()" class="btn btn-secondary btn-sm flift">تحميل الآن</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
                     <div id="faqs" class="faqs">
 
                         <div id="faqs-list" class="fancy-title title-bottom-border">
@@ -110,7 +171,74 @@
                         <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
 
                     </div>
+                    <!-- Content area -->
+                    <div class="content">
+                        {!! Form::open(['method' => 'POST', 'route' => ['lesson.store']]) !!}
+                        @if(count($questions) > 0)
+                            <?php $i = 1; ?>
+                            @foreach($questions as $question)
+                                @if ($i > 1) <hr /> @endif
 
+                            <!-- Table components -->
+                                <div class="card">
+                                    <div class="card-header header-elements-inline">
+                                        <h5 class="card-title">السؤال  {{ $i }} </h5>
+                                        <div class="header-elements">
+                                            <div class="list-icons">
+                                                <a class="list-icons-item" data-action="collapse"></a>
+                                                <a class="list-icons-item" data-action="reload"></a>
+                                                <a class="list-icons-item" data-action="remove"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <strong><br />{!! nl2br($question->question_text) !!}</strong>
+                                        @if ($question->code_snippet != '')
+                                            <div class="code_snippet">{!! $question->code_snippet !!}</div>
+                                        @endif
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-lg">
+                                            <tbody>
+                                            <input type="hidden" name="questions[{{ $i }}]" value="{{ $question->id }}">
+                                            @foreach($question->options as $option)
+                                                <tr class="table-border-double table-active">
+                                                    <th colspan="3"> - -</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>{{ $option->option }}</td>
+                                                    <td>
+                                                        <div class="form-check form-check-inline form-check-right">
+                                                            <label class="form-check-label">
+
+
+                                                                <input type="radio"  value="{{ $option->id }}" class="form-check-input" name="answers[{{ $question->id }}]">
+                                                            </label>
+
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+
+                                            @endforeach
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <?php $i++; ?>
+                            @endforeach
+                        @endif
+                        <br>
+                        <button type="submit" class="btn btn-success">أجب</button>
+
+                    {!! Form::close() !!}
+                    <!-- /table components -->
                     <!-- Comments
                     ============================================= -->
                     <div id="comments" class="clearfix">
@@ -189,8 +317,9 @@
                                     <textarea name="comment" id="website-cost-message" class="form-control" cols="30" rows="10"></textarea>
                                 </div>
 
+                                <br>
                                 <div class="col_full nobottommargin">
-                                    <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Submit Comment</button>
+                                    <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">اترك تعليقك</button>
                                 </div>
 
                             </form>
@@ -204,39 +333,6 @@
 
 
 
-                <!-- Portfolio Single Content
-                ============================================= -->
-                <div class="col_one_third portfolio-single-content col_last nobottommargin">
-
-                    <!-- Portfolio Single - Description
-                    ============================================= -->
-                    <div class="fancy-title title-bottom-border">
-                        <h2>معلومات عن الدرس :</h2>
-                    </div>
-                    <p>{!! $lessons->description !!}</p>
-                   <!-- Portfolio Single - Description End -->
-
-                    <div class="line"></div>
-
-                    <!-- Portfolio Single - Meta
-                    ============================================= -->
-                    <script type="">
-                        function submitForm(){
-                            document.getElementById('submitForm').submit();
-                        }
-                    </script>
-                    <ul class="portfolio-meta bottommargin">
-                        {!! Form::open(['method' => 'post', 'url' => url('download'),'id'=>'submitForm']) !!}
-                        {!! Form::hidden('path',$lessons->pdf) !!}
-                        {!! Form::hidden('file_name',$lessons->title .'.'. explode('.',$lessons->pdf)[count( explode('.',$lessons->pdf)) - 1]) !!}
-                        {!! Form::close() !!}
-
-                        <li> <span><i class="icon-file"></i>PDF :</span> <a href="#" onclick="submitForm()" class="btn btn-secondary btn-sm fright">تحميل الآن</a></li>
-                    </ul>
-                    <!-- Portfolio Single - Meta End -->
-
-
-                </div><!-- .portfolio-single-content end -->
 
                 <div class="clear"></div>
 

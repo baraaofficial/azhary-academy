@@ -15,12 +15,12 @@
         "highideas/laravel-users-online": "^3.0",
         "intervention/image": "^2.5",
         "laravel/framework": "^7.0",
+        "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "laravelcollective/html": "^6.1",
         "predis/predis": "^1.1",
-        "pusher/pusher-php-server": "~4.0",
-        "ext-http": "*"
+        "pusher/pusher-php-server": "~4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

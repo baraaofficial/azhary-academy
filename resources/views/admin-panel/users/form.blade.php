@@ -1,7 +1,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">اسم العضو :</label>
     {!! Form::text('name',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -11,6 +11,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">البريد الإلكتروني :</label>
     {!! Form::text('email',null,[
+    'autocomplete'=> 'off',
         'class' => 'form-control'
     ]) !!}
 </div>
@@ -18,6 +19,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">رقم الموبايل :</label>
     {!! Form::text('phone',null,[
+    'autocomplete'=> 'off',
         'class' => 'form-control'
     ]) !!}
 </div>
@@ -25,14 +27,14 @@
 <div class="form-group row">
     <label class="col-form-label col-lg-2">كلمة السر</label>
     <div class="col-lg-10">
-        <input type="password" name="password" class="form-control">
+        <input type="password" name="password" class="form-control" autocomplete="off">
     </div>
 </div>
 
 <div class="form-group row">
     <label class="col-form-label col-lg-2">إعادة كلمة السر</label>
     <div class="col-lg-10">
-        <input type="password" name="password_confirmation" class="form-control">
+        <input type="password" name="password_confirmation" class="form-control" autocomplete="off">
     </div>
 </div>
 
@@ -55,7 +57,7 @@
     <div class="form-group bmd-form-group">
         <label class="bmd-label-floating">مجموعة المستخدمين</label>
         <select name="{{$input}}" class="form-control @error($input) is-invalid @enderror">
-            <option >اختار وظيفة للعضو</option>
+            <option value="">اختار وظيفة للعضو</option>
             <option value="admin" {{ isset($row) && $row->{$input} == 'admin' ? 'selected'  :'' }}>مشرف</option>
             <option value="user" {{ isset($row) && $row->{$input} == 'user' ? 'selected'  :'' }}>مستخدم</option>
         </select>

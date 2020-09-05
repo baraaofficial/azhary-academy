@@ -7,7 +7,7 @@
     @foreach($about as $row)
         <!-- Page Title
 		============================================= -->
-        <section id="page-title" class="page-title-parallax page-title-dark" style="padding: 250px 0; background-image: url('{{asset('uploads/aboutus/'.$row->image)}}'); background-size: cover; background-position: center center;" data-bottom-top="background-position:0px 400px;" data-top-bottom="background-position:0px -500px;">
+        <section id="page-title" class="page-title-parallax page-title-dark" style="padding: 250px 0; background-image: asset({{$row->image}}); background-size: cover; background-position: center center;" data-bottom-top="background-position:0px 400px;" data-top-bottom="background-position:0px -500px;">
 
             <div class="container clearfix">
                 {!! $row->title !!}

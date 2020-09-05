@@ -91,11 +91,20 @@
                                 </div>
                                 <div class="col_full nobottommargin">
 
-
                                     <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">تسجيل الدخول </button>
                                     @if (Route::has('password.request'))
                                         <a href="{{ route('password.request') }}" class="button button-3d button-sacndary nomargin">نسيت كلمة المرور ؟</a>
                                     @endif
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="center">
+                                    <h4 style="margin-bottom: 15px;">أو تسجيل الدخول من خلال</h4>
+                                    <a href="{{url('/auth/facebook/')}}" class="button button-rounded si-facebook si-colored">Facebook</a>
+                                    <h4 style="margin-bottom: 15px;">أو </h4>
+                                    <a href="{{url('/auth/google/')}}" class="button button-rounded si-google si-colored">Google</a>
+
                                 </div>
 
                             </form>
