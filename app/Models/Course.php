@@ -11,7 +11,7 @@ class Course extends Model
 
     protected $table = 'courses';
     public $timestamps = true;
-    protected $fillable = array('name','description','image','price','visitor','state','subject_id','class_id','course_id','user_id','category_id','payment_status','teacher_id');
+    protected $fillable = array('name','description','image','price','pdf','visitor','state','subject_id','class_id','course_id','user_id','category_id','payment_status','teacher_id');
 
 
     public function lessons()

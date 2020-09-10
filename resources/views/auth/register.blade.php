@@ -35,7 +35,7 @@
 
                             <div class="col_full">
                                 <label for="login-form-email">البريد الألكتروني:</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control @error('emaill') is-invalid @enderror"  required autocomplete="email" autofocus/>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control @error('emaill') is-invalid @enderror"  required autocomplete="off" autofocus/>
 
                                 @error('emaill')
                                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
                             <div class="col_full">
                                 <label for="login-form-password">كلمة المرور:</label>
-                                <input type="password" id="password" name="password"  class="form-control @error('passwordd') is-invalid @enderror" required autocomplete="password" autofocus />
+                                <input type="password" id="password" name="password"  class="form-control @error('passwordd') is-invalid @enderror" required autocomplete="off" autofocus />
 
                                 @error('passwordd')
                                 <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                             {{ csrf_field() }}
                             <div class="col_full">
                                 <label for="register-form-name">الأسم:</label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}"  class="form-control @error('name') is-invalid @enderror" required autocomplete="name" autofocus />
+                                <input type="text" id="name" name="name" value="{{ old('name') }}"  class="form-control @error('name') is-invalid @enderror" required autocomplete="off" autofocus />
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
 
                             <div class="col_full">
                                 <label for="register-form-email">البريد الألكتروني:</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" required autocomplete="email" autofocus />
+                                <input type="email" id="email" name="email"  value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" required autocomplete="off" autofocus  />
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
 
                             <div class="col_full">
                                 <label for="register-form-email">رقم الهاتف:</label>
-                                <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" required autocomplete="phone" autofocus />
+                                <input type="tel" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" required autocomplete="off" autofocus />
 
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -109,21 +109,38 @@
                             </div>
 
                             <div class="col_full">
-                                <label for="register-form-password">كلمة المرور:</label>
-                                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password" autofocus  />
+                                <label for="register-form-password">كلمة السر:</label>
+                                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="off" autofocus  />
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
-                            <div class="col_full">
-                                <label for="register-form-repassword">اعادة كلمة المرور:</label>
-                                <input type="password" id="password-confirm" name="password_confirmation"  class="form-control" required autocomplete="new-password" autofocus  />
-                            </div>
 
+                            <div class="col_full">
+                                <label for="register-form-repassword">اعادة كلمة السر:</label>
+                                <input type="password" id="password-confirm" name="password_confirmation"  class="form-control" required autocomplete="off" autofocus  />
+                            </div>
+                            <div class="col_full">
+                                <legend class="col-form-label col-sm-2 pt-0">الجنس</legend>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male" >
+                                        <label class="form-check-label" for="gridRadios1">
+                                            ذكر
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
+                                        <label class="form-check-label" for="gridRadios2">
+                                            أنثي
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col_full nobottommargin">
                                 <button class="button button-3d button-black nomargin" type="submit">التسجيل الآن</button>
                             </div>

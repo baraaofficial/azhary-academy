@@ -1,7 +1,7 @@
 
 <!-- Footer
 ============================================= -->
-<footer  id="footer" class="dark" style="background: url('website/images/footer-bg.jpg') repeat fixed; background-size: 100% 100%;">
+<footer  id="footer" class="dark" style="background: asset('website/images/footer-bg.jpg') repeat fixed; background-size: 100% 100%;">
 
 
     <!-- Copyrights
@@ -77,22 +77,17 @@
 ============================================= -->
 <script src="{{asset('website/js/jquery.js')}}"></script>
 <script src="{{asset('website/js/plugins.js')}}"></script>
+<!-- Import FawryPay Production JavaScript Library -->
+<script type="text/javascript" src="https://www.atfawry.com/ECommercePlugin/scripts/FawryPay.js"></script>
 
+<!-- Import FawryPay Staging JavaScript Library-->
+<script type="text/javascript" src="https://atfawry.fawrystaging.com/ECommercePlugin/scripts/FawryPay.js"></script>
 <!-- Footer Scripts
 ============================================= -->
 <script src="{{asset('website/js/functions.js')}}"></script>
 @yield('script')
 
-<script src="https://js.pusher.com/6.0/pusher.min.js"></script>
-<script>
 
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('b06ec302ee92f4d37ffe', {
-        cluster: 'eu'
-    });
-</script>
 
 <script>
     jQuery( "#tabs-profile" ).on( "tabsactivate", function( event, ui ) {

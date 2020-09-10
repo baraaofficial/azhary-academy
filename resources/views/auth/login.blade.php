@@ -28,9 +28,9 @@
     <!-- Document Title
     ============================================= -->
     <title>
-        @section('title')
-            - تسجيل الدخول
-        @endsection
+
+             تسجيل الدخول
+
     </title>
 
 </head>
@@ -65,7 +65,7 @@
                                 <p>لا يوجد لديك حساب ؟<a href="{{route('register')}}"> سجل معنا الآن </a></p>
                                 <div class="col_full">
                                     <label for="login-form-username">البريد الألكتروني:</label>
-                                    <input type="email" id="email" name="email" value="" class="form-control not-dark  @error('email') is-invalid @enderror"  required autocomplete="email" autofocus />
+                                    <input type="email" id="email" name="email" value="" class="form-control not-dark  @error('email') is-invalid @enderror"  required autocomplete="off" autofocus />
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
 
                                 <div class="col_full">
                                     <label for="login-form-password">كلمة السر:</label>
-                                    <input type="password" id="password" name="password" value="" class="form-control not-dark @error('password') is-invalid @enderror" required autocomplete="password" autofocus />
+                                    <input type="password" id="password" name="password" value="" class="form-control not-dark @error('password') is-invalid @enderror" required autocomplete="off" autofocus />
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

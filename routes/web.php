@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/download','admin\LessonController@getDownload');
 
 Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashboard')->group(function (){
 
@@ -30,6 +29,8 @@ Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashbo
     Route::resource('contact','ContactController');
     Route::resource('contactus','ContactUsController');
     Route::resource('users','UserController');
+    Route::resource('joyful-message','JoyfulMessageController');
+    Route::resource('reprimand-message','ReprimandMessageController');
 
     Route::resource('questions', 'QuestionsController');
     Route::post('questions_mass_destroy', ['uses' => 'QuestionsController@massDestroy', 'as' => 'questions.mass_destroy']);
@@ -71,8 +72,11 @@ Route::get('profile', function () {
     return view('admin');
 
 });
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware('verified')->group(function () {
+
+
     Route::get('/classroom','ClassroomController@index')->name('classroom.index');
     Route::get('/teachers','TeachersController@index')->name('teacher.index');
     Route::get('/subjects','SubjectController@index')->name('subject.index');
@@ -91,21 +95,19 @@ Route::middleware('verified')->group(function () {
         Route::get('comments/{id}', 'HomeController@commentDelete')->name('comment.delete');
         Route::get('profile/{id}/{slug?}', 'HomeController@profile')->name('profile.index');
         Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
+        Route::post('/download','admin\LessonController@getDownload');
+        Route::post('/download-course','admin\CoursesController@getDownload');
+
 
     });
 });
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/notifications', 'NotificationController@index')->name('notification');
-
+Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search/{search}', 'SearchController@index')->name('search.index');
 Route::get('/auth/{provider}','AuthSocController@redirect');
 Route::get('/auth/{provider}/callback','AuthSocController@Callback');
 
-
-
-
-Route::get('/search', 'SearchController@index')->name('search');
-Route::get('/search/{search}', 'SearchController@index')->name('search.index');
 
 Route::get('/about-us', 'AboutController@index')->name('about');
 Route::resource('/contact-us', 'ContactUsController');

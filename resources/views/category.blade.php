@@ -9,11 +9,11 @@
     <section id="page-title">
 
         <div class="container clearfix">
-            <h1>أكاديمية أزهري  - جميع الدورات بحسب أعضاء هيئة التدريس </h1>
-            <span>هنا جميع الدورات التي قام أعضاء هيئة التدريس بإنشائها في موقع أكاديمية أزهري</span>
+            <h1>أكاديمية أزهري  - جميع الدورات بحسب الأقسام </h1>
+            <span>هنا جميع الدورات بتصنيف كل قسم</span>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('/')}}">الرئيسية</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> أعضاء هيئة التدريس </li>
+                <li class="breadcrumb-item active" aria-current="page"> المواد </li>
             </ol>
         </div>
 
@@ -36,8 +36,8 @@
                     <ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
 
                         <li class="activeFilter"><a href="#" data-filter="*">مشاهدة الكل</a></li>
-                        @foreach($get_teacher as $teacher)
-                            <li><a href="#" data-filter=".teacher{{$teacher->id}}">{{$teacher->name}}</a></li>
+                        @foreach($get_category as $category)
+                            <li><a href="category{{route('category.index',$category->id)}}" data-filter=".category{{$category->id}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul><!-- #portfolio-filter end -->
 
@@ -51,7 +51,7 @@
                     ============================================= -->
                     <div id="portfolio" class="portfolio grid-container portfolio-3 portfolio-masonry clearfix">
                         @foreach($courses as $course)
-                            <article class="portfolio-item teacher{{optional($course->teacher)->id}} @if($loop->first) wide @endif">
+                            <article class="portfolio-item category{{optional($course->category)->id}} @if($loop->first) wide @endif">
                                 <div class="portfolio-image">
                                     <a href="{{route('course.list',$course->id)}}">
                                         <img src="{{asset($course->image)}}" alt="Open Imagination">
@@ -60,12 +60,10 @@
                                         <a href="{{asset($course->image)}}" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
                                         <a href="{{route('course.list',$course->id)}}" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                                     </div>
-
                                 </div>
                                 <div class="portfolio-desc">
                                     <h3><a href="{{route('course.list',$course->id)}}">{{$course->name}}</a></h3>
                                     <p class="card-text text-black-50 mb-1">{!!  \Illuminate\Support\Str::limit($course->description, $limit = 150, $end = '....' ) !!}</p>
-
                                     <span><a href="{{route('category.index',$course->id)}}">{{optional($course->categories)->name}}</a>, <a href="{{route('course.index',$course->id)}}">{{optional($course->class)->name}}</a> </span>
                                 </div>
                                 <div class="card-footer py-3 d-flex justify-content-between align-items-center bg-white text-muted">
@@ -88,23 +86,26 @@
 
                         <div class="widget clearfix">
 
-                            <h4>الصفوف الدراسية</h4>
+                            <h4>هيئة التدريس</h4>
                             <div id="post-list-footer">
-                            @foreach($class as $row)
-                                <div class="spost clearfix">
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="{{route('course.index',$row->id)}}">{{$row->name}}</a></h4>
+                                @foreach($teachers as $teacher)
+                                    <div class="spost clearfix">
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="{{route('teacher.index',$teacher->id)}}">{{$teacher->name}}</a></h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li>{{$teacher->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</li>
+                                            </ul>
                                         </div>
-                                        <ul class="entry-meta">
-                                            <li>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</li>
-                                        </ul>
                                     </div>
-                                </div>
                                 @endforeach
 
                             </div>
+
                         </div>
+
+
                     </div>
                 </div><!-- .sidebar end -->
 

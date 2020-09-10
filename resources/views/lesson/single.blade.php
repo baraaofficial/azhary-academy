@@ -37,7 +37,7 @@
                 <!-- Portfolio Single Video
                 ============================================= -->
                 <div class="col_two_third portfolio-single-image nobottommargin">
-                    <iframe src="{{$lessons->video}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/{{$lessons->video}}" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
                    <br>
                    <br>
                     <div id="faqs" class="faqs">
@@ -231,8 +231,7 @@
                         {!! Form::hidden('file_name',$lessons->title .'.'. explode('.',$lessons->pdf)[count( explode('.',$lessons->pdf)) - 1]) !!}
                         {!! Form::close() !!}
 
-                        <li><span><i class="icon-file"></i>PDF :</span><a
-                                href="#" onclick="submitForm()"> تحميل الملف </a></li>
+                        <li> <span><i class="icon-file"></i>PDF :</span> <a href="#" onclick="submitForm()" class="btn btn-secondary btn-sm fright">تحميل الآن</a></li>
                     </ul>
                     <!-- Portfolio Single - Meta End -->
 

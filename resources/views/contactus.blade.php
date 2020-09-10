@@ -56,24 +56,24 @@
 
                             <div class="col_one_third">
                                 <label for="name">الأسم <small>*</small></label>
-                                <input type="text" id="name" name="name" value="" class="sm-form-control required" />
+                                <input type="text" id="name" name="name" value="" autocomplete="off" class="sm-form-control required" />
                             </div>
 
                             <div class="col_one_third">
                                 <label for="email">البريد الإلكتروني <small>*</small></label>
-                                <input type="email" id="email" name="email" value="" class="required email sm-form-control" />
+                                <input type="email" id="email" name="email" value="" autocomplete="off" class="required email sm-form-control" />
                             </div>
 
                             <div class="col_one_third col_last">
                                 <label for="phone">رقم الموبايل</label>
-                                <input type="text" id="phone" name="phone" value="" class="sm-form-control" />
+                                <input type="text" id="phone" name="phone" value="" autocomplete="off" class="sm-form-control" />
                             </div>
 
                             <div class="clear"></div>
 
                             <div class="col_two_third">
                                 <label for="subject">موضوع الرسالة <small>*</small></label>
-                                <input type="text" id="subject" name="subject" value="" class="required sm-form-control" />
+                                <input type="text" id="subject" name="subject" value="" autocomplete="off" class="required sm-form-control" />
                             </div>
 
 
@@ -81,7 +81,7 @@
 
                             <div class="col_full">
                                 <label for="message">الرسالة <small>*</small></label>
-                                <textarea class="required sm-form-control" id="message" name="message" rows="6" cols="30"></textarea>
+                                <textarea class="required sm-form-control" id="message" name="message" rows="6" cols="30" autocomplete="off"></textarea>
                             </div>
 
                             <div class="col_full">
