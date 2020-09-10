@@ -46,7 +46,10 @@ class Lesson extends Model
         return $this->hasMany(Comment::class);
     }
 
-
+    public function notifications()
+    {
+        return $this->morphMany('App\Models\Notification', 'notifiable');
+    }
 
 
 

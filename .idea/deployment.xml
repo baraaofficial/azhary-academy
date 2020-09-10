@@ -5,12 +5,8 @@
       <paths name="azharyacademy">
         <serverdata>
           <mappings>
-            <mapping deploy="/azhary-academy" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath path="/azhary-academy" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
