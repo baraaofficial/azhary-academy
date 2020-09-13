@@ -15,7 +15,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">العنوان الأول:</label>
     {!! Form::text('title1',null,[
-
+    'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -25,7 +25,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">العنوان الثاني:</label>
     {!! Form::text('title2',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -35,7 +35,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">العنوان الثالث:</label>
     {!! Form::text('title3',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -45,7 +45,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">العنوان الفرعي الأول:</label>
     {!! Form::textarea('content1',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -54,7 +54,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">العنوان الفرعي الثاني:</label>
     {!! Form::textarea('content2',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -63,7 +63,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">العنوان الفرعي الثالث:</label>
     {!! Form::textarea('content3',null,[
-
+'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}

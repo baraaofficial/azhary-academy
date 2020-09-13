@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\NotificationOrder;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\User;

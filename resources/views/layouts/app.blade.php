@@ -96,36 +96,28 @@
                 <!-- Top Cart
                 ============================================= -->
                 <div id="top-cart">
-                    <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
+                    <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>{{Cart::count()}}</span></a>
                     <div class="top-cart-content">
                         <div class="top-cart-title">
-                            <h4>Shopping Cart</h4>
+                            <h4>عربة التسوق</h4>
                         </div>
+                        @foreach(Cart::content() as $course)
+
                         <div class="top-cart-items">
                             <div class="top-cart-item clearfix">
                                 <div class="top-cart-item-image">
                                     <a href="#"><img src="{{asset('website/course/images/cart-1.jpg')}}" alt="Photography" /></a>
                                 </div>
                                 <div class="top-cart-item-desc">
-                                    <a href="#">A Complete Guide to Photography</a>
-                                    <span class="top-cart-item-price">$19.99</span>
-                                    <span class="top-cart-item-quantity">x 2</span>
-                                </div>
-                            </div>
-                            <div class="top-cart-item clearfix">
-                                <div class="top-cart-item-image">
-                                    <a href="#"><img src="{{asset('website/course/images/cart-2.jpg')}}" alt="CSS & SASS" /></a>
-                                </div>
-                                <div class="top-cart-item-desc">
-                                    <a href="#">Advanced CSS and Sass: Flexbox, Grid, Animations and More!</a>
-                                    <span class="top-cart-item-price">$24.99</span>
-                                    <span class="top-cart-item-quantity">x 3</span>
+                                    <a href="">{{$course->name}}</a>
+                                    <span class="top-cart-item-price">{{$course->price}}</span>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <div class="top-cart-action clearfix">
-                            <span class="fleft top-checkout-price">$114.95</span>
-                            <a href="#" class="button button-rounded button-small nomargin fright">View Cart</a>
+                            <span class="fleft top-checkout-price">{{Cart::getTotal()}}</span>
+                            <a href="{{route('cart.index')}}" class="button button-rounded button-small nomargin fright">مشاهدة الكل</a>
                         </div>
                     </div>
                 </div><!-- #top-cart end -->

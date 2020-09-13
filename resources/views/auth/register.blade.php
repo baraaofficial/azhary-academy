@@ -124,6 +124,16 @@
                                 <label for="register-form-repassword">اعادة كلمة السر:</label>
                                 <input type="password" id="password-confirm" name="password_confirmation"  class="form-control" required autocomplete="off" autofocus  />
                             </div>
+                            <div class="form-group mb-6">
+                                <label for="simpleinput">الصف الدراسي : :</label>
+                                @inject('class','App\Models\Calss')
+
+                                {!! Form::select('class_id',$class->pluck('name','id'),null,[
+                                    'placeholder' => 'اختر',
+                                    'class' => 'form-control form-control-select2'
+
+                                ]) !!}
+                            </div>
                             <div class="col_full">
                                 <legend class="col-form-label col-sm-2 pt-0">الجنس</legend>
                                 <div class="col-sm-10">
@@ -150,6 +160,15 @@
                     <div class="line line-sm"></div>
 
 
+                    <div class="center">
+                        <h3 style="margin-bottom: 20px;">أو التسجيل من خلال</h3>
+                        <a href="{{url('/auth/facebook/')}}" class="button button-rounded si-facebook si-colored">Facebook</a>
+                        <h4 style="margin-bottom: 15px;">أو</h4>
+                        <a href="{{url('/auth/twitter/')}}" class="button button-rounded si-twitter si-colored">Twitter</a>
+                        <h4 style="margin-bottom: 15px;">أو</h4>
+                        <a href="{{url('/auth/google/')}}" class="button button-rounded si-google si-colored">Google</a>
+
+                    </div>
                 </div>
 
             </div>

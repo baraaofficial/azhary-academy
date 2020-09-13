@@ -124,6 +124,7 @@ dl, dt, dd, ol, ul, li {
 	padding: 0;
 }
 
+
 .clear {
 	clear: both;
 	display: block;
@@ -648,6 +649,13 @@ body.stretched .container-fullwidth {
 	margin-right: 4%;
 	margin-bottom: 50px;
 	float: left;
+}
+.information {
+    display: block;
+    position: relative;
+    margin: 25px auto;
+    float: left;
+
 }
 
 .col_full {
@@ -11399,6 +11407,7 @@ input[type=checkbox]:not(:checked) + label.error { display: block !important; }
 .fancy-title {
 	position: relative;
 	margin-bottom: 30px;
+
 }
 
 .fancy-title h1,

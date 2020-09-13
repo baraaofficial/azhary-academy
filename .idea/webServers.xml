@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="2bce6b53-0aae-40ce-9ed4-d805d50c67fe" name="ftp.azhary-academic.com" url="http://ftp.azharyacademy.com">
-        <fileTransfer host="ftp.azharyacademy.com" port="21">
+      <webServer id="2bce6b53-0aae-40ce-9ed4-d805d50c67fe" name="azharyacademy" url="https://azharyacademy.com">
+        <fileTransfer host="azharyacademy.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

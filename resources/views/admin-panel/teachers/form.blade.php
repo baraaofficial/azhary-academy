@@ -1,7 +1,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">اسم المدرس :</label>
     {!! Form::text('name',null,[
-
+        'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -26,7 +26,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">البريد الألكتروني بالمدرس :</label>
     {!! Form::email('email',null,[
-
+        'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -48,7 +48,7 @@
 <div class="form-group mb-6">
     <label for="simpleinput">رقم موبايل المدرس :</label>
     {!! Form::text('phone',null,[
-
+        'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
@@ -56,16 +56,16 @@
 <div class="form-group mb-6">
     <label for="simpleinput">اسم المدرسة :</label>
     {!! Form::text('school',null,[
-
+        'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
 </div>
 
 <div class="form-group mb-6">
-    <label for="simpleinput"> :</label>
+    <label for="simpleinput"> الوظيفة:</label>
     {!! Form::text('type',null,[
-
+        'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}

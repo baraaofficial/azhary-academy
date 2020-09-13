@@ -7,29 +7,16 @@
         <!-- Basic tables title -->
         <div class="mb-3">
             <h6 class="mb-0 font-weight-semibold">
-                Basic tables
+                نتيجتك
             </h6>
-            <span class="text-muted d-block">Tables with default <code>Bootstrap</code> styling</span>
         </div>
         <!-- /basic tables title -->
 
 
         <!-- Basic table -->
         <div class="card">
-            <div class="card-header header-elements-inline">
-                <h5 class="card-title">Basic table</h5>
-                <div class="header-elements">
-                    <div class="list-icons">
-                        <a class="list-icons-item" data-action="collapse"></a>
-                        <a class="list-icons-item" data-action="reload"></a>
-                        <a class="list-icons-item" data-action="remove"></a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card-body">
-                Example of a <code>basic</code> table. For basic styling (light padding and only horizontal dividers) add the base class <code>.table</code> to any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other plugins like calendars and date pickers, we've opted to isolate our custom table styles.
-            </div>
+
 
             <div class="table-responsive">
                 <table class="table">
@@ -43,22 +30,47 @@
                      @endif
                     <tr>
                         <td>2</td>
-                        <td>Victoria</td>
-                        <td>Baker</td>
+                        <td>النتيجه</td>
+                        <td>{{ $test->result }}/10</td>
                     </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>James</td>
-                        <td>Alexander</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Franklin</td>
-                        <td>Morrison</td>
-                    </tr>
+
                     </tbody>
                 </table>
+
             </div>
+            <?php $i = 1 ?>
+            @foreach($results as $result)
+                <table class="table table-bordered table-striped">
+                    <tr class="test-option{{ $result->correct ? '-true' : '-false' }}">
+                        <th style="width: 10%">السؤال #{{ $i }}</th>
+                        <th>{{ $result->question->question_text or '' }}</th>
+                    </tr>
+
+                    <tr>
+                        <td>الأختيارات</td>
+                        <td>
+                            <ul>
+                                @foreach($result->question->options as $option)
+                                    <li style="@if ($option->correct == 1) font-weight: bold; @endif
+                                    @if ($result->option_id == $option->id) text-decoration: underline @endif">{{ $option->option }}
+                                        @if ($option->correct == 1) <em>(إجابة صحيحة)</em> @endif
+                                        @if ($result->option_id == $option->id) <em>(إجابتك)</em> @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>شرح الجواب</td>
+                        <td>
+                            {!! $result->question->answer_explanation  !!}
+                            @if ($result->question->more_info_link != '')
+                            @endif
+                        </td>
+                    </tr>
+                </table>
+                <?php $i++ ?>
+            @endforeach
         </div>
         <!-- /basic table -->
 @stop

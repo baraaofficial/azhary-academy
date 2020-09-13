@@ -23,12 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('is_admin')->nullable()->default('user');
             $table->string('image')->nullable();
             $table->string('bio')->nullable();
-            $table->string('mobile')->nullable();
-            $table->integer('provider')->nullable();
-            $table->integer('provider_id')->nullable();
             $table->string('gender')->nullable();
             $table->string('pin_code')->nullable();
             $table->string('api_token', 60)->nullable();
+            $table->integer('class_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

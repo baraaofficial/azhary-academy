@@ -16,7 +16,7 @@
                         <th>@lang('quickadmin.results.fields.user')</th>
                     @endif
                     <th>@lang('quickadmin.results.fields.date')</th>
-                    <th>Result</th>
+                    <th>النتيجة</th>
                     <th>&nbsp;</th>
                 </tr>
                 </thead>

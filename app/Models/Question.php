@@ -21,7 +21,6 @@ class Question extends Model
     {
         return $this->belongsTo(Lesson::class, 'lesson_id')->withTrashed();
     }
-
     public function options()
     {
         return $this->hasMany(QuestionsOption::class, 'question_id')->withTrashed();
