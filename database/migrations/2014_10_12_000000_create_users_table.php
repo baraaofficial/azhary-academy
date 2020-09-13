@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->string('pin_code')->nullable();
             $table->string('api_token', 60)->nullable();
+            $table->integer('class_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

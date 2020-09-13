@@ -34,9 +34,9 @@
 
 <div class="form-group mb-6">
     <label for="simpleinput">الدروات الدراسية :</label>
-    @inject('class','App\Models\Course')
+    @inject('course','App\Models\Course')
 
-    {!! Form::select('course_id',$class->pluck('name','id'),null,[
+    {!! Form::select('course_id',$course->pluck('name','id'),null,[
         'placeholder' => 'اختر',
         'class' => 'form-control form-control-select2'
 

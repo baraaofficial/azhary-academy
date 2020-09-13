@@ -79,6 +79,13 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
+  'melihovv/laravel-shopping-cart' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Melihovv\\ShoppingCart\\ServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 

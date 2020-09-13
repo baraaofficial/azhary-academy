@@ -124,6 +124,16 @@
                                 <label for="register-form-repassword">اعادة كلمة السر:</label>
                                 <input type="password" id="password-confirm" name="password_confirmation"  class="form-control" required autocomplete="off" autofocus  />
                             </div>
+                            <div class="form-group mb-6">
+                                <label for="simpleinput">الصف الدراسي : :</label>
+                                @inject('class','App\Models\Calss')
+
+                                {!! Form::select('class_id',$class->pluck('name','id'),null,[
+                                    'placeholder' => 'اختر',
+                                    'class' => 'form-control form-control-select2'
+
+                                ]) !!}
+                            </div>
                             <div class="col_full">
                                 <legend class="col-form-label col-sm-2 pt-0">الجنس</legend>
                                 <div class="col-sm-10">

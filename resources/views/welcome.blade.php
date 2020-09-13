@@ -124,7 +124,17 @@
                                 </div>
                                 <div class="card-footer py-3 d-flex justify-content-between align-items-center bg-white text-muted">
                                     <div class="badge alert-primary">{{$course->price}} جنيهاً </div>
-                                    <a href="#" class="text-dark position-relative"><i class="icon-line2-user"></i> <span class="author-number">1</span></a>
+                                    <form action="{{route('cart.store')}}" method="POST">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="id" value="{{$course->id}}">
+                                        <input type="hidden" name="name" value="{{$course->name}}">
+                                        <input type="hidden" name="price" value="{{$course->price}}">
+                                        <button class="button button-3d nomargin fright tab-linker position-relative ">شراء الان <i class="icon-cart-plus"></i></button>
+                                    </form>
+{{--
+                                    <a href="{{route('cart.store')}}" class="text-dark position-relative"><i class="icon-cart-plus"></i> أضف إلى السلة</a>
+--}}
+
                                 </div>
                             </div>
                         </div>
