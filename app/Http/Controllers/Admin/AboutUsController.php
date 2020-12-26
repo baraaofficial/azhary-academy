@@ -29,7 +29,7 @@ class AboutUsController extends Controller
     {
 
         $rules = [
-            'title'        => 'required|min:3|max:199',
+            'title'        => 'required|min:3',
             'title1'       => 'required|min:3|max:199',
             'title2'       => 'required|min:3|max:199',
             'title3'       => 'required|min:3|max:199',
@@ -47,7 +47,6 @@ class AboutUsController extends Controller
 
             'title.required'     => 'عنوان حول الأكاديمية مطلوب',
             'title.min'          => 'لابد ان يكون العنوان اكثر من 3 أحرف',
-            'title.max'          => 'لابد أن يكون العنوان اقل من 199 حرف',
 
             // validation title1
 
@@ -97,7 +96,7 @@ class AboutUsController extends Controller
 
 
         if ($request->hasFile('image')) {
-            $this->addFile($request->file('image'), $about, 'about-us', 'image');
+            $this->addFile($request->file('image'), $about, 'aboutus', 'image');
         }
 
         return redirect()->route('about.index')->with(['message' => 'تم إنشاء حول الأكاديمية'  .' '. $about->name .' ' . ' بنجاح ']);
@@ -127,7 +126,7 @@ class AboutUsController extends Controller
     {
 
         $rules = [
-            'title'        => 'required|min:3|max:199',
+            'title'        => 'required|min:3',
             'title1'       => 'required|min:3|max:199',
             'title2'       => 'required|min:3|max:199',
             'title3'       => 'required|min:3|max:199',
@@ -145,7 +144,6 @@ class AboutUsController extends Controller
 
             'title.required'     => 'عنوان حول الأكاديمية مطلوب',
             'title.min'          => 'لابد ان يكون العنوان اكثر من 3 أحرف',
-            'title.max'          => 'لابد أن يكون العنوان اقل من 199 حرف',
 
             // validation title1
 
@@ -194,14 +192,12 @@ class AboutUsController extends Controller
         $about = AboutUs::findOrFail($id);
         $about->update($request->all());
 
-
         if ($request->hasFile('image')) {
-            $this->addFile($request->file('image'), $about, 'about-us', 'image');
+            $this->addFile($request->file('image'), $about, 'aboutus', 'image');
         }
+        dd($request->all());
 
-        return redirect()->route('about.index')->with(['message' => 'تم تعديل حول الأكاديمية' .' '. $about->name .' ' . ' بنجاح ']);
-
-
+        return redirect()->route('about.index')->with(['message' => 'تم تعديل حول الأكاديمية' .' '. $about->title .' ' . ' بنجاح ']);
     }
 
 
@@ -233,7 +229,7 @@ class AboutUsController extends Controller
      */
     public function addFile($file, $model, $folderName, $colName, $image = true): void
     {
-        $destinationPath = public_path() . '/uploads/' . $folderName . '/';
+        $destinationPath = 'uploads/' . $folderName . '/';
         $extension = $file->getClientOriginalExtension();
         $name = 'original' . time() . '.' . rand(1111, 9999) . '.' . $extension;
         $file->move($destinationPath, $name);

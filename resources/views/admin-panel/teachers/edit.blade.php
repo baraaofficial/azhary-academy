@@ -20,7 +20,7 @@
 @endsection
 
 @section('title')
-    تعديل المدرس {{$model->name}}
+    - تعديل المدرس {{$model->name}}
 @endsection
 
 @section('content')

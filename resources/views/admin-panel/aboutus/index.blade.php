@@ -1,7 +1,8 @@
 @extends('admin-panel.layouts.app')
 
 @section('title')
-    جميع المواد الدراسية
+    -     جميع المواد الدراسية
+
 @endsection
 @section('content')
 

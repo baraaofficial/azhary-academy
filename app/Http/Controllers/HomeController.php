@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\CartCourse;
 use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Lesson;
@@ -9,6 +11,7 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\VisitorHome;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
@@ -46,9 +49,26 @@ class HomeController extends Controller
         return redirect()->route('lesson.single' ,['id' => $row->lesson_id,'#comment'])->with(['message' => 'تم إضافة التعليق بنجاح']);
 
     }
-    public function profile($id , $slug = null){
+    public function profile(Request $request,$id , $slug = null){
         $user = User::findOrFail($id);
-        return view('admin' , compact('user'));
+        $notifications = $request->user()->notifications()->latest()->limit(20)->get();
+
+        if(empty($notifications->is_read) == 0) {
+            $notifications->update(['is_read' => 1]);
+        }
+        $countNotifications = $request->user()->notifications()
+            ->where(function ($query) use ($request)
+            {$query->where('is_read',0);})->count();
+
+        $comments = $user->comments()->orderBy('id','Asc')->limit(30)->get();
+        $paid = Cart::where('paid',false)->get();
+
+        $payments = CartCourse::where('user_id', auth::user()->id)->whereHas('cart', function($q){
+            return $q->where('paid', 1);
+        })->with('course')->get();
+
+
+        return view('admin' , compact('user','payments','comments','notifications','countNotifications','paid'));
     }
 
     public function profileUpdate(Request $request){

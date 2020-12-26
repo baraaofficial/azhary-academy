@@ -63,7 +63,7 @@ class NotificationHelper
                 ];
 
             //send notification for client tokens
-            NotificationHelper::notifyByFirebase($notification->title, $notification->body, $tokens, $data);
+            NotificationsHelper::notifyByFirebase($notification->title, $notification->body, $tokens, $data);
 
         }
     }

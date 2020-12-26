@@ -2,7 +2,7 @@
 @inject('model','App\Models\Subject')
 
 @section('title')
-    انشاء مادة جديدة
+    - انشاء مادة جديدة
 
 @endsection
 @section('content')

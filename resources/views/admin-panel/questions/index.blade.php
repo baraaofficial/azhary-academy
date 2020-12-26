@@ -68,7 +68,6 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                             <th>عنوان الدرس </th>
                             <th>السؤال</th>
                             <th>التاريخ</th>
@@ -79,7 +78,6 @@
                             <tbody>
                             <tr data-entry-id="{{ $question->id }}">
                                 <td>{{$loop->iteration}}</td>
-                                <td></td>
                                 <td>{{optional($question->lesson)->title}}</td>
                                 <td>{!!Illuminate\Support\Str::limit($question->question_text, $limit = 40, $end = '...' ) !!}</td>
                                 <td>{{$question->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>

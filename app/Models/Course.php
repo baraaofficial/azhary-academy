@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -11,7 +12,7 @@ class Course extends Model
 
     protected $table = 'courses';
     public $timestamps = true;
-    protected $fillable = array('name','description','image','price','pdf','visitor','state','subject_id','class_id','course_id','user_id','category_id','payment_status','teacher_id');
+    protected $fillable = array('name','description','image','price','pdf','visitor','state','subject_id','class_id','course_id','user_id','category_id','payment_status','teacher_id','delete_at');
 
 
     public function lessons()
@@ -33,23 +34,33 @@ class Course extends Model
     }
     public function class()
     {
-        return $this->belongsTo(Calss::class, 'class_id');
+        return $this->belongsTo(Calss::class);
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id','id');
+        return $this->belongsToMany(User::class, 'cart_course_user','user_id');
     }
 
     public function teacher()
     {
         return $this->belongsTo(Teacher::class);
     }
-
-
     public function notifications()
     {
         return $this->morphMany('App\Models\Notification', 'notifiable');
     }
+
+    public function cartCourse()
+    {
+        return $this->hasMany(Cart::Class,'course_id');
+    }
+
+    public function paymentCourse()
+    {
+        return $this->hasMany(CartCourse::Class,'course_id');
+    }
+
+
 
 }

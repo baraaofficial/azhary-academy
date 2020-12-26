@@ -47,13 +47,15 @@
 
         <div class="content-wrap nopadding">
 
-            <div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: url('website/images/parallax/home/1.jpg') center center no-repeat; background-size: cover;"></div>
+            <div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: url('website/course/images/video/poster.png') center center no-repeat; background-size: cover;"></div>
 
             <div class="section nobg full-screen nopadding nomargin">
                 <div class="container-fluid vertical-middle divcenter clearfix">
 
                     <div class="center">
-                        <a href="{{url('/')}}"><img src="{{asset('website/images/logo-dark.png')}}" alt="Canvas Logo"></a>
+                        <a href="{{url('/')}}">
+                            <h1 STYLE="color: #c4ff65">  أكاديمية أزهري</h1>
+                        </a>
                     </div>
 
                     <div class="card divcenter noradius noborder" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
@@ -95,16 +97,6 @@
                                     @if (Route::has('password.request'))
                                         <a href="{{ route('password.request') }}" class="button button-3d button-sacndary nomargin">نسيت كلمة المرور ؟</a>
                                     @endif
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="center">
-                                    <h4 style="margin-bottom: 15px;">أو تسجيل الدخول من خلال</h4>
-                                    <a href="{{url('/auth/facebook/')}}" class="button button-rounded si-facebook si-colored">Facebook</a>
-                                    <h4 style="margin-bottom: 15px;">أو </h4>
-                                    <a href="{{url('/auth/google/')}}" class="button button-rounded si-google si-colored">Google</a>
-
                                 </div>
 
                             </form>

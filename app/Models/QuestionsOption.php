@@ -18,6 +18,6 @@ class QuestionsOption extends Model
 
     public function question()
     {
-        return $this->belongsTo(Question::class, 'question_id')->withTrashed();
+        return $this->belongsTo(Question::class)->withTrashed();
     }
 }

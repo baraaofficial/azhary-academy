@@ -23,9 +23,8 @@ class Calss extends Model
 
     public function course()
     {
-        return $this->hasMany('App\Models\Course');
+        return $this->belongsTo('App\Models\Course');
     }
-
     public function users()
     {
         return $this->hasMany(User::class);

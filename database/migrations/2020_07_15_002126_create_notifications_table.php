@@ -17,8 +17,8 @@ class CreateNotificationsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('title');
-            $table->text('content')->nullable();
-            $table->integer('course_id');
+            $table->string('body')->nullable();
+            $table->string('notifiable_type');
 
             $table->softDeletes();
 

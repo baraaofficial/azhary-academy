@@ -42,7 +42,7 @@
 <div class="form-group mb-3 mb-md-2">
     <label class="d-block font-weight-semibold">الجنس</label>
     <div class="custom-control custom-control-right custom-radio custom-control-inline">
-        <input type="radio" value="Male" class="custom-control-input" name="gender" id="Male" checked="">
+        <input type="radio" value="Male" class="custom-control-input" name="gender" id="Male" >
         <label class="custom-control-label position-static" for="Male">ذكر</label>
     </div>
 

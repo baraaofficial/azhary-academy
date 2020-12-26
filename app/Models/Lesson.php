@@ -11,15 +11,10 @@ class Lesson extends Model
 
     protected $table = 'lessons';
     public $timestamps = true;
-    protected $fillable = array('title', 'description', 'video', 'image','pdf', 'love', 'dislove',
-        'review','mb3','course_id','test_id','isFree','experimental','answer','experimental2','answer2','experimental3','answer3','experimental4','answer4','experimental5','answer5','experimental6','answer6','experimental7','answer7','experimental8','answer8','experimental9','answer9','experimental10','answer10');
-
-    public static function boot()
-    {
-        parent::boot();
-
-        Lesson::observe(new \App\Observers\UserActionsObserver);
-    }
+    protected $fillable = array('title','description','video','image','pdf','review','course_id','isFree',
+        'experimental','answer','experimental2','answer2','experimental3','answer3','experimental4','answer4','experimental5','answer5',
+        'experimental6','answer6','experimental7','answer7','experimental8','answer8','experimental9','answer9','experimental10','answer10'
+    );
 
     public function questions()
     {
@@ -46,11 +41,11 @@ class Lesson extends Model
         return $this->hasMany(Comment::class);
     }
 
+
     public function notifications()
     {
         return $this->morphMany('App\Models\Notification', 'notifiable');
     }
-
 
 
 

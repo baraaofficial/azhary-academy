@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://azhary-academy.test/'),
+    'url' => env('APP_URL', 'https://azharyacademy.com/'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -235,8 +235,6 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
-        'Cart' => 'Melihovv\ShoppingCart\Facades\ShoppingCart',
 
     ],
 

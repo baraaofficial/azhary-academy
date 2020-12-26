@@ -16,12 +16,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     protected $fillable = [
-        'name', 'email', 'password','is_admin','image','location','mobile','bio','phone','gender','role_id','class_id'
+        'name', 'email', 'password','is_admin','image','location','mobile','bio','phone','gender','role_id','pin_code','calss_id'
     ];
 
 
     protected $hidden = [
-        'password', 'remember_token','api_token','pin_code',
+        'password', 'remember_token','api_token',
     ];
 
 
@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function course(){
-        return $this->hasMany(Course::class,'user_id','id');
+        return $this->belongsToMany(Course::class,'cart_course_user');
     }
 
     public function lessons(){
@@ -54,18 +54,31 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Course::class);
     }
-    public function class()
+
+    public function cart()
     {
-        return $this->belongsTo(Calss::class);
+        return $this->belongsToMany(Cart::class);
+    }
+    public function cartcourse()
+    {
+        return $this->belongsToMany(CartCourse::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'user_id');
     }
 
     public function notifications()
     {
-        return $this->morphToMany('App\Models\Notification', 'notifiable')->withPivot('is_read');
+        return $this->belongsToMany('App\Models\Notification')->withPivot('is_read');
     }
-
     public function tokens()
     {
         return $this->hasMany('App\Models\Token');
+    }
+
+    public function cart_user()
+    {
+        return $this->hasMany(Cart::class,'user_id');
     }
 }

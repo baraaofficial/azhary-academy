@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use function GuzzleHttp\Promise\all;
 
 class CoursesController extends Controller
 {
@@ -32,10 +33,15 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name'           => 'required|min:3|max:199',
-            'description'     => 'required|min:20|max:10000',
+            'name'            => 'required|min:3|max:199',
+            'description'     => 'required|min:5|max:10000',
             'image'           => 'required|image|mimes:jpeg,bmp,png',
             'price'           => 'required',
+            'subject_id'      => 'required',
+            'class_id'        => 'required',
+            'category_id'     => 'required',
+            'teacher_id'      => 'required',
+
         ];
         $message = [
             // validation Name
@@ -46,7 +52,7 @@ class CoursesController extends Controller
 
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
-            'description.min'        => 'يجب ان يكون الصوف اكثر من 20 حرف',
+            'description.min'        => 'يجب ان يكون الصوف اكثر من 5 حرف',
             'description.max'        => 'يجب ان يكون الوصف اقل من 10000 حرف',
 
 
@@ -56,9 +62,16 @@ class CoursesController extends Controller
             'image.mimes'            => 'يجب أن تكون jpeg,bmp,png',
 
 
-
             // validation price
-            'price.required'         => 'سعر الدوره مطلوب',
+            'price.required'              => 'سعر الدوره مطلوب',
+
+            'subject_id.required'         => ' المادة مطلوب',
+
+            'class_id.required'         => ' الصف مطلوب',
+
+            'category_id.required'         => ' القسم مطلوب',
+
+            'teacher_id.required'         => ' المدرس مطلوب',
 
 
         ];
@@ -83,62 +96,64 @@ class CoursesController extends Controller
 
         if($usersIDs->count())
         {
-            NotificationHelper::sendNotification($courses, $usersIDs->pluck('id')->toArray(), 'users', 'تم اضافة كورس جديد لصفك', ' تم اضافة كورس جديد لصفك', 'course', $courses);
+            NotificationHelper::sendNotification($courses, $usersIDs->pluck('id')->toArray(), 'users', ' تم اضافة دورة جديد لصفك ', '  تم اضافة دورة جديد لصفك ', 'course', $courses);
         }
 
-        return redirect()->route('courses.index')->with(['message' => 'تم إنشاء دورة'  .' '. $courses->name .' ' . ' بنجاح ']);
+        return redirect()->route('courses.index')->with(['message' => '  تم إنشاء دورة '  .' '. $courses->name .' ' . ' بنجاح ']);
 
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-
+        $course  = Course::where('id', $id)->firstOrFail();
+        $lessons  = $course->lessons()->get();
+        
+        return view('admin-panel.courses.show',compact('course','lessons'));
     }
-
-
 
     public function edit($id)
     {
         $model = Course::findOrFail($id);
+
         return view('admin-panel.courses.edit', compact('model'));
     }
 
-
     public function update(Request $request, $id)
     {
-        $rules = [
+       $rules = [
             'name'           => 'required|min:3|max:199',
             'description'     => 'required|min:20|max:10000',
-            'image'           => 'required|image|mimes:jpeg,bmp,png',
             'price'           => 'required',
+            'subject_id'      => 'required',
+            'class_id'        => 'required',
+            'category_id'     => 'required',
+            'teacher_id'      => 'required',
         ];
         $message = [
             // validation Name
-            'name.required'         => 'اسم الدروره مطلوب',
+            'name.required'         => 'اسم الدوره مطلوب',
             'name.min'              => 'يجب ان يكون الاسم اكثر من 3 أحرف',
             'name.max'              => 'يجب أن يكون الاسم اقل من 199 حرف',
 
 
             // validation description
             'description.required'   => 'وصف الدوره مطلوب',
-            'description.min'        => 'يجب ان يكون الصوف اكثر من 20 حرف',
+            'description.min'        => 'يجب ان يكون الصوف اكثر من 5 حرف',
             'description.max'        => 'يجب ان يكون الوصف اقل من 10000 حرف',
 
 
-            // validation images
-            'image.required'         => 'صورة الدوره مطلوبه',
-            'image.image'            => 'يجب ان تكون صوره',
-            'image.mimes'            => 'يجب أن تكون jpeg,bmp,png',
 
             // validation price
             'price.required'         => 'سعر الدوره مطلوب',
+
+            'subject_id.required'         => ' المادة مطلوب',
+
+            'class_id.required'         => ' الصف مطلوب',
+
+            'category_id.required'         => ' القسم مطلوب',
+
+            'teacher_id.required'         => ' المدرس مطلوب',
 
 
         ];
@@ -156,13 +171,17 @@ class CoursesController extends Controller
         }
 
         $courses->tags()->sync($request->tag_id);
+        $courses->refresh();
 
+       $usersIDs = $courses->class->users();
+        if($usersIDs->count())
+        {
+            NotificationHelper::sendNotification($courses, $usersIDs->pluck('id')->toArray(), 'users', ' تم تعديل الدورة لصفك ', ' تم تعديل الدورة  لصفك ', 'course', $courses);
+        }
 
         return redirect()->route('courses.index')->with(['message' => 'تم تعديل دورة' .' '. $courses->name .' ' . ' بنجاح ']);
 
     }
-
-
 
     public function destroy($id)
     {
@@ -192,7 +211,7 @@ class CoursesController extends Controller
      */
     public function addFile($file, $model, $folderName, $colName, $image = true): void
     {
-        $destinationPath = public_path() . '/uploads/' . $folderName . '/';
+        $destinationPath = 'uploads/' . $folderName . '/';
         $extension = $file->getClientOriginalExtension();
         $name = 'original' . time() . '.' . rand(1111, 9999) . '.' . $extension;
         $file->move($destinationPath, $name);
@@ -224,7 +243,7 @@ class CoursesController extends Controller
             'Content-Type: application/pdf',
         );
 
-        return response()->download(public_path(). '/' .$request->path , $request->file_name  , $headers);
+        return response()->download( asset('/') .$request->path , $request->file_name  , $headers);
     }
 
 

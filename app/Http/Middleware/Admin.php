@@ -17,9 +17,6 @@ class Admin
 		if (auth()->user()->is_admin != 'admin'){
 			return redirect('/');
 		}
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->back();
-        }
 
 		return $next($request);
 	}

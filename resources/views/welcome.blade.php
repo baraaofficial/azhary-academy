@@ -1,25 +1,31 @@
 @extends('layouts.app')
-
+@inject('count','App\Models\Course')
 @section('title')
-    - الرئسية
+    - الرئيسية
 @stop
 
 @section('css')
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="description" content="أكاديمية أزهري  - الرئيسية" />
+    <meta name="keywords" content=" أكاديمية ازهري " />
 @stop
 
 
 
 @section('content')
+    @if(session('message') ?? '' )
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+            {{session('message') ?? ''}}
+        </div>
+    @endif
     <!-- Slider
 		============================================= -->
     <section id="slider" class="slider-element slider-parallax clearfix" style="height: 550px;">
 
         <!-- HTML5 Video Wrap
         ============================================= -->
-        <div class="video-wrap">
-            <video id="slide-video" poster="{{asset('website/course/images/video/poster.jpg')}}" preload="auto" loop autoplay muted>
+        <div class="video-wrap dark">
+            <video id="slide-video" poster="{{asset('website/course/images/video/poster.png')}}" preload="auto" loop autoplay muted>
                 <source src='{{asset('website/course/images/video/1.mp4')}}' type='video/mp4' />
             </video>
             <div class="video-overlay" style="background: rgba(0,0,0,0.5); z-index: 1"></div>
@@ -37,7 +43,8 @@
                         <div class="input-group input-group-lg mt-1">
                             <form action="{{route('search')}}" method="get" class="input-group-append form-control text-center rounded noborder">
                             @csrf
-                            <input name="keyword" class="form-control text-center rounded noborder" type="search" placeholder="ابحث عن دورات " aria-label="Search">
+                            <input name="keyword" class="form-control text-center rounded noborder" type="search" placeholder="ابحث عن دوراتك هنا " aria-label="Search" title="إن كنت تريد البحث عن الدورات او المواد ف عليك كتابة الاسم المشابة
+                        ملحوظة: نحن نعمل جاهدين علي تقوية محرك بحثنا">
 
                             <div class="input-group-append">
                                 <button class="btn" type="submit"><i class="icon-line-search t700"></i></button>
@@ -65,8 +72,8 @@
             <div class="container">
 
                 <div class="heading-block nobottomborder my-4 center">
-                    <h3>المواد الدراسية</h3>
-                    <span>المواد التي تدرسها اكاديمية أزهري</span>
+                    <h3 title="أكاديمية أزهري - المواد الدراسية">المواد الدراسية</h3>
+                    <span title=" هنا يتم عرض أخر المواد التي أنشأتها الأكاديمية إن كنت تريد مادة معينه عليك بالبحث أعلى الصفحة"> هنا يتم عرض أخر المواد التي أنشأتها الأكاديمية إن كنت تريد مادة معينه عليك بالبحث أعلى الصفحة</span>
                 </div>
 
                 <!-- Categories
@@ -76,21 +83,45 @@
 
                     <div class="col-lg-2 col-sm-3 col-6 mt-4">
                         <div class="card hover-effect">
-                            <img class="card-img" src="{{asset('website/course/images/categories/academics.jpg')}}" alt="Card image">
-                            <a href="{{route('subject.index')}}" class="card-img-overlay rounded p-0" style="background-color: rgba(39,103,240,0.8);">
-                                <span><i class="icon-book-open"></i>{{$subject->name}}</span>
+                            <img class="card-img" src="{{asset('website/course/images/categories/subject.jpg')}}" alt="{{asset('website/course/images/categories/academics.jpg')}}" title="{{$subject->name}}">
+                            <a href="{{route('subject.index')}}" title="{{$subject->name}}" class="card-img-overlay rounded p-0" >
+                                <span title="{{$subject->name}}"><i class="icon-book-open"></i>{{$subject->name}}</span>
                             </a>
                         </div>
                     </div>
                     @endforeach
-
-
-
                 </div>
 
                 <div class="clear"></div>
 
             </div>
+            <div class="container">
+
+                <div class="heading-block nobottomborder my-4 center">
+                    <h3 title="أكاديمية أزهري - الصفوف الدراسية">الصفوف الدراسية</h3>
+                    <span title=" هنا يتم عرض أخر الصفوف الدراسية التي أنشأتها الأكاديمية إن كنت تريد صف من الصفوف معين عليك بالبحث أعلى الصفحة"> هنا يتم عرض أخر الصفوف الدراسية التي أنشأتها الأكاديمية إن كنت تريد صف من الصفوف معين عليك بالبحث أعلى الصفحة</span>
+                </div>
+
+                <!-- Categories
+                ============================================= -->
+                <div class="row course-categories clearfix mb-4">
+                    @foreach($get_class as $class)
+
+                    <div class="col-lg-2 col-sm-3 col-6 mt-4">
+                        <div class="card hover-effect">
+                            <img class="card-img" src="{{asset('website/course/images/categories/teacher.jpg')}}" alt="{{asset('website/course/images/categories/teacher.jpg')}}" title="{{$class->name}}">
+                            <a href="{{route('course.index')}}" title="{{$class->name}}" class="card-img-overlay rounded p-0" >
+                                <span title="{{$class->name}}"><i class="icon-book-reader"></i>{{$class->name}}</span>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
 
             <!-- Section Courses
             ============================================= -->
@@ -100,46 +131,60 @@
                 ============================================= -->
                 <div class="wave-top" style="position: absolute; top: 0; left: 0; width: 100%; background-image: url('website/images/wave-3.svg'); height: 12px; z-index: 2; background-repeat: repeat-x;"></div>
 
-                <div class="container">
-
+                <div class="container ">
                     <div class="heading-block nobottomborder mb-5 center">
-                        <h3>الدورات الأخيره في الأكاديمية</h3>
+                        <h3 title="أكاديمية أزهري - الصوف الدراسية">الصفوف الدراسية</h3>
+                        <span title=" هنا يتم عرض أخر 6 دورات بحسب تصنيف الصفوف إن كنت تريد دورة معينه عليك بالبحث أعلى الصفحة"> هنا يتم عرض أخر 6 دورات بحسب تصنيف الصفوف إن كنت تريد دورة معينه عليك بالبحث أعلى الصفحة</span>
+                    </div>
+                    <!-- Post Content
+                    ============================================= -->
+
+
+                    <!-- Portfolio Filter
+                    ============================================= -->
+                    <ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
+
+                        <li class="activeFilter" title="مشاهدة الكل "><a href="#" data-filter="*">مشاهدة الكل</a></li>
+                        @foreach($get_class as $class)
+                            <li><a href="#" data-filter=".class{{$class->id}}" title="{{$class->name}}">{{$class->name}}</a></li>
+                        @endforeach
+                    </ul><!-- #portfolio-filter end -->
+
+                    <div id="portfolio-shuffle" class="portfolio-shuffle" data-container="#portfolio">
+                        <i class="icon-random"></i>
                     </div>
 
                     <div class="clear"></div>
 
-                    <div class="row mt-2">
-
-                        <!-- Course
-                        ============================================= -->
+                    <!-- Portfolio Items
+                    ============================================= -->
+                    <div id="portfolio" class="portfolio grid-container portfolio-3 portfolio-masonry clearfix">
                         @foreach($courses_home as $course)
-                        <div class="col-md-4 mb-5">
-                            <div class="card course-card hover-effect noborder">
-                                <a href="#"><img class="card-img-top" src="{{asset($course->image)}}" alt="Card image cap"></a>
-                                <div class="card-body">
-                                    <h4 class="card-title t700 mb-2"><a href="{{route('course.list',$course->id)}}">{{$course->name}}</a></h4>
-                                    <p class="mb-2 card-title-sub uppercase t400 ls1"><a href="#" class="text-black-50">{{optional($course->class)->name}}</a></p>
-                                    <div class="rating-stars mb-2"><i class="icon-star3"></i><i class="icon-star3"></i><i class="icon-star3"></i><i class="icon-star3"></i><i class="icon-star-half"></i> <span>4.4</span></div>
-                                    <p class="card-text text-black-50 mb-1">{!!  \Illuminate\Support\Str::limit($course->description, $limit = 203, $end = '....' ) !!}</p>
+                            <article class="portfolio-item class{{optional($course->class)->id}} @if($loop->first) wide @endif">
+                                <div class="portfolio-image">
+                                    <a href="{{route('course.list',$course->id)}}">
+                                        <img src="{{$course->image}}" alt="{{$course->image}}" title="{{$course->name}}">
+                                    </a>
+                                    <div class="portfolio-overlay">
+                                        <a href="{{asset($course->image)}}" alt="{{$course->image}}" title="{{$course->name}}" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+                                        <a href="{{route('course.list',$course->id)}}" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                                <div class="portfolio-desc">
+                                    <h3><a href="{{route('course.list',$course->id)}}" title="{{$course->name}}">{{$course->name}}</a></h3>
+                                    <p class="card-text text-black-50 mb-1" title="{!!  \Illuminate\Support\Str::limit($course->description, $limit = 150, $end = '....' ) !!}">{!!  \Illuminate\Support\Str::limit($course->description, $limit = 150, $end = '....' ) !!}</p>
+                                    <span>
+                                        <a href="{{route('category.index',$course->id.'/'.\Illuminate\Support\Str::replaceArray(' ',['-'],optional($course->categories)->name))}}" title="{{optional($course->categories)->name}}">{{optional($course->categories)->name}}</a>,
+                                        <a href="{{route('course.index',$course->id.'/'.\Illuminate\Support\Str::replaceArray(' ',['-'],optional($course->class)->name))}}" title="{{optional($course->class)->name}}">{{optional($course->class)->name}}</a></span>
                                 </div>
                                 <div class="card-footer py-3 d-flex justify-content-between align-items-center bg-white text-muted">
                                     <div class="badge alert-primary">{{$course->price}} جنيهاً </div>
-                                    <form action="{{route('cart.store')}}" method="POST">
-                                        {{csrf_field()}}
-                                        <input type="hidden" name="id" value="{{$course->id}}">
-                                        <input type="hidden" name="name" value="{{$course->name}}">
-                                        <input type="hidden" name="price" value="{{$course->price}}">
-                                        <button class="button button-3d nomargin fright tab-linker position-relative ">شراء الان <i class="icon-cart-plus"></i></button>
-                                    </form>
-{{--
-                                    <a href="{{route('cart.store')}}" class="text-dark position-relative"><i class="icon-cart-plus"></i> أضف إلى السلة</a>
---}}
-
+                                    <a href="javascript: void(0);" onclick="return add_to_cart({{$course->id}})" title="أضف إلي سلتك" class="text-dark position-relative"><i class="icon-cart-plus"></i> أضف إلى السلة</a>
                                 </div>
-                            </div>
-                        </div>
+                            </article>
                         @endforeach
-                    </div>
+                    </div><!-- #portfolio end -->
+
                 </div>
 
                 <!-- Wave Shape Divider - Bottom
@@ -153,8 +198,8 @@
                 <div class="container">
 
                     <div class="heading-block nobottomborder mb-5 center">
-                        <h3>المدربين الأكثر </h3>
-                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla natus mollitia ipsum. Voluptatibus, perspiciatis placeat.</span>
+                        <h3 title="المدرسين الأقدم">المدرسين الأقدم </h3>
+                        <span title="من خلال ربط الطلاب في جميع أنحاء الجمهورية بأفضل المدرسين، يساعد أكاديمية أزهري الأفراد في الوصول إلى أهدافهم وتحقيق أحلامهم.">من خلال ربط الطلاب في جميع أنحاء الجمهورية بأفضل المدرسين، يساعد أكاديمية أزهري الأفراد في الوصول إلى أهدافهم وتحقيق أحلامهم.</span>
                     </div>
 
                     <div class="clear"></div>
@@ -167,15 +212,14 @@
                         <div class="col-lg-3 col-sm-6 mb-4">
                             <div class="feature-box hover-effect shadow-sm fbox-center fbox-bg fbox-light fbox-effect">
                                 <div class="fbox-icon">
-                                    <i><img src="{{asset('uploads/teachers/'.$teacher->image)}}" class="noborder nobg shadow-sm" style="z-index: 2;" alt=""></i>
+
+                                    <i><img src="{{asset($teacher->image != null ? $teacher->image : 'uploads/teachers/teacher.jpg')}}" class="noborder nobg shadow-sm" style="z-index: 2;"></i>
                                 </div>
-                                <h3 class="mb-4 nott ls0"><a href="#" class="text-dark">{{$teacher->name}}</a><br><small class="subtitle nott color">{{$teacher->type}}</small></h3>
-                                <p class="text-dark"><strong>2342</strong> Students</p>
-                                <p class="text-dark mt-0"><strong>23</strong> Courses</p>
+                                <h3 class="mb-4 nott ls0" title="{{$teacher->name}}"><a href="#" class="text-dark">{{$teacher->name}}</a><br><small class="subtitle nott color" title="{{$teacher->type}}">{{$teacher->type}}</small></h3>
+                                <p>{!!\Illuminate\Support\Str::limit($teacher->description, $limit = 199, $end = '....' ) !!}</p>
                             </div>
                         </div>
                             @endforeach
-
                     </div>
                 </div>
             </div>
@@ -209,8 +253,8 @@
                                             </a>
                                         </div>
                                         <div class="fbox-desc">
-                                            <h3 class="text-white">21,000 فى الأكديمية</h3>
-                                            <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+                                            <h3 class="text-white" title="أكثر من {{$count->count()}} كورس في الأكاديمية">أكثر من {{$count->count()}} كورس في الأكاديمية </h3>
+                                            <p class="text-white" title="تهتم أكاديمية أزهري لأول مرة بالطالب الأزهري بعد معاناة طويلة من التهميش وعدم الأهتمام بالمناهج الأزهرية لذلك قامت أكاديمية أزهري بإنشاء أول منصة تعليمية للمناهج الأزهرية سواء عن طريق تطبيق اندرويد أو الموقع الألكتروني الخاص بنا ">تهتم أكاديمية أزهري لأول مرة بالطالب الأزهري بعد معاناة طويلة من التهميش وعدم الأهتمام بالمناهج الأزهرية لذلك قامت أكاديمية أزهري بإنشاء أول منصة تعليمية للمناهج الأزهرية سواء عن طريق تطبيق اندرويد أو الموقع الألكتروني الخاص بنا </p>
                                         </div>
                                     </div>
                                 </div>
@@ -275,9 +319,8 @@
                                     <div class="card shadow" data-animate="shake" style="opacity: 1 !important">
                                         <div class="card-body">
 
-                                            <div class="badge registration-badge shadow-sm alert-primary">مجاناً</div>
-                                            <h4 class="card-title ls-1 mt-4 t700 h5">سجل معنا الآن وأحصل على خصومات !</h4>
-                                            <h6 class="card-subtitle mb-4 t400 uppercase ls2 text-black-50">التسجيل مجاناً الآن</h6>
+                                            <div class="badge registration-badge shadow-sm alert-primary" title="أكاديمية أزهري - التسجيل مجانا">مجاناً</div>
+                                            <h6 class="card-subtitle mb-4 t400 uppercase ls2 text-black-50" title="التسجيل مجاناً الآن">التسجيل مجاناً الآن</h6>
 
                                             <div class="form-result"></div>
 
@@ -334,7 +377,7 @@
                                                 <div class="col_full">
                                                     <button class="button button-rounded btn-block button-large bgcolor text-white nott ls0" type="submit" id="template-contactform-submit" name="submit" value="submit">التسجيل الآن</button>
                                                     <br>
-                                                    <small class="text-center" style="display: block; font-size: 12px; margin-top: 15px; color: #AAA;"><em>مرحبا بك في موقع أكاديمية أزهري .</em></small>
+                                                    <small class="text-center" title="مرحبا بك في موقع أكاديمية أزهري ." style="display: block; font-size: 12px; margin-top: 15px; color: #AAA;"><em>مرحبا بك في موقع أكاديمية أزهري .</em></small>
                                                 </div>
 
                                                 <div class="clear"></div>
@@ -366,7 +409,7 @@
 
             <!-- Promo Section
             ============================================= -->
-            <div class="section m-0" style="padding: 120px 0; background: #FFF url('website/course/images/instructor.jpg') no-repeat left top / cover">
+            <div class="section m-0" title="أكاديمية أزهري - ! إنضم معنا" style="padding: 120px 0; background: #FFF url('website/course/images/instructor.jpg') no-repeat left top / cover">
                 <div class="container">
                     <div class="row" dir="ltr">
 
@@ -374,8 +417,8 @@
 
                         <div class="col-md-5">
                             <div class="heading-block nobottomborder mb-4 mt-5">
-                                <h3>! إنضم معنا </h3>
-                                <span>. انضم إلى أكبر سوق للتعلم عبر الإنترنت في مصر </span>
+                                <h3 title="أكاديمية أزهري - ! إنضم معنا">! إنضم معنا </h3>
+                                <span title=". انضم إلى أكبر سوق للتعلم عبر الإنترنت في مصر">. انضم إلى أكبر سوق للتعلم عبر الإنترنت في مصر </span>
                             </div>
                             <p class="mb-2">Monotonectally conceptualize covalent strategic theme areas and cross-unit deliverables.</p>
                             <p>Consectetur adipisicing elit. Voluptate incidunt dolorum perferendis accusamus nesciunt et est consequuntur placeat, dolor quia.</p>
@@ -388,9 +431,11 @@
 
             <div class="promo promo-light promo-full footer-stick" style="padding: 60px 0 !important;">
                 <div class="container clearfix">
-                    <h3 class="ls-1"> اتصل بنا اليوم على <span> +91.22.57412541 </span> أو راسلنا عبر البريد الإلكتروني <span> support@canvas.com </span></h3>
-                    <span class="text-black-50">نحن نسعى جاهدين لتزويد عملائنا بدعم من الدرجة الأولى لجعل تجربة موضوعهم رائعة.</span>
-                    <a href="{{route('contact-us.index')}}" class="button button-xlarge button-rounded nott ls0 t400">أبدأ الآن</a>
+                    @foreach($contact as $row)
+                    <h3 class="ls-1" title="اتصل بنا اليوم على {{$row->phone}} أو راسلنا عبر البريد الإلكتروني {{$row->mail}} "> اتصل بنا اليوم على <span> {{$row->phone}} </span> أو راسلنا عبر البريد الإلكتروني <span> {{$row->mail}} </span></h3>
+                    @endforeach
+                    <span class="text-black-50" title="نحن نسعى جاهدين لتزويد عملائنا بدعم من الدرجة الأولى لجعل تجربة موضوعهم رائعة.">نحن نسعى جاهدين لتزويد عملائنا بدعم من الدرجة الأولى لجعل تجربة موضوعهم رائعة.</span>
+                    <a href="{{route('contact-us.index')}}" class="button button-xlarge button-rounded nott ls0 t400" title="أبدأ تواصل معنا الأن">أبدأ الآن</a>
                 </div>
             </div>
 

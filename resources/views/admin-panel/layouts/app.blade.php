@@ -79,22 +79,24 @@
 
                     <div class="dropdown-content-body dropdown-scrollable">
                         <ul class="media-list">
-                            @foreach($get_message as $message)
-                            <li class="media">
+                            @if (count($get_message) > 0)
+                                @foreach($get_message as $message)
+                                    <li class="media">
+                                        <div class="media-body">
+                                            <div class="media-title">
+                                                <a href="{{ route('contactus.show',[$message->id]) }}">
+                                                    <span class="font-weight-semibold">{{$message->name}}</span>
+                                                    <span class="text-muted float-right font-size-sm"> {{$message->updated_at->diffForHumans()}}</span>
+                                                </a>
+                                            </div>
 
-
-                                <div class="media-body">
-                                    <div class="media-title">
-                                        <a href="{{ route('contactus.show',[$message->id]) }}">
-                                            <span class="font-weight-semibold">{{$message->name}}</span>
-                                            <span class="text-muted float-right font-size-sm"> {{$message->updated_at->diffForHumans()}}</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="text-muted">{{$message->subject}}</span>
-                                </div>
-                            </li>
-                            @endforeach
+                                            <span class="text-muted">{{$message->subject}}</span>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @else
+                                <div style="color: #0D47A1"> لا توجد رسائل</div>
+                            @endif
                         </ul>
                     </div>
 
@@ -106,12 +108,12 @@
 
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{asset('admin-panel/global_assets/images/placeholders/placeholder.jpg')}}" class="rounded-circle mr-2" height="34" alt="">
+                    <img src="{{asset('/uploads/users/'.Auth::user()->image)}}" class="rounded-circle mr-2" height="34" alt="">
                     <span>{{ Auth::user()->name }}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item"><i class="icon-user-plus"></i>{{ Auth::user()->name }} </a>
+                    <a href="{{ route('profile.index', ['id' => auth()->user()->id]) }}" class="dropdown-item"><i class="icon-user-plus"></i>{{ Auth::user()->name }} </a>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="icon-switch2"></i> تسجيل الخروج</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
@@ -152,13 +154,13 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="mr-3">
-                            <a href="#"><img src="{{asset('admin-panel/global_assets/images/placeholders/placeholder.jpg')}}" width="38" height="38" class="rounded-circle" alt=""></a>
+                            <a href="#"><img src="{{asset('/uploads/users/'.Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a>
                         </div>
 
                         <div class="media-body">
                             <div class="media-title font-weight-semibold">{{ Auth::user()->name }}</div>
                             <div class="font-size-xs opacity-50">
-                                <i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+                                <i class="icon-pin font-size-sm"></i> &nbsp;Alexandria
                             </div>
                         </div>
 
@@ -317,7 +319,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item nav-item-submenu">
+                   {{--            <li class="nav-item nav-item-submenu">
                         <a href="#" class="nav-link"><i class="icon-users"></i> <span>  رسائل الفرحة والتوبيخية  </span></a>
 
                         <ul class="nav nav-group-sub" data-submenu-title="رسائل الفرحة والتوبيخية">
@@ -334,6 +336,14 @@
                             </li>
                             <li class="nav-item"><a href="{{route('users.create')}}" class="nav-link">انشاء عضو جديد</a></li>
                         </ul>
+                    </li>--}}
+
+                <!-- Main -->
+                    <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">قائمة بيانات الدفع لأكادمية أزهري</div> <i class="icon-menu" title="Main"></i></li>
+                    <li class="nav-item ">
+                        <a href="{{route('invoices.index')}}" data-submenu-title="جميع الفواتير" class="nav-link"><i class="icon-calculator text-pink-300" ></i> <span> جميع الفواتير  </span></a>
+                        <a href="{{route('payment.create')}}"data-submenu-title="إنشاء دفع لمستخدم "  class="nav-link"><i class="icon-coins text-yellow-300" style="color: #ffed4a"></i> <span> إنشاء دفع لمستخدم  </span></a>
+
                     </li>
                 </ul>
             </div>

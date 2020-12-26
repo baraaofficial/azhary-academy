@@ -17,7 +17,6 @@
         </div>
 
     </section><!-- #page-title end -->
-    @include('admin-panel.partials.validation-errors')
 
     <!-- Content ============================================= -->
     <section id="content">
@@ -27,6 +26,7 @@
             <div class="container clearfix">
 
                 <div class="accordion accordion-lg divcenter nobottommargin clearfix" style="max-width: 550px;">
+                    @include('partials.validation-errors')
 
                     <div class="acctitle"><i class="acc-closed icon-lock3"></i><i class="acc-open icon-unlock"></i>تسجيل الدخول إلى حسابك</div>
                     <div class="acc_content clearfix">
@@ -128,27 +128,23 @@
                                 <label for="simpleinput">الصف الدراسي : :</label>
                                 @inject('class','App\Models\Calss')
 
-                                {!! Form::select('class_id',$class->pluck('name','id'),null,[
+                                {!! Form::select('calss_id',$class->pluck('name','id'),null,[
                                     'placeholder' => 'اختر',
                                     'class' => 'form-control form-control-select2'
 
                                 ]) !!}
                             </div>
-                            <div class="col_full">
-                                <legend class="col-form-label col-sm-2 pt-0">الجنس</legend>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male" >
-                                        <label class="form-check-label" for="gridRadios1">
-                                            ذكر
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
-                                        <label class="form-check-label" for="gridRadios2">
-                                            أنثي
-                                        </label>
-                                    </div>
+
+                            <div class="form-group mb-3 mb-md-2">
+                                <label class="d-block font-weight-semibold">الجنس</label>
+                                <div class="custom-control custom-control-right custom-radio custom-control-inline">
+                                    <input type="radio" value="Male" class="custom-control-input" name="gender" id="Male" checked="">
+                                    <label class="custom-control-label position-static" for="Male">ذكر</label>
+                                </div>
+
+                                <div class="custom-control custom-control-right custom-radio custom-control-inline">
+                                    <input type="radio" value="female" class="custom-control-input" name="gender" id="female">
+                                    <label class="custom-control-label position-static" for="female">إنثي</label>
                                 </div>
                             </div>
                             <div class="col_full nobottommargin">
@@ -159,7 +155,7 @@
                     </div>
                     <div class="line line-sm"></div>
 
-
+{{--
                     <div class="center">
                         <h3 style="margin-bottom: 20px;">أو التسجيل من خلال</h3>
                         <a href="{{url('/auth/facebook/')}}" class="button button-rounded si-facebook si-colored">Facebook</a>
@@ -168,7 +164,7 @@
                         <h4 style="margin-bottom: 15px;">أو</h4>
                         <a href="{{url('/auth/google/')}}" class="button button-rounded si-google si-colored">Google</a>
 
-                    </div>
+                    </div>--}}
                 </div>
 
             </div>

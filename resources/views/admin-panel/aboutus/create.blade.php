@@ -2,7 +2,7 @@
 @inject('model','App\Models\AboutUs')
 
 @section('title')
-    انشاء حول الأكاديمية
+   -  انشاء حول الأكاديمية
 
 @endsection
 
@@ -33,7 +33,7 @@
         <div class="page-header page-header-light">
             <div class="page-header-content header-elements-md-inline">
                 <div class="page-title d-flex">
-                    <h4><i class="icon-arrow-right6 mr-2"></i> <span class="font-weight-semibold">لوحة التحكم</span> - المواد الدراسية</h4>
+                    <h4><i class="icon-arrow-right6 mr-2"></i> <span class="font-weight-semibold">لوحة التحكم</span> - حول الأكاديمية</h4>
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
                 </div>
 

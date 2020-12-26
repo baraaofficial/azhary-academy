@@ -70,7 +70,7 @@
 
             @include('admin-panel.courses.form')
 
-            <button type="submit" class="btn btn-primary ml-3"> الدورة{{$model->name}} <i class="icon-paperplane ml-2"></i></button>
+            <button type="submit" class="btn btn-primary ml-3"> تعديل دورة {{$model->name}} <i class="icon-paperplane ml-2"></i></button>
 
             {!! Form::close() !!}
 

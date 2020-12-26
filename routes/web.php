@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashboard')->group(function (){
 
-    Route::get('/','HomeController@index');
+    Route::get('/','HomeController@index')->name('admin.index');
     Route::resource('courses','CoursesController');
     Route::resource('class','ClassController');
     Route::resource('subjects','SubjectController');
@@ -30,6 +30,11 @@ Route::namespace('Admin')->middleware('auth','admin','verified')->prefix('dashbo
     Route::resource('contact','ContactController');
     Route::resource('contactus','ContactUsController');
     Route::resource('users','UserController');
+    Route::resource('invoices','CartController');
+
+    Route::get('payment','CartCourseUser@create')->name('payment.create');
+    Route::post('payment/create','CartCourseUser@store')->name('payment.store');
+
     Route::resource('joyful-message','JoyfulMessageController');
     Route::resource('reprimand-message','ReprimandMessageController');
 
@@ -66,16 +71,15 @@ Route::get('/', function () {
 
 });
 
+Route::get('/terms-and-conditions', function () {
+    return view('TermsandConditions');
 
+});
 Route::get('single', function () {
     return view('lesson.single');
 
 });
 
-Route::get('profile', function () {
-    return view('admin');
-
-});
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware('verified')->group(function () {
@@ -95,7 +99,7 @@ Route::middleware('verified')->group(function () {
         Route::get('/lessons/{id}','LessonController@index')->name('lesson.single');
         Route::post('/lessons/','LessonController@store')->name('lesson.store');
 
-        Route::get('/result/{id}/','LessonController@show')->name('result.show');
+        Route::get('/result/{id}/','LessonController@result')->name('result.show');
     });
 
     Route::middleware('auth')->group(function () {
@@ -104,19 +108,26 @@ Route::middleware('verified')->group(function () {
         Route::post('comments/{id}/create', 'HomeController@commentStore')->name('comments.commentStore');
         Route::get('comments/{id}', 'HomeController@commentDelete')->name('comment.delete');
 
-        Route::get('profile/{id}/{slug?}', 'HomeController@profile')->name('profile.index');
+        Route::get('profile/{id}', 'HomeController@profile')->name('profile.index');
         Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
 
         Route::post('/download','admin\LessonController@getDownload');
-        Route::post('/download-course','admin\CoursesController@getDownload');
+        Route::post('/download-course','Admin\CoursesController@getDownload');
 
-        Route::get('cart','CartController@index')->name('cart.index');
-        Route::post('cart','CartController@store')->name('cart.store');
+        Route::get('notifications', 'NotificationController@notifications');
+
+        // shoping cart
+        Route::get('/cart', 'CartController@index')->name('cart.index');
+        Route::get('/add-to-cart/{id}', 'CartController@add_to_cart')->name('cart.store');
+        Route::get('/delete-product-from-cart/{id}', 'CartController@delete_from_cart')->name('cart.delete');
+
+        // check out cart items
+        Route::post('/checkout', 'CheckoutController@submit_order')->name('checkout.index');
+
 
     });
 });
 
-Route::get('/notifications', 'NotificationController@index')->name('notification');
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search/{search}', 'SearchController@index')->name('search.index');

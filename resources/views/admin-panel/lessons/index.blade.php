@@ -1,7 +1,8 @@
 @extends('admin-panel.layouts.app')
 
 @section('title')
-جميع الدروس الدراسية
+    - جميع الدروس الدراسية
+
 @endsection
 @section('css')
     <!-- Theme JS files -->
@@ -80,9 +81,9 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$row->title}}</td>
-                            <td>{!!  \Illuminate\Support\Str::limit($row->description, $limit = 40, $end = '...' ) !!}</td>
-                            <td>{{optional($row->courses)->name}}</td>
-                            <td>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
+                            <td>{!! \Illuminate\Support\Str::limit($row->description, $limit = 40, $end = '...' ) !!}</td>
+                            <td>{{optional($row->course)->name}}</td>
+                            <td title="{{$row->updated_at}}">{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
                             <td class="text-center">
                                 <div class="list-icons">
                                     <div class="dropdown">
@@ -92,12 +93,14 @@
 
                                         <div class="dropdown-menu">
                                             <a href="{{route('lessons.edit',$row->id)}}" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
-                                            {!! Form::open([
-                                            'action' => ['Admin\LessonController@destroy',$row->id],
+                                            {!! Form::open(array(
 
-                                            'method' => 'delete'
+                                                 'style' => 'display: inline-block;',
+                                                 'method' => 'DELETE',
+                                                 'onsubmit' => "return confirm('".trans("هل أنت متأكد من حذف الدرس ؟")."');",
+                                                 'route' => ['lessons.destroy', $row->id]))
+                                            !!}
 
-                                               ]) !!}
                                             <button class="dropdown-item"><i class="icon-x"></i> حذف</button>
 
                                             {!! Form::close() !!}

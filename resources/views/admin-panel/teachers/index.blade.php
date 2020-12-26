@@ -1,22 +1,7 @@
 @extends('admin-panel.layouts.app')
 
 @section('title')
-جميع تعريفات المدرسين
-@endsection
-@section('css')
-
-    <script src="{{asset('admin-panel/global_assets/js/main/jquery.min.js')}}"></script>
-    <script src="{{asset('admin-panel/global_assets/js/main/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('admin-panel/global_assets/js/plugins/loaders/blockui.min.js')}}"></script>
-    <!-- /core JS files -->
-
-    <!-- Theme JS files -->
-    <script src="{{asset('admin-panel/global_assets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
-    <script src="{{asset('admin-panel/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
-
-    <script src="{{asset('admin-panel/global_assets/js/demo_pages/datatables_basic.js')}}"></script>
-
-
+- جميع تعريفات المدرسين
 @endsection
 @section('content')
 
@@ -124,17 +109,7 @@
                     @endforeach
                 </table>
             </div>
-            <div class="datatable-footer">
-                <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">عرض 1 to 10 of 15 إدخالات</div>
-                <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-                    <a class="paginate_button previous disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_previous">→</a>
-                    <span>
-                    <a class="paginate_button current" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a>
-                    <a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a>
-                </span>
-                    <a class="paginate_button next" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" id="DataTables_Table_0_next">←</a>
-                </div>
-            </div>
+
             <!-- /basic responsive configuration -->
             @else
                 <div class="alert alert-danger alert-styled-left alert-dismissible">

@@ -1,7 +1,7 @@
 @extends('admin-panel.layouts.app')
 
 @section('title')
-    جميع المواد الدراسية
+   -  جميع المواد الدراسية
 @endsection
 @section('content')
 
@@ -82,12 +82,13 @@
 
                                     <div class="dropdown-menu">
                                         <a href="{{route('subjects.edit',$row->id)}}" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
-                                        {!! Form::open([
-                                             'action' => ['Admin\SubjectController@destroy',$row->id],
+                                        {!! Form::open(array(
 
-                                             'method' => 'delete'
+                                                 'style' => 'display: inline-block;',
+                                                 'method' => 'DELETE',
+                                                 'onsubmit' => "return confirm('".trans("هل انت متأكد من المادة ؟")."');",
+                                                 'route' => ['subjects.destroy', $row->id])) !!}
 
-                                        ]) !!}
 
                                         <button class="dropdown-item"><i class="icon-x"></i> حذف</button>
                                         {!! Form::close() !!}

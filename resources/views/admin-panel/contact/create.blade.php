@@ -1,7 +1,7 @@
 @extends('admin-panel.layouts.app')
 @inject('model','App\Models\Contact')
 @section('title')
-    انشاء بيانات الإتصال
+    -     انشاء بيانات الإتصال
 
 @endsection
 

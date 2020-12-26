@@ -21,8 +21,8 @@ class ContactUsController extends Controller
 
 
         $rules = [
-            'email'         => 'required|email|min:20|max:300',
-            'phone'         => 'required|min:3|max:199',
+            'email'         => 'required|email|min:3|max:200',
+            'phone'         => 'required|min:11|max:11',
             'message'       => 'required|min:3|max:2000',
             'subject'       => 'required|min:3|max:199',
         ];
@@ -30,15 +30,15 @@ class ContactUsController extends Controller
             // validation email
 
             'email.required'     => 'البريد الألكتروني مطلوب',
-            'email.min'          => 'يجب ان يكون بريد إلكتروني حقيقي',
-            'title.min'          => 'يجب ان يكون ان يكون العنوان اكثر من 20 أحرف',
-            'title.max'          => 'لابد أن يكون العنوان اقل من 300 حرف',
+            'email.email'        => 'يجب ان يكون بريد إلكتروني حقيقي',
+            'email.min'          => 'يجب ان يكون عنوان البريد الإلكتروني اكثر من 3 أحرف',
+            'email.max'          => 'يجب أن يكون عنوان البريد الإلكتروني اقل من 200 حرف',
 
             // validation phone
 
             'phone.required'     => 'رقم الموبايل مطلوب',
-            'phone.min'          => 'يجب ان يكون رقم الموبايل اكثر من 3 أحرف',
-            'phone.max'          => 'يجب أن يكون رقم الموبايل اقل من 199 حرف',
+            'phone.min'          => 'يجب ان يكون رقم الموبايل لا يزيد ولا يقل عن 11 أحرف ويكون رقم صحيح',
+            'phone.max'          => 'يجب أن يكون رقم الموبايل لا يزيد ولا يقل عن 11 حرف ويكون رقم صحيح',
 
             // validation message
 
@@ -50,7 +50,7 @@ class ContactUsController extends Controller
             // validation subject
 
             'subject.required'     => 'موضوع الرسالة مطلوب',
-            'subject.min'          => 'يجب ان يكون موضوع الرسالة اكثر من 20 أحرف',
+            'subject.min'          => 'يجب ان يكون موضوع الرسالة اكثر من 3 أحرف',
             'subject.max'          => 'يجب أن يكون موضوع الرسالة اقل من 300 حرف',
 
 

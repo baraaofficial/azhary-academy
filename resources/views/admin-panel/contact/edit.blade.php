@@ -9,7 +9,8 @@
 @endsection
 
 @section('title')
-    تعديل بيانات الإتصال
+    -     تعديل بيانات الإتصال
+
 @endsection
 
 @section('content')

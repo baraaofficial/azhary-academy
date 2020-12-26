@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -28,12 +29,10 @@ class TeachersController extends Controller
     {
         $rules = [
             'name'           => 'required|min:3|max:40',
-            'description'    => 'required|min:3',
-            'email'          => 'required|unique:teachers,email|min:3|max:50|',
+            'description'    => 'required|min:3|max:199',
             'image'          => 'required|image|mimes:jpeg,bmp,png',
-            'phone'          => 'required|min:11|max:11',
-            'school'         => 'required|min:3|max:20',
-
+            'phone'          => 'min:11|max:11',
+            
 
         ];
         $message = [
@@ -44,46 +43,32 @@ class TeachersController extends Controller
             'name.max'          => 'يجب أن يكون الاسم اقل من 40 حرف',
 
 
-            // validation description
+            // validation Description
 
             'description.required'     => 'وصف المدرس مطلوب',
             'description.min'          => 'يجب ان يكون الوصف اكثر من 3 أحرف',
+            'description.max'          => 'يجب ان يكون الوصف أقل من 199 أحرف',
 
-            // validation email
 
-            'email.required'     => 'البريد الألكترونى الخاص بالمدرس مطلوب',
-            'email.min'          => 'يجب ان يكون البريد الألكتروني اكثر من 3 أحرف',
-            'email.max'          => 'يجب أن يكون البريد الألكتروني اقل من 50 حرف',
-            'email.unique'       => 'هذا البريد موجود بالفعل',
-
-            // validation images
+            // validation Images
             'image.required'         => 'صورة المدرس مطلوبه',
             'image.image'            => 'يجب ان تكون صوره',
             'image.mimes'            => 'يجب أن تكون jpeg,bmp,png',
 
-            // validation phone
+            // validation Phone
 
             'phone.required'     => ' رقم المدرس مطلوب',
             'phone.min'          => 'يجب ان يكون 11 رقم',
             'phone.max'          => 'يجب أن يكون11 رقم',
 
-            // validation school
-
-            'school.required'     => 'المدرسة/المعهد الذي يعمل بها المدرس',
-            'school.min'          => 'يجب ان تكون المدرسة اكثر من 3 أحرف',
-            'school.max'          => 'يجب ان تكون المدرسة أقل من 20 حرف',
             ];
 
 
         $this->validate($request, $rules,$message);
-
         $teachers = Teacher::create($request->all());
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(400, 398)->save( public_path('/uploads/teachers/' . $filename ) );
-            $teachers->image = $filename;
-            $teachers->save();
+
+        if ($request->hasFile('image')) {
+            $this->addFile($request->file('image'), $teachers, 'teachers', 'image');
         }
 
 
@@ -111,12 +96,8 @@ class TeachersController extends Controller
         $rules = [
             'name'           => 'required|min:3|max:40',
             'description'    => 'required|min:3',
-            'email'          => 'required|min:3|max:50|',
             'image'          => 'required|image|mimes:jpeg,bmp,png',
             'phone'          => 'required|min:11|max:11',
-            'school'         => 'required|min:3|max:20',
-
-
         ];
         $message = [
             // validation Name
@@ -131,12 +112,6 @@ class TeachersController extends Controller
             'description.required'     => 'وصف المدرس مطلوب',
             'description.min'          => 'يجب ان يكون الوصف اكثر من 3 أحرف',
 
-            // validation email
-
-            'email.required'     => 'البريد الألكترونى الخاص بالمدرس مطلوب',
-            'email.min'          => 'يجب ان يكون البريد الألكتروني اكثر من 3 أحرف',
-            'email.max'          => 'يجب أن يكون البريد الألكتروني اقل من 50 حرف',
-
 
             // validation images
             'image.required'         => 'صورة المدرس مطلوبه',
@@ -149,11 +124,6 @@ class TeachersController extends Controller
             'phone.min'          => 'يجب ان يكون 11 رقم',
             'phone.max'          => 'يجب أن يكون11 رقم',
 
-            // validation school
-
-            'school.required'     => 'المدرسة/المعهد الذي يعمل بها المدرس',
-            'school.min'          => 'يجب ان تكون المدرسة اكثر من 3 أحرف',
-            'school.max'          => 'يجب ان تكون المدرسة أقل من 20 حرف',
         ];
 
 
@@ -162,12 +132,8 @@ class TeachersController extends Controller
         $teachers = Teacher::findOrFail($id);
         $teachers->update($request->all());
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(400, 398)->save( public_path('/uploads/teachers/' . $filename ) );
-            $teachers->image = $filename;
-            $teachers->save();
+        if ($request->hasFile('image')) {
+            $this->addFile($request->file('image'), $teachers, 'teachers', 'image');
         }
 
         return redirect()->route('teachers.index')->with(['message' => 'تم تعديل تعريف المدرس '.' '.$teachers->name .' '. '  بنجاح']);
@@ -193,4 +159,32 @@ class TeachersController extends Controller
             }
         }
     }
+
+    public function addFile($file, $model, $folderName, $colName, $image = true): void
+    {
+        $destinationPath =  'uploads/' . $folderName . '/';
+        $extension = $file->getClientOriginalExtension();
+        $name = 'original' . time() . '.' . rand(1111, 9999) . '.' . $extension;
+        $file->move($destinationPath, $name);
+
+        if ($image) {
+
+            $image_400 = '400-' . time() . '' . rand(11111, 99999) . '.' . $extension;
+            $resize_image = Image::make($destinationPath . $name);
+            $resize_image->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath . $image_400, 100);
+
+            $path = '/uploads/' . $folderName . '/' . $image_400;
+            File::delete($destinationPath.$name);
+
+        } else {
+
+            $path = '/uploads/' . $folderName . '/' . $name;
+        }
+
+        $model->$colName = $path;
+        $model->save();
+    }
+
 }

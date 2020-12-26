@@ -20,7 +20,8 @@
 @endsection
 
 @section('title')
-    تعديل الدرس {{$model->name}}
+    -     تعديل الدرس {{$model->name}}
+
 @endsection
 
 @section('content')

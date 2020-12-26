@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ResetPassword;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -18,9 +19,10 @@ class AuthController extends Controller
     {
         $validator = validator()->make($request->all(), [
             'name'      => 'required|unique:users,name',
-            'email'     => 'required|unique:users,email',
+            'email'     => 'required|email:rfc,dns|unique:users,email',
             'phone'     => 'required|min:11|max:11',
             'gender'    => 'required',
+            'calss_id'  => 'required|exists:App\Models\Calss,id',
             'password'  => 'required|confirmed|min:8',
         ]);
         if ($validator->fails()) {
@@ -32,6 +34,7 @@ class AuthController extends Controller
         $user = User::create($request->all());
         $user->api_token = Str::random(60);
         $user->save();
+
         return responseJson(1, ' تم الأضافة بنجاح ', [
             'api_token' => $user->api_token,
             'user'      => $user
@@ -41,13 +44,13 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = validator()->make($request->all(), [
-            'name'     => 'required',
+            'email'     => 'required',
             'password' => 'required|min:8',
         ]);
         if ($validator->fails()) {
             return responseJson(0, $validator->errors()->first(), $validator->errors());
         }
-        $users = User::where('name', $request->name)->first();
+        $users = User::where('email', $request->email)->first();
         if ($users) {
 
             if (Hash::check($request->password, $users->password)) {
@@ -58,7 +61,7 @@ class AuthController extends Controller
 
                 ]);
             } else {
-                return responseJson(0, 'بيانات الدخول غير صحيحه يرجي التأكد من البيانات والدخول مرة إخري');
+                return responseJson(0, 'الرقم السري غير صحيح يرجي التأكد من البيانات والدخول مرة إخري');
             }
         } else {
             return responseJson(0, 'بيانات الدخول غير صحيحه يرجي التأكد من البيانات والدخول مرة إخري');
@@ -109,19 +112,23 @@ class AuthController extends Controller
                 /*   smsMisr($request->phone, "your reset code is : " . $code);
                    return responseJson(1, 'برجاء فحص هاتفك ..',['pin_code_for_test', $code]);*/
 
-                Mail::to($user->email)->send(new ResetPassword($user));
-                return responseJson(1, 'برجاء فحص بريدك الألكتروني ..',
+                Mail::to($user->email)
+                    ->send(new ResetPassword($user));
+                return responseJson(1, 'برجاء فحص هاتفك ..',
                     [
                         'pin_code_for_test' => $code,
-                        'mail_fails' => Mail::failures(),
+                       // 'mail_fails' => Mail::failures(),
                         'email' => $user->email,
 
                     ]);
-
+            } else{
+                return responseJson(0,'حدث خطأ ، حاول مرة أخرى');
             }
 
-       } else {
-            return responseJson(0, 'رقم الهاتف الذي أدخلته غير موجود');
+        } else {
+            //sms ... return responseJson(0, 'رقم الهاتف الذي أدخلته غير موجود');
+            return responseJson(0, 'البريد الألكتروني الذي أدخلته غير موجود');
+
         }
     }
 
@@ -129,7 +136,7 @@ class AuthController extends Controller
     public function newPassword(Request $request)
     {
         $validator = validator()->make($request->all(), [
-            'pin_code' => 'required|min:4',
+            'pin_code' => 'numeric|required|min:4',
             'password' => 'required|confirmed',
         ]);
         if ($validator->fails()) {
@@ -138,7 +145,7 @@ class AuthController extends Controller
         $user = User::where('pin_code', $request->pin_code)->first();
         if ($user) {
             $user->update(['pin_code' => null, 'password' => bcrypt($request->password)]);
-            return responseJson(1, 'تم تغيير كلمة المرور بنجاح');
+            return responseJson(1, 'تم تغيير كلمة المرور بنجاح',$user);
         } else {
             return responseJson(0, 'هذا الكود غير صالح');
         }

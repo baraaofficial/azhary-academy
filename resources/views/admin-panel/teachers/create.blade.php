@@ -1,7 +1,7 @@
 @extends('admin-panel.layouts.app')
 @inject('model','App\Models\Teacher')
 @section('title')
-    انشاء تعريف مدرس جديد
+  -   انشاء تعريف مدرس جديد
 
 @endsection
 

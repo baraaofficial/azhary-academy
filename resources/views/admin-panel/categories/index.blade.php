@@ -1,7 +1,8 @@
 @extends('admin-panel.layouts.app')
 
 @section('title')
-جميع الأقسام
+    - جميع الأقسام
+
 @endsection
 @section('css')
     <!-- Theme JS files -->

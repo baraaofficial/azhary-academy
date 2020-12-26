@@ -1,6 +1,7 @@
 @extends('admin-panel.layouts.app')
 @section('title')
-    تعديل حول الأكاديمية {{$model->name}}
+    -     تعديل حول الأكاديمية {{$model->name}}
+
 @endsection
 
 @section('css')

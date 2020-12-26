@@ -9,7 +9,8 @@
 @endsection
 
 @section('title')
-    تعديل قسم {{$model->name}}
+    -     تعديل قسم {{$model->name}}
+
 @endsection
 
 @section('content')

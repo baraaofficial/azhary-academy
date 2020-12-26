@@ -62,7 +62,6 @@ class QuestionsController extends Controller
     }
 
 
-
     public function edit($id)
     {
         $relations = [
@@ -86,13 +85,10 @@ class QuestionsController extends Controller
 
     public function show($id)
     {
-        $relations = [
-            'lesson' => Lesson::get()->pluck('title', 'id')->prepend('Please select', ''),
-        ];
 
-        $question = Question::findOrFail($id);
-
-        return view('admin-panel.questions.show', compact('question') + $relations);
+        $question = Question::where('id', $id)->findOrFail($id);
+        $options  = $question->options()->get();
+        return view('admin-panel.questions.show', compact('question','options'));
     }
 
 

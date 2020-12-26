@@ -26,7 +26,7 @@
                 <div class="d-flex">
                     <div class="breadcrumb">
                         <a href="{{url('/dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
-                        <a href="{{url('/dashboard/tags')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الأعضاء الجديدة</a>
+                        <a href="{{route('users.index')}}" class="breadcrumb-item"><i class="icon-stack2 mr-2"></i>جميع الأعضاء</a>
                         <span class="breadcrumb-item active">انشاء عضو جديد</span>
                     </div>
 
@@ -53,7 +53,7 @@
 
             @include('admin-panel.users.form')
 
-            <button type="submit" class="btn btn-primary ml-3">انشاء المادة <i class="icon-paperplane ml-2"></i></button>
+            <button type="submit" class="btn btn-primary ml-3">انشاء العضو الجديد <i class="icon-paperplane ml-2"></i></button>
 
             {!! Form::close() !!}
 

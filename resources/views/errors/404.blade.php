@@ -4,7 +4,7 @@
     - 404
     @endsection
 @section('content')
-    <section id="slider" class="slider-element slider-parallax full-screen dark error404-wrap" style="background: url('{{asset('website/images/landing/static.jpg')}}') center;">
+    <section id="slider" class="slider-element slider-parallax full-screen dark error404-wrap" style="background: url('{{asset('website/landing1.jpg')}}') center;">
         <div class="slider-parallax-inner">
 
             <div class="container-fluid vertical-middle center clearfix">

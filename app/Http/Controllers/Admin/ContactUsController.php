@@ -12,37 +12,21 @@ class ContactUsController extends Controller
     public function index()
     {
         $contact_us = Contact_us::all();
+
+
         return view('admin-panel.contact_us.index',compact('contact_us'));
     }
-
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
+    
 
     public function show($id)
     {
         $contact_us = Contact_us::findOrFail($id);
+        if($contact_us->is_read == 0) {
+            $contact_us->update(['is_read' => 1]);
+        }
         return view('admin-panel.contact_us.show',compact('contact_us'));
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     public function destroy($id)
     {

@@ -68,7 +68,6 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                             <th>عنوان الدرس </th>
                             <th>الاختيار</th>
                             <th class="text-center">اجراء الاختيار</th>
@@ -80,8 +79,7 @@
                             <tbody>
                             <tr data-entry-id="{{ $questions_option->id }}">
                                 <td>{{$loop->iteration}}</td>
-                                <td></td>
-                                <td>{{ $questions_option->question->question_text or '' }}</td>
+                                <td>{{ optional($questions_option->question)->question_text }}</td>
                                 <td>{{ $questions_option->option }}</td>
                                 <td class="text-center">{{ $questions_option->correct == 1 ? 'صح' : 'خطأ' }}</td>
                                 <td>{{ $questions_option->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>

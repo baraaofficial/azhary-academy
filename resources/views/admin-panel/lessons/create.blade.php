@@ -1,7 +1,8 @@
 @extends('admin-panel.layouts.app')
 @inject('model','App\Models\Lesson')
 @section('title')
-    انشاء درس جديد
+
+    -     انشاء درس جديد
 
 @endsection
 

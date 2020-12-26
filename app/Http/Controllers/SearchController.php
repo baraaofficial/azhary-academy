@@ -20,7 +20,7 @@ class SearchController extends Controller
                 });
             }
 
-        })->latest()->paginate(10);
+        })->latest()->limit(10)->get();
         //   dd($request);
         return view('search',compact('courses'));
     }

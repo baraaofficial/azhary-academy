@@ -2,6 +2,13 @@
 @inject('users','App\Models\User')
 @inject('courses','App\Models\Course')
 @inject('lessons','App\Models\Lesson')
+@inject('comments','App\Models\Comment')
+@inject('carts','App\Models\Cart')
+@inject('question','App\Models\Question')
+@inject('subject','App\Models\Subject')
+@inject('class','App\Models\Calss')
+@inject('teachers','App\Models\Teacher')
+@inject('category','App\Models\Categories')
 
 @section('css')
     <script src="{{asset('admin-panel/global_assets/js/demo_charts/pages/dashboard/light/streamgraph.js')}}"></script>
@@ -57,80 +64,203 @@
 
     <!-- Content area -->
     <div class="content">
-        <!-- Quick stats boxes -->
-        <div class="row">
-            <div class="col-lg-4">
+        <!-- Simple statistics -->
+        <div class="mb-3">
+            <h6 class="mb-0 font-weight-semibold">
+                احصائيات الموقع
+            </h6>
+            <span class="text-muted d-block">عداد لمعرفة كل ما في الموقع من أحداث</span>
+        </div>
 
-                <!-- Members online -->
-                <div class="card bg-teal-400">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h3 class="font-weight-semibold mb-0">{{$users->count()}}</h3>
-                        </div>
+            <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body bg-blue-400 has-bg-image">
+                        <div class="media">
+                            <div class="media-body">
+                                 <h3 class="mb-0">{{$comments->count()}}</h3>
+                                <span class="text-uppercase font-size-xs">إحصائيات التعليقات</span>
+                            </div>
 
-                        <div>
-                            عضو
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /members online -->
-
-            </div>
-
-            <div class="col-lg-4">
-
-                <!-- Current server load -->
-                <div class="card bg-pink-400">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h3 class="font-weight-semibold mb-0">{{$courses->count()}}</h3>
-                            <div class="list-icons ml-auto">
-                                <div class="dropdown">
-                                    <a href="#" class="list-icons-item dropdown-toggle" data-toggle="dropdown"><i class="icon-cog3"></i></a>
-                                    <div class="dropdown-menu">
-                                        <a href="{{route('courses.index')}}" class="dropdown-item"><i class="icon-list-unordered"></i>الدورات</a>
-                                        <a href="{{route('courses.create')}}" class="dropdown-item"><i class="icon-pen-plus"></i>إنشاء دورة جديدة</a>
-
-                                    </div>
-                                </div>
+                            <div class="ml-3 align-self-center">
+                                <i class="icon-bubbles4 icon-3x opacity-75"></i>
                             </div>
                         </div>
-
-                        <div>
-                            دورة فى الموقع
-                        </div>
                     </div>
-
                 </div>
-                <!-- /current server load -->
 
-            </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body bg-danger-400 has-bg-image">
+                        <div class="media">
+                            <div class="media-body">
+                                <h3 class="mb-0">{{$carts->count()}}</h3>
+                                <span class="text-uppercase font-size-xs">إحصائيات الفواتير</span>
+                            </div>
 
-            <div class="col-lg-4">
 
-                <!-- Today's revenue -->
-                <div class="card bg-blue-400">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h3 class="font-weight-semibold mb-0">{{$lessons->count()}}</h3>
-                            <div class="list-icons ml-auto">
-                                <a class="list-icons-item" data-action="reload"></a>
+                            <div class="ml-3 align-self-center">
+                                <i class="icon-bag icon-3x opacity-75"></i>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div>
-                            درس
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body bg-success-400 has-bg-image">
+                        <div class="media">
+                            <div class="mr-3 align-self-center">
+                                <i class="icon-book-play icon-3x opacity-75"></i>
+                            </div>
+
+                            <div class="media-body text-right">
+                                <h3 class="mb-0">{{$courses->count()}}</h3>
+                                <span class="text-uppercase font-size-xs">إحصائيات الدورات</span>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- /today's revenue -->
 
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body bg-indigo-400 has-bg-image">
+                        <div class="media">
+                            <div class="mr-3 align-self-center">
+                                <i class="icon-enter6 icon-3x opacity-75"></i>
+                            </div>
+
+                            <div class="media-body text-right">
+                                @foreach($visitors as $visitor)
+                                <h3 class="mb-0">{{$visitor->visitor}}</h3>
+                                @endforeach
+                                <span class="text-uppercase font-size-xs">إحصائيات زيارة الموقع</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body">
+                        <div class="media">
+                            <div class="mr-3 align-self-center">
+                                <i class="icon-presentation icon-3x text-success-400"></i>
+                            </div>
+
+                            <div class="media-body text-right">
+                                <h3 class="font-weight-semibold mb-0">{{$lessons->count()}}</h3>
+                                <span class="text-uppercase font-size-sm text-muted">إحصائيات الدروس</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body">
+                        <div class="media">
+                            <div class="mr-3 align-self-center">
+                                <i class="icon-question7 icon-3x text-indigo-400"></i>
+                            </div>
+
+                            <div class="media-body text-right">
+                                <h3 class="font-weight-semibold mb-0">{{$question->count()}}</h3>
+                                <span class="text-uppercase font-size-sm text-muted">إحصائيات الأسئلة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h3 class="font-weight-semibold mb-0">{{$get_message->count()}}</h3>
+                                <span class="text-uppercase font-size-sm text-muted">إحصائيات الرسائل</span>
+                            </div>
+
+                            <div class="ml-3 align-self-center">
+                                <i class="icon-paperplane icon-3x text-blue-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h3 class="font-weight-semibold mb-0">{{$users->count()}}</h3>
+                                <span class="text-uppercase font-size-sm text-muted">إحصائيات الطلاب</span>
+                            </div>
+
+                            <div class="ml-3 align-self-center">
+                                <i class="icon-users icon-3x text-danger-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6 col-xl-3">
+                <div class="card card-body bg-blue-400 has-bg-image">
+                    <div class="media">
+                        <div class="media-body">
+                            <h3 class="mb-0">{{$subject->count()}}</h3>
+                            <span class="text-uppercase font-size-xs">إحصائيات المواد</span>
+                        </div>
+
+                        <div class="ml-3 align-self-center">
+                            <i class="icon-books icon-3x opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card card-body bg-danger-400 has-bg-image">
+                    <div class="media">
+                        <div class="media-body">
+                            <h3 class="mb-0">{{$teachers->count()}}</h3>
+                            <span class="text-uppercase font-size-xs">إحصائيات الصوف الدراسية</span>
+                        </div>
+
+                        <div class="ml-3 align-self-center">
+                            <i class="icon-graduation icon-3x opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card card-body bg-success-400 has-bg-image">
+                    <div class="media">
+                        <div class="mr-3 align-self-center">
+                            <i class="icon-user icon-3x opacity-75"></i>
+                        </div>
+
+                        <div class="media-body text-right">
+                            <h3 class="mb-0">{{$teachers->count()}}</h3>
+                            <span class="text-uppercase font-size-xs">إحصائيات السادة المحاضرين</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card card-body bg-indigo-400 has-bg-image">
+                    <div class="media">
+                        <div class="mr-3 align-self-center">
+                            <i class="icon-indent-decrease2 icon-3x opacity-75"></i>
+                        </div>
+
+                        <div class="media-body text-right">
+                            <h3 class="mb-0">{{$category->count()}}</h3>
+
+                            <span class="text-uppercase font-size-xs">إحصائيات الأقسام</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- /quick stats boxes -->
 
+        </div>
 
-
+        <!-- /simple statistics -->
 @endsection

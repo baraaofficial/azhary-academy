@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
 
-        لوحة التحكم / @yield('title')
+        أكاديمية أزهري -  لوحة التحكم@yield('title')
 
     </title>
 
@@ -21,7 +21,9 @@
     <link href="{{asset('admin-panel/assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('admin-panel/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
-
+    <link rel="shortcut icon" href="{{asset('website/ico.jpg')}}">
+    <link rel="icon" type="image/png" href="{{asset('website/ico.jpg')}}" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('website/ico.jpg')}}">
     <!-- Core JS files -->
     <script src="{{asset('admin-panel/global_assets/js/main/jquery.min.js')}}"></script>
     <script src="{{asset('admin-panel/global_assets/js/main/bootstrap.bundle.min.js')}}"></script>

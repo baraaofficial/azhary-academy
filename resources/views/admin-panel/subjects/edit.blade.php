@@ -1,6 +1,7 @@
 @extends('admin-panel.layouts.app')
 @section('title')
-    تعديل مادة {{$model->name}}
+    -     تعديل مادة {{$model->name}}
+
 @endsection
 
 @section('content')

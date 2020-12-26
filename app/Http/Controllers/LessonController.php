@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CartCourse;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Question;
@@ -24,19 +25,26 @@ class LessonController extends Controller
         $lessons = Lesson::findOrFail($id);
         $comments = $lessons->comments()->with('user' )->orderBy('id','Asc')->limit(30)->get();
 
-        if($lessons->isFree == 0
-//            && !$lessons->users()->find(auth()->user()->id)
-        )
+        $course = $lessons->course;
+        $payment = CartCourse::where('course_id', $course->id)->where('user_id', auth::user()->id)->whereHas('cart', function($q){
+            return $q->where('paid', 1);
+        })->first();
+        if(!isset($payment) && $lessons->isFree == 0)
         {
             abort(404);
         }
-
-        $questions = Question::inRandomOrder()->where('lesson_id', $lessons->id)->limit(10)->get();
-        foreach ($questions as &$question)
+        else
         {
-            $question->options = QuestionsOption::where('question_id', $question->id)->inRandomOrder()->get();
+            $questions = Question::inRandomOrder()->where('lesson_id', $lessons->id)->limit(10)->get();
+            foreach ($questions as &$question)
+            {
+                $question->options = QuestionsOption::where('question_id', $question->id)->get();
+            }
+
+            return view('lesson.single',compact('lessons','comments','questions'));
         }
-        return view('lesson.single',compact('lessons','comments','questions'));
+
+
     }
 
     public function store(Request $request)
@@ -71,7 +79,7 @@ class LessonController extends Controller
         return redirect()->route('result.show', [$test->id]);
     }
 
-    public function show($id)
+    public function result($id)
     {
         $test = Test::find($id)->load('user');
 

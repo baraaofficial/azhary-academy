@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    | {{$lessons->title}}
+    - {{$lessons->title}}
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('website/css/custom.css')}}" type="text/css" />
@@ -53,12 +53,7 @@
     <section id="page-title">
 
         <div class="container clearfix">
-            <h1>{{$lessons->title}}</h1>
-            <div id="portfolio-navigation">
-                <a href="#"><i class="icon-angle-left"></i></a>
-                <a href="#"><i class="icon-line-grid"></i></a>
-                <a href="#"><i class="icon-angle-right"></i></a>
-            </div>
+            <h1 title="{{$lessons->title}}">{{$lessons->title}}</h1>
         </div>
 
     </section><!-- #page-title end -->
@@ -74,27 +69,29 @@
                 <!-- Portfolio Single Video
                 ============================================= -->
                 <div class="col_two_third portfolio-single-image nobottommargin">
-                    <iframe src="https://player.vimeo.com/video/{{$lessons->video}}" width="1000" height="563" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe
+                    <iframe src="https://player.vimeo.com/video/{{$lessons->video}}" width="1000" height="563" frameborder="0" allow=" fullscreen" allowfullscreen></iframe>
                    <br>
                    <br>
 
                     <div class="stylish">
                         <div class="container">
-                            <h2 class="stylish-head  head-border-center uppercase text-center">معلومات عن الدرس :</h2>
-                            <p class="testimonials-desc text-center">{!! $lessons->description !!}</p>
+                            <h2 class="stylish-head  head-border-center uppercase text-center" title="معلومات عن الدرس">معلومات عن الدرس :</h2>
+                            <p class="testimonials-desc text-center" title="{!! $lessons->description !!}">{!! $lessons->description !!}</p>
                             <script type="">
                                 function submitForm(){
                                     document.getElementById('submitForm').submit();
                                 }
                             </script>
                             <ul class="portfolio-meta bottommargin">
-                                {!! Form::open(['method' => 'post', 'url' => url('download'),'id'=>'submitForm']) !!}
+
+                               {{--  {!! Form::open(['method' => 'post', 'url' => url('download'),'id'=>'submitForm']) !!}
                                 {!! Form::hidden('path',$lessons->pdf) !!}
                                 {!! Form::hidden('file_name',$lessons->title .'.'. explode('.',$lessons->pdf)[count( explode('.',$lessons->pdf)) - 1]) !!}
                                 {!! Form::close() !!}
+                                onclick="submitForm()"--}}
 
                                 <li><h4> حمل ملف درس {{$lessons->title}} :</h4>
-                                    <a href="#" onclick="submitForm()" class="btn btn-secondary btn-sm flift">تحميل الآن</a>
+                                    <a href="{{$lessons->pdf}}" download class="btn btn-secondary btn-sm flift">تحميل الآن</a>
                                 </li>
                             </ul>
                         </div>
@@ -104,71 +101,45 @@
                     <div id="faqs" class="faqs">
 
                         <div id="faqs-list" class="fancy-title title-bottom-border">
-                            <h3>الأسئلة التجريبية :</h3>
+                            <h3 title="الأسئلة التجريبة">الأسئلة التجريبية :</h3>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental}}"></i>{{$lessons->experimental}}</div>
+                            <div class="togglec" title="{!! $lessons->answer !!}">{!! $lessons->answer !!} </div>
                         </div>
 
-                        <ul class="iconlist faqlist">
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-1">{{$lessons->experimental}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-2">{{$lessons->experimental2}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-3">{{$lessons->experimental3}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-4">{{$lessons->experimental4}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-5">{{$lessons->experimental5}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-6">{{$lessons->experimental6}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-7">{{$lessons->experimental7}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-8">{{$lessons->experimental8}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-9">{{$lessons->experimental9}}</a></strong></li>
-                            <li><i class="icon-caret-left"></i><strong><a href="#" data-scrollto="#faq-10">{{$lessons->experimental10}}</a></strong></li>
-                        </ul>
-
-                        <div class="divider"><i class="icon-circle"></i></div>
-
-                        <h3 id="faq-1">{{$lessons->experimental}}</h3>
-                        <p>{!! $lessons->answer !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-2">{{$lessons->experimental2}}</h3>
-                        <p>{!! $lessons->answer2 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-3">{{$lessons->experimental3}}</h3>
-                        <p>{!! $lessons->answer3 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-4">{{$lessons->experimental4}}</h3>
-                        <p>{!! $lessons->answer4 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-5">{{$lessons->experimental5}}</h3>
-                        <p>{!! $lessons->answer5 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-6">{{$lessons->experimental6}}</h3>
-                        <p>{!! $lessons->answer6 !!}</p>
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-7">{{$lessons->experimental7}}</h3>
-                        <p>{!! $lessons->answer7 !!}</p>
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-8">{{$lessons->experimental8}}</h3>
-                        <p>{!! $lessons->answer8 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-9">{{$lessons->experimental9}}</h3>
-                        <p>{!! $lessons->answer9 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
-
-                        <h3 id="faq-10">{{$lessons->experimental10}}</h3>
-                        <p>{!! $lessons->answer10 !!}</p>
-
-                        <div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental2}}"></i>{{$lessons->experimental2}}</div>
+                            <div class="togglec" title="{!! $lessons->answer2 !!}">{!! $lessons->answer2 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" {{$lessons->experimental3}}></i>{{$lessons->experimental3}}</div>
+                            <div class="togglec" title="{!! $lessons->answer3 !!} ">{!! $lessons->answer3 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental4}}"></i>{{$lessons->experimental4}}</div>
+                            <div class="togglec" title="{!! $lessons->answer4 !!}">{!! $lessons->answer4 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental5}}"></i>{{$lessons->experimental5}}</div>
+                            <div class="togglec" title="{!! $lessons->answer5 !!}">{!! $lessons->answer5 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental6}}"></i>{{$lessons->experimental6}}</div>
+                            <div class="togglec" title="{!! $lessons->answer6 !!}">{!! $lessons->answer6 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental7}}"></i>{{$lessons->experimental7}}</div>
+                            <div class="togglec" title="{!! $lessons->answer7 !!}">{!! $lessons->answer7 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental8}}"></i>{{$lessons->experimental8}}</div>
+                            <div class="togglec" title="{!! $lessons->answer8 !!}">{!! $lessons->answer8 !!} </div>
+                        </div>
+                        <div class="toggle toggle-border">
+                            <div class="togglet"><i class="toggle-closed icon-ok-circle"></i><i class="toggle-open icon-remove-circle" title="{{$lessons->experimental9}}"></i>{{$lessons->experimental9}}</div>
+                            <div class="togglec" {!! $lessons->answer9 !!}>{!! $lessons->answer9 !!} </div>
+                        </div>
 
                     </div>
                     <!-- Content area -->
@@ -182,7 +153,7 @@
                             <!-- Table components -->
                                 <div class="card">
                                     <div class="card-header header-elements-inline">
-                                        <h5 class="card-title">السؤال  {{ $i }} </h5>
+                                        <h5 class="card-title" title="السؤال  {{ $i }} ">السؤال  {{ $i }} </h5>
                                         <div class="header-elements">
                                             <div class="list-icons">
                                                 <a class="list-icons-item" data-action="collapse"></a>
@@ -193,7 +164,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        <strong><br />{!! nl2br($question->question_text) !!}</strong>
+                                        <strong title="{!! nl2br($question->question_text) !!}"><br />{!! nl2br($question->question_text) !!}</strong>
                                         @if ($question->code_snippet != '')
                                             <div class="code_snippet">{!! $question->code_snippet !!}</div>
                                         @endif
@@ -204,22 +175,16 @@
                                             <tbody>
                                             <input type="hidden" name="questions[{{ $i }}]" value="{{ $question->id }}">
                                             @foreach($question->options as $option)
-                                                <tr class="table-border-double table-active">
-                                                    <th colspan="3"> - -</th>
-                                                </tr>
+                                       
 
                                                 <tr>
-                                                    <td>{{ $option->option }}</td>
+                                                    <td title="{{ $option->option }}">{{ $option->option }}</td>
                                                     <td>
                                                         <div class="form-check form-check-inline form-check-right">
                                                             <label class="form-check-label">
-
-
                                                                 <input type="radio"  value="{{ $option->id }}" class="form-check-input" name="answers[{{ $question->id }}]">
                                                             </label>
-
                                                         </div>
-
                                                     </td>
                                                 </tr>
 
@@ -235,7 +200,7 @@
                             @endforeach
                         @endif
                         <br>
-                        <button type="submit" class="btn btn-success">أجب</button>
+                        <button type="submit" class="btn btn-success" title="أجب ">أجب</button>
 
                     {!! Form::close() !!}
                     <!-- /table components -->
@@ -243,7 +208,7 @@
                     ============================================= -->
                     <div id="comments" class="clearfix">
 
-                        <h3 id="comments-title"><span>{{$comments->count()}}</span> التعليقات </h3>
+                        <h3 id="comments-title" title="التعليقات"><span title="{{$comments->count()}}">{{$comments->count()}}</span> التعليقات </h3>
 
                         <!-- Comments List
                         ============================================= -->
@@ -265,23 +230,23 @@
 
                                     <div class="comment-content clearfix">
 
-                                        <div class="comment-author">{{ $comment->user->name }}<span><a href="#" title="Permalink to this comment"> {{$comment->updated_at->diffForHumans()}} </a></span></div>
+                                        <div class="comment-author" title="تعليق {{ $comment->user->name }}">{{ $comment->user->name }}<span><a href="#" title="{{$comment->updated_at->diffForHumans()}} "> {{$comment->updated_at->diffForHumans()}} </a></span></div>
 
-                                        <p>{!!  $comment->comment !!}</p>
+                                        <p>{!! $comment->comment !!}</p>
                                         @if(auth()->user())
                                             @if((auth()->user()->group == 'admin') || auth()->user()->id == $comment->user->id )
-                                                <a href="" onclick="$(this).next('div').slideToggle(1000);return false;">تعديل</a>
+                                                <a href="" onclick="$(this).next('div').slideToggle(1000);return false;" title="تعديل">تعديل</a>
                                                 <div style="display: none">
                                                     <form action="{{route('comments.commentUpdate' , ['id' =>$comment->id ])}}" method="post">
                                                         {{ csrf_field() }}
                                                         <div class="form-group">
-                                                            <textarea name="comment"  class="form-control" cols="30" rows="10">{!!  $comment->comment !!} </textarea>
+                                                            <textarea name="comment"  class="form-control" cols="30" rows="10" title="{!!  $comment->comment !!}">{!!  $comment->comment !!} </textarea>
                                                         </div>
-                                                        <button class="button button-3d button-rounded button-green"><i class="icon-repeat"></i>تعديل التعليق</button>
+                                                        <button class="button button-3d button-rounded button-green" title="تعديل التعليق"><i class="icon-repeat"></i>تعديل التعليق</button>
                                                     </form>
                                                 </div>
 
-                                                <a class='comment-reply-link' href='{{route('comment.delete', ['id' => $comment->id])}}}'><i class="icon-line-trash"></i></a>
+                                                <a class='comment-reply-link' href='{{route('comment.delete', ['id' => $comment->id])}}}' title="حذف التعليق"><i class="icon-line-trash"></i></a>
 
                                             @endif
                                         @endif

@@ -27,7 +27,7 @@
             <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
                 <div class="d-flex">
                     <div class="breadcrumb">
-                        <a href="{{url('/')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
+                        <a href="{{url('/dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> لوحة التحكم</a>
                         <a href="{{route('users.index')}}" class="breadcrumb-item">الأعضاء</a>
                         <span class="breadcrumb-item active">جميع الأعضاء</span>
                     </div>

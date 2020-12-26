@@ -8,30 +8,23 @@
 </div>
 
 <div class="form-group mb-6">
-    <label for="simpleinput">رابط الفيديو  :</label>
+    <label for="simpleinput">الفيديو :</label>
     {!! Form::text('video',null,[
-'autocomplete'=> 'off',
+        'autocomplete'=> 'off',
         'class' => 'form-control'
 
     ]) !!}
 </div>
 
 
-<!-- CKEditor default -->
-<div class="card">
-    <div class="card-header header-elements-inline">
-        <h5 class="card-title">وصف الدرس</h5>
-    </div>
-    <div class="card-body">
-            <div class="mb-3">
-                <textarea name="description" id="editor-full" rows="4" cols="4">
+<div class="form-group mb-6">
+    <label for="simpleinput">وصف الدرس:</label>
+    {!! Form::textarea('description',null,[
+        'autocomplete'=> 'off',
+        'class' => 'form-control'
 
-                </textarea>
-            </div>
-    </div>
+    ]) !!}
 </div>
-<!-- /CKEditor default -->
-
 <div class="form-group mb-6">
     <label for="simpleinput">الدروات الدراسية :</label>
     @inject('course','App\Models\Course')
@@ -47,7 +40,7 @@
 <div class="form-group">
     <label>اختار الدفع:</label>
     <select name="isFree" data-placeholder="اختار الدفع" class="form-control form-control-select2" data-fouc>
-        <option value="0">مدفوع</option>
+        <option value="{{($model) ? $model->isFree : old('isFree')}}">{{($model) ? $model->isFree : old('isFree')}}</option>
         <optgroup>
             <option value="0">مدفوع</option>
             <option value="1">مجاني</option>
@@ -60,12 +53,14 @@
 <!-- Bootstrap file input -->
 <div class="card">
     <div class="card-body">
-            <div class="form-group row">
-                <label class="col-lg-2 col-form-label font-weight-semibold">الصورة:</label>
-                <div class="col-lg-10">
-                    <input type="file" name="image" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
-                </div>
+        <div class="form-group row">
+            <label class="col-lg-2 col-form-label font-weight-semibold">الصورة:</label>
+            <div class="col-lg-10">
+                <input type="file" name="image" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
+                <img src="{{($model) ? $model->image : old('image')}}">
+
             </div>
+        </div>
     </div>
 </div>
 <!-- /bootstrap file input -->
@@ -77,6 +72,7 @@
             <label class="col-lg-2 col-form-label font-weight-semibold">PDF:</label>
             <div class="col-lg-10">
                 <input type="file" name="pdf" class="file-input form-control" data-show-caption="false" data-show-upload="false" data-fouc>
+
             </div>
         </div>
     </div>

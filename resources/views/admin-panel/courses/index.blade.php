@@ -64,7 +64,8 @@
                         <th>#</th>
                         <th>اسم الدوره</th>
                         <th>السعر</th>
-                        <th>المادة</th>
+                        <th>المدرس</th>
+                        <th>القسم</th>
                         <th>الفصل</th>
                         <th>التاريخ</th>
                         <th class="text-center">أجراءات</th>
@@ -76,9 +77,10 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$row->name}}</td>
                         <td>{{$row->price}}</td>
-                        <td>{{optional($row->subject)->name}}</td>
+                        <td>{{optional($row->teacher)->name}}</td>
+                        <td>{{optional($row->categories)->name}}</td>
                         <td>{{optional($row->class)->name}}</td>
-                        <td>{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
+                        <td title="{{$row->updated_at}}">{{$row->updated_at->isoFormat('Do MMMM YYYY', 'MMMM YYYY')}}</td>
                         <td class="text-center">
                             <div class="list-icons">
                                 <div class="dropdown">
@@ -88,6 +90,7 @@
 
                                     <div class="dropdown-menu">
                                         <a href="{{route('courses.edit',$row->id)}}" class="dropdown-item"><i class="icon-pencil7"></i>تعديل</a>
+                                        <a href="{{route('courses.show',$row->id)}}" class="dropdown-item"><i class="icon-eye"></i>شاهد</a>
                                         {!! Form::open(array(
 
                                              'style' => 'display: inline-block;',

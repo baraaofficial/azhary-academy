@@ -3,7 +3,7 @@
 
 أكاديمية أزهري تغير كلمة السر .
 <h1>مرحبا بك  {{$user->name}}</h1>
-@component('mail::button', ['url' => 'https://azhary-academic.com/'])
+@component('mail::button', ['url' => config('app.url')])
 تغير كلمة السر
 @endcomponent
 
